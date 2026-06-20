@@ -98,6 +98,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Maison Hygia" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "Maison Hygia — Rooted in Ayurveda. Made for Modern Living." },
+      { name: "description", content: "Maison Hygia Refresh is a website replicating an existing online presence with a new brand identity." },
+      { property: "og:description", content: "Maison Hygia Refresh is a website replicating an existing online presence with a new brand identity." },
+      { name: "twitter:description", content: "Maison Hygia Refresh is a website replicating an existing online presence with a new brand identity." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/886ed23d-78a2-461b-9bfb-5d5108d08398/id-preview-fe1cfdc4--b3d54e98-76b9-48d2-a015-b01686845069.lovable.app-1781928335517.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/886ed23d-78a2-461b-9bfb-5d5108d08398/id-preview-fe1cfdc4--b3d54e98-76b9-48d2-a015-b01686845069.lovable.app-1781928335517.png" },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },

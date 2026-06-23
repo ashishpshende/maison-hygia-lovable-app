@@ -249,9 +249,9 @@ function HomePage() {
             Maison Hygia
           </p>
           <h2 className="mt-8 font-serif text-4xl leading-[1.15] md:text-5xl lg:text-6xl">
-            Rooted in Ayurveda.
+            Modern Rituals
             <br />
-            <span className="italic text-gold">Made for modern living.</span>
+            <span className="italic text-gold">Rooted in Nature.</span>
           </h2>
           <div aria-hidden className="mt-12 h-px w-12 bg-gold/70" />
         </div>

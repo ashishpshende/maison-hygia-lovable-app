@@ -22,10 +22,8 @@ export function SiteHeader() {
           onClick={() => setOpen(false)}
           className="flex items-center gap-3 text-foreground transition-opacity hover:opacity-70"
         >
-          <MHEmblem className="h-9 w-9 text-gold" />
-          <span className="font-serif text-xl tracking-[0.28em] md:text-2xl">
-            MAISON HYGIA
-          </span>
+          <img src={logoAsset.url} alt="Maison Hygia" className="h-12 w-auto md:h-14" />
+          <span className="sr-only">Maison Hygia</span>
         </Link>
 
         <nav className="hidden items-center gap-10 md:flex">

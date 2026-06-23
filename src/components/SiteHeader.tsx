@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { MHEmblem } from "@/components/MHEmblem";
+import logoAsset from "@/assets/logo.svg.asset.json";
 
 const navLinks = [
   { to: "/", label: "Home" },

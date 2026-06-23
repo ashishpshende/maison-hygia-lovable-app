@@ -68,7 +68,7 @@ function HomePage() {
               </h1>
 
               <div className="mt-8 max-w-md space-y-1 text-sm leading-relaxed text-foreground/75 md:text-base">
-                <p>Rooted in Ayurveda. Made for modern living.</p>
+                <p>Modern Rituals Rooted in Nature.</p>
                 <p>Slow-crafted in small batches.</p>
               </div>
 

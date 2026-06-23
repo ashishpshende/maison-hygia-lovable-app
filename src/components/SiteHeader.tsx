@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { MHEmblem } from "@/components/MHEmblem";
+import logoAsset from "@/assets/logo.svg.asset.json";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -22,10 +22,8 @@ export function SiteHeader() {
           onClick={() => setOpen(false)}
           className="flex items-center gap-3 text-foreground transition-opacity hover:opacity-70"
         >
-          <MHEmblem className="h-9 w-9 text-gold" />
-          <span className="font-serif text-xl tracking-[0.28em] md:text-2xl">
-            MAISON HYGIA
-          </span>
+          <img src={logoAsset.url} alt="Maison Hygia" className="h-12 w-auto md:h-14" />
+          <span className="sr-only">Maison Hygia</span>
         </Link>
 
         <nav className="hidden items-center gap-10 md:flex">

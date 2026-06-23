@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FadeIn } from "@/components/FadeIn";
-import heroAsset from "@/assets/hero.png.asset.json";
+import heroAsset from "@/assets/hero-catalog.png.asset.json";
 import bodyWashAsset from "@/assets/body-wash.png.asset.json";
 import sheetMaskAsset from "@/assets/sheet-mask.png.asset.json";
 import catalogAsset from "@/assets/catalog.png.asset.json";
@@ -68,7 +68,7 @@ function HomePage() {
               </h1>
 
               <div className="mt-8 max-w-md space-y-1 text-sm leading-relaxed text-foreground/75 md:text-base">
-                <p>Rooted in Ayurveda. Made for modern living.</p>
+                <p>Modern Rituals Rooted in Nature.</p>
                 <p>Slow-crafted in small batches.</p>
               </div>
 
@@ -249,9 +249,9 @@ function HomePage() {
             Maison Hygia
           </p>
           <h2 className="mt-8 font-serif text-4xl leading-[1.15] md:text-5xl lg:text-6xl">
-            Rooted in Ayurveda.
+            Modern Rituals
             <br />
-            <span className="italic text-gold">Made for modern living.</span>
+            <span className="italic text-gold">Rooted in Nature.</span>
           </h2>
           <div aria-hidden className="mt-12 h-px w-12 bg-gold/70" />
         </div>

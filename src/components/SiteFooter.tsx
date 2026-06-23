@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import logoAsset from "@/assets/logo.svg.asset.json";
 
 const footerLinks = [
   { to: "/shop", label: "Shop" },
@@ -11,16 +12,13 @@ export function SiteFooter() {
     <footer className="mt-32 border-t border-border/60 bg-cream">
       <div className="mx-auto max-w-6xl px-6 py-20 md:px-10">
         <div className="flex flex-col items-center gap-10 text-center">
-          <Link
-            to="/"
-            className="font-serif text-2xl tracking-[0.3em] text-foreground md:text-3xl"
-          >
-            MAISON HYGIA
+          <Link to="/" aria-label="Maison Hygia">
+            <img src={logoAsset.url} alt="Maison Hygia" className="h-16 w-auto md:h-20" />
           </Link>
 
           <p className="max-w-md text-sm leading-relaxed text-muted-foreground">
-            Rooted in Ayurveda. Made for modern living. Slow-crafted skin and
-            hair care, blended with botanicals you can name.
+            Modern Rituals Rooted in Nature. Slow-crafted skin and hair care,
+            blended with botanicals you can name.
           </p>
 
           <div className="h-px w-16 bg-gold/50" />

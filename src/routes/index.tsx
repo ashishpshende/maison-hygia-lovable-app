@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FadeIn } from "@/components/FadeIn";
-import heroAsset from "@/assets/hero.png.asset.json";
+import heroAsset from "@/assets/hero-catalog.png.asset.json";
 import bodyWashAsset from "@/assets/body-wash.png.asset.json";
 import sheetMaskAsset from "@/assets/sheet-mask.png.asset.json";
 import catalogAsset from "@/assets/catalog.png.asset.json";

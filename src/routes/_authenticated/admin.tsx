@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { ArrowDown, ArrowUp, ArrowUpDown } from "lucide-react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Download, Loader2, LogOut, RefreshCw, Search, ShieldAlert, Trash2 } from "lucide-react";
 import { toast } from "sonner";
@@ -29,6 +30,10 @@ function AdminPage() {
   const [query, setQuery] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [sortKey, setSortKey] = useState<"email" | "source" | "created_at">("created_at");
+  const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(25);
 
   const load = async () => {
     setLoading(true);
@@ -86,6 +91,44 @@ function AdminPage() {
         (r.source ?? "").toLowerCase().includes(q),
     );
   }, [rows, query]);
+
+  const sorted = useMemo(() => {
+    const arr = [...filtered];
+    arr.sort((a, b) => {
+      const av = (a[sortKey] ?? "") as string;
+      const bv = (b[sortKey] ?? "") as string;
+      const cmp = sortKey === "created_at"
+        ? new Date(av).getTime() - new Date(bv).getTime()
+        : av.localeCompare(bv, undefined, { sensitivity: "base" });
+      return sortDir === "asc" ? cmp : -cmp;
+    });
+    return arr;
+  }, [filtered, sortKey, sortDir]);
+
+  const totalPages = Math.max(1, Math.ceil(sorted.length / pageSize));
+  const currentPage = Math.min(page, totalPages);
+  const pageRows = useMemo(
+    () => sorted.slice((currentPage - 1) * pageSize, currentPage * pageSize),
+    [sorted, currentPage, pageSize],
+  );
+
+  useEffect(() => {
+    setPage(1);
+  }, [query, sortKey, sortDir, pageSize]);
+
+  const toggleSort = (key: "email" | "source" | "created_at") => {
+    if (sortKey === key) {
+      setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+    } else {
+      setSortKey(key);
+      setSortDir(key === "created_at" ? "desc" : "asc");
+    }
+  };
+
+  const SortIcon = ({ k }: { k: "email" | "source" | "created_at" }) => {
+    if (sortKey !== k) return <ArrowUpDown className="h-3 w-3 opacity-50" />;
+    return sortDir === "asc" ? <ArrowUp className="h-3 w-3" /> : <ArrowDown className="h-3 w-3" />;
+  };
 
   const exportCsv = () => {
     if (!filtered.length) {
@@ -219,21 +262,33 @@ function AdminPage() {
         <table className="w-full min-w-[640px] text-sm">
           <thead className="bg-muted/50 text-left text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
             <tr>
-              <th className="px-4 py-3">Email</th>
-              <th className="px-4 py-3">Source</th>
-              <th className="px-4 py-3">Signed up</th>
+              <th className="px-4 py-3">
+                <button onClick={() => toggleSort("email")} className="inline-flex items-center gap-1.5 uppercase tracking-[0.18em] hover:text-foreground">
+                  Email <SortIcon k="email" />
+                </button>
+              </th>
+              <th className="px-4 py-3">
+                <button onClick={() => toggleSort("source")} className="inline-flex items-center gap-1.5 uppercase tracking-[0.18em] hover:text-foreground">
+                  Source <SortIcon k="source" />
+                </button>
+              </th>
+              <th className="px-4 py-3">
+                <button onClick={() => toggleSort("created_at")} className="inline-flex items-center gap-1.5 uppercase tracking-[0.18em] hover:text-foreground">
+                  Signed up <SortIcon k="created_at" />
+                </button>
+              </th>
               <th className="px-4 py-3 text-right">Actions</th>
             </tr>
           </thead>
           <tbody>
-            {filtered.length === 0 ? (
+            {pageRows.length === 0 ? (
               <tr>
                 <td colSpan={4} className="px-4 py-12 text-center text-sm text-muted-foreground">
                   No subscribers {query ? "match your search." : "yet."}
                 </td>
               </tr>
             ) : (
-              filtered.map((r) => (
+              pageRows.map((r) => (
                 <tr key={r.id} className="border-t border-border">
                   <td className="px-4 py-3 font-medium text-foreground">{r.email}</td>
                   <td className="px-4 py-3 text-muted-foreground">{r.source ?? "—"}</td>
@@ -255,6 +310,43 @@ function AdminPage() {
             )}
           </tbody>
         </table>
+      </div>
+
+      <div className="mt-4 flex flex-wrap items-center justify-between gap-3 text-xs text-muted-foreground">
+        <div className="flex items-center gap-2">
+          <label htmlFor="pageSize">Rows per page</label>
+          <select
+            id="pageSize"
+            value={pageSize}
+            onChange={(e) => setPageSize(Number(e.target.value))}
+            className="border border-border bg-background px-2 py-1 text-xs focus:border-gold focus:outline-none"
+          >
+            {[10, 25, 50, 100].map((n) => (
+              <option key={n} value={n}>{n}</option>
+            ))}
+          </select>
+          <span>
+            {sorted.length === 0 ? 0 : (currentPage - 1) * pageSize + 1}
+            –{Math.min(currentPage * pageSize, sorted.length)} of {sorted.length}
+          </span>
+        </div>
+        <div className="flex items-center gap-1">
+          <button
+            onClick={() => setPage((p) => Math.max(1, p - 1))}
+            disabled={currentPage <= 1}
+            className="border border-border px-3 py-1 uppercase tracking-[0.18em] hover:bg-muted disabled:opacity-40"
+          >
+            Prev
+          </button>
+          <span className="px-2">Page {currentPage} / {totalPages}</span>
+          <button
+            onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
+            disabled={currentPage >= totalPages}
+            className="border border-border px-3 py-1 uppercase tracking-[0.18em] hover:bg-muted disabled:opacity-40"
+          >
+            Next
+          </button>
+        </div>
       </div>
     </div>
   );

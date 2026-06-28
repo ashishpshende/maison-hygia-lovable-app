@@ -1,12 +1,10 @@
+import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FadeIn } from "@/components/FadeIn";
-import bodyWashAsset from "@/assets/body-wash.png.asset.json";
-import sheetMaskAsset from "@/assets/sheet-mask.png.asset.json";
+import { supabase } from "@/integrations/supabase/client";
 import catalogAsset from "@/assets/catalog.png.asset.json";
 
-const bodyWash = bodyWashAsset.url;
-const sheetMask = sheetMaskAsset.url;
-const catalog = catalogAsset.url;
+const catalogFallback = catalogAsset.url;
 
 export const Route = createFileRoute("/shop")({
   head: () => ({
@@ -24,8 +22,8 @@ export const Route = createFileRoute("/shop")({
           "Ayurveda-rooted body wash, sheet masks, face and hair care, slow-crafted in small batches.",
       },
       { property: "og:url", content: "/shop" },
-      { property: "og:image", content: catalog },
-      { name: "twitter:image", content: catalog },
+      { property: "og:image", content: catalogFallback },
+      { name: "twitter:image", content: catalogFallback },
     ],
     links: [{ rel: "canonical", href: "/shop" }],
   }),
@@ -33,6 +31,7 @@ export const Route = createFileRoute("/shop")({
 });
 
 type Product = {
+  id: string;
   slug: string;
   eyebrow: string;
   name: string;
@@ -41,55 +40,30 @@ type Product = {
   notes: string;
   size: string;
   price: string;
-  image: string;
+  image_url: string;
   alt: string;
-  comingSoon?: boolean;
+  coming_soon: boolean;
 };
 
-const products: Product[] = [
-  {
-    slug: "body-wash",
-    eyebrow: "Daily Cleanse",
-    name: "Body Wash",
-    tagline: "A Gentle Start",
-    description:
-      "A non-stripping Ayurvedic cleanser for daily barrier care. Lathers softly, rinses clean, leaves the skin breathing.",
-    notes: "Ayurvedic Botanicals · Plant Surfactants · Barrier Care",
-    size: "500 ml / 16 oz.",
-    price: "$34",
-    image: bodyWash,
-    alt: "Maison Hygia Body Wash in an amber glass bottle with a gold pump and wood collar, on warm stone",
-  },
-  {
-    slug: "sheet-mask-golden-glow",
-    eyebrow: "Ritual Glow",
-    name: "Sheet Mask — Golden Glow Blend",
-    tagline: "A Slower Pause",
-    description:
-      "Fifteen quiet minutes for the skin. A single-use cotton mask saturated in the Golden Glow Blend — a warm, turmeric-led serum for luminous calm.",
-    notes: "Turmeric · Saffron · Hyaluronic Acid",
-    size: "1 mask · 25 ml serum",
-    price: "$12",
-    image: sheetMask,
-    alt: "Maison Hygia Golden Glow Blend sheet mask in an amber-gold sachet beside a cotton sheet mask",
-  },
-  {
-    slug: "the-collection",
-    eyebrow: "The Full Ritual",
-    name: "The Maison Hygia Collection",
-    tagline: "A Quiet Shelf",
-    description:
-      "Eleven slow-crafted essentials — body wash, bath salt, bath soak, body scrub, face wash, face scrub, face serum, shampoo, conditioner, hair serum, and sheet mask. Available together as the full ritual, launching soon.",
-    notes: "11 Pieces · Skin · Hair · Bath",
-    size: "Full Collection",
-    price: "—",
-    image: catalog,
-    alt: "Maison Hygia full product catalog — body wash, bath salt, bath soak, body scrub, face wash, face scrub, face serum, shampoo, conditioner, and hair serum",
-    comingSoon: true,
-  },
-];
-
 function ShopPage() {
+  const [products, setProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    let active = true;
+    supabase
+      .from("products")
+      .select("id,slug,eyebrow,name,tagline,description,notes,size,price,image_url,alt,coming_soon")
+      .eq("is_published", true)
+      .order("sort_order", { ascending: true })
+      .order("created_at", { ascending: true })
+      .then(({ data }) => {
+        if (active && data) setProducts(data as Product[]);
+      });
+    return () => {
+      active = false;
+    };
+  }, []);
+
   return (
     <div className="bg-cream">
       <FadeIn immediate as="section" className="px-6 md:px-10">
@@ -116,7 +90,7 @@ function ShopPage() {
         <div className="mx-auto max-w-7xl pb-32 md:pb-40">
           <div className="space-y-32 md:space-y-40">
             {products.map((product, idx) => (
-              <ProductRow key={product.slug} product={product} index={idx} />
+              <ProductRow key={product.id} product={product} index={idx} />
             ))}
           </div>
         </div>
@@ -125,7 +99,7 @@ function ShopPage() {
       <section className="relative isolate overflow-hidden bg-cream">
         <div className="relative h-[60vh] min-h-[420px] w-full md:h-[70vh]">
           <img
-            src={catalog}
+            src={catalogFallback}
             alt="The Maison Hygia collection on warm stone with dried botanicals"
             className="absolute inset-0 h-full w-full object-cover"
             loading="lazy"
@@ -175,7 +149,7 @@ function ProductRow({ product, index }: { product: Product; index: number }) {
       <div className={imageFirst ? "order-1" : "order-1 md:order-2"}>
         <div className="overflow-hidden bg-cream">
           <img
-            src={product.image}
+            src={product.image_url}
             alt={product.alt}
             className="h-auto w-full object-cover"
             loading="lazy"
@@ -224,7 +198,7 @@ function ProductRow({ product, index }: { product: Product; index: number }) {
         </dl>
 
         <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
-          {product.comingSoon ? (
+          {product.coming_soon ? (
             <span
               aria-disabled="true"
               className="inline-flex cursor-default items-center gap-3 border border-gold/50 bg-transparent px-8 py-4 text-xs uppercase tracking-[0.28em] text-gold"

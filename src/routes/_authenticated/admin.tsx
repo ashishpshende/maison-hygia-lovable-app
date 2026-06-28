@@ -208,7 +208,7 @@ function AdminPage() {
     <div className="mx-auto max-w-6xl px-6 py-12 md:px-10">
       <nav className="mb-8 flex gap-1 text-[11px] uppercase tracking-[0.22em]">
         <Link to="/admin" activeProps={{ className: "border-gold text-foreground" }} className="border border-border bg-background px-3 py-2 text-foreground hover:bg-muted">Subscribers</Link>
-        <Link to="/admin/products" activeProps={{ className: "border-gold text-foreground" }} className="border border-border bg-background px-3 py-2 text-foreground hover:bg-muted">Products</Link>
+        <Link to="/admin-products" activeProps={{ className: "border-gold text-foreground" }} className="border border-border bg-background px-3 py-2 text-foreground hover:bg-muted">Products</Link>
       </nav>
       <div className="flex flex-wrap items-end justify-between gap-4 border-b border-border pb-6">
         <div>

@@ -30,6 +30,10 @@ function AdminPage() {
   const [query, setQuery] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [userEmail, setUserEmail] = useState<string | null>(null);
+  const [sortKey, setSortKey] = useState<"email" | "source" | "created_at">("created_at");
+  const [sortDir, setSortDir] = useState<"asc" | "desc">("desc");
+  const [page, setPage] = useState(1);
+  const [pageSize, setPageSize] = useState(25);
 
   const load = async () => {
     setLoading(true);

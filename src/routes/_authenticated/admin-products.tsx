@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { ImageIcon, Loader2, LogOut, Pencil, Plus, RefreshCw, ShieldAlert, Trash2, Upload, X } from "lucide-react";
+import { AlertCircle, ImageIcon, Loader2, LogOut, Pencil, Plus, RefreshCw, ShieldAlert, Trash2, Upload, X } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { isStorageRef, resolveImageUrl, uploadProductImage } from "@/lib/product-image";
@@ -353,51 +353,109 @@ function ProductThumb({ value }: { value: string }) {
     : <div className="h-12 w-12 animate-pulse bg-muted" />;
 }
 
+const MAX_UPLOAD_BYTES = 8 * 1024 * 1024;
+
+function formatBytes(n: number) {
+  if (n < 1024) return `${n} B`;
+  if (n < 1024 * 1024) return `${(n / 1024).toFixed(1)} KB`;
+  return `${(n / (1024 * 1024)).toFixed(1)} MB`;
+}
+
 function ImageUploadField({ value, onChange }: { value: string; onChange: (v: string) => void }) {
   const fileRef = useRef<HTMLInputElement | null>(null);
   const [uploading, setUploading] = useState(false);
-  const [preview, setPreview] = useState<string>("");
+  const [resolvedPreview, setResolvedPreview] = useState<string>("");
+  const [localPreview, setLocalPreview] = useState<string>("");
+  const [error, setError] = useState<string | null>(null);
+  const [previewBroken, setPreviewBroken] = useState(false);
 
+  // Resolve the persisted value (storage ref or URL) for display.
   useEffect(() => {
     let active = true;
-    if (!value) { setPreview(""); return; }
-    if (!isStorageRef(value)) { setPreview(value); return; }
-    resolveImageUrl(value).then((u) => { if (active) setPreview(u); });
+    setPreviewBroken(false);
+    if (!value) { setResolvedPreview(""); return; }
+    if (!isStorageRef(value)) { setResolvedPreview(value); return; }
+    setResolvedPreview("");
+    resolveImageUrl(value).then((u) => {
+      if (!active) return;
+      setResolvedPreview(u);
+      if (!u) setError("Couldn't load image from storage.");
+    });
     return () => { active = false; };
   }, [value]);
 
+  // Revoke object URLs to avoid memory leaks.
+  useEffect(() => {
+    return () => { if (localPreview) URL.revokeObjectURL(localPreview); };
+  }, [localPreview]);
+
+  const preview = localPreview || resolvedPreview;
+
   const onPick = async (file: File) => {
+    setError(null);
+    setPreviewBroken(false);
+
     if (!file.type.startsWith("image/")) {
-      toast.error("Please choose an image file.");
+      setError("That file isn't an image. Choose a PNG, JPG, or WEBP.");
       return;
     }
-    if (file.size > 8 * 1024 * 1024) {
-      toast.error("Image must be 8MB or smaller.");
+    if (file.size > MAX_UPLOAD_BYTES) {
+      setError(`Image is ${formatBytes(file.size)}. Max size is 8 MB.`);
       return;
     }
+
+    // Immediate local preview while the upload runs.
+    const objectUrl = URL.createObjectURL(file);
+    if (localPreview) URL.revokeObjectURL(localPreview);
+    setLocalPreview(objectUrl);
+
     setUploading(true);
     try {
       const ref = await uploadProductImage(file);
       onChange(ref);
       toast.success("Image uploaded.");
     } catch (e) {
-      const msg = e instanceof Error ? e.message : "Upload failed.";
+      const msg = e instanceof Error ? e.message : "Upload failed. Please try again.";
+      setError(msg);
       toast.error(msg);
+      URL.revokeObjectURL(objectUrl);
+      setLocalPreview("");
     } finally {
       setUploading(false);
       if (fileRef.current) fileRef.current.value = "";
     }
   };
 
+  const clearAll = () => {
+    if (localPreview) URL.revokeObjectURL(localPreview);
+    setLocalPreview("");
+    setError(null);
+    setPreviewBroken(false);
+    onChange("");
+  };
+
   return (
     <div className="flex flex-col gap-2">
       <span className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">Product Image</span>
       <div className="flex items-start gap-4">
-        <div className="flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden border border-border bg-muted/40">
-          {preview ? (
-            <img src={preview} alt="" className="h-full w-full object-cover" />
+        <div className="relative flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden border border-border bg-muted/40">
+          {preview && !previewBroken ? (
+            <img
+              src={preview}
+              alt=""
+              className="h-full w-full object-cover"
+              onError={() => {
+                setPreviewBroken(true);
+                if (!localPreview) setError("Image URL couldn't be loaded.");
+              }}
+            />
           ) : (
             <ImageIcon className="h-6 w-6 text-muted-foreground/60" />
+          )}
+          {uploading && (
+            <div className="absolute inset-0 flex items-center justify-center bg-background/70">
+              <Loader2 className="h-5 w-5 animate-spin text-foreground" />
+            </div>
           )}
         </div>
         <div className="flex flex-1 flex-col gap-2">
@@ -416,12 +474,12 @@ function ImageUploadField({ value, onChange }: { value: string; onChange: (v: st
               className="inline-flex items-center gap-2 border border-border px-3 py-2 text-xs uppercase tracking-[0.22em] hover:bg-muted disabled:opacity-60"
             >
               {uploading ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Upload className="h-3.5 w-3.5" />}
-              {value ? "Replace Image" : "Upload Image"}
+              {uploading ? "Uploading…" : value ? "Replace Image" : "Upload Image"}
             </button>
-            {value && (
+            {(value || localPreview) && !uploading && (
               <button
                 type="button"
-                onClick={() => onChange("")}
+                onClick={clearAll}
                 className="inline-flex items-center gap-2 border border-border px-3 py-2 text-xs uppercase tracking-[0.22em] hover:bg-muted"
               >
                 Remove
@@ -430,15 +488,23 @@ function ImageUploadField({ value, onChange }: { value: string; onChange: (v: st
           </div>
           <input
             value={value}
-            onChange={(e) => onChange(e.target.value)}
+            onChange={(e) => { setError(null); setPreviewBroken(false); onChange(e.target.value); }}
             placeholder="…or paste an image URL"
             className={inputCls}
           />
-          <p className="text-[11px] text-muted-foreground">
-            PNG/JPG up to 8MB. Uploaded images are served via signed URLs.
-          </p>
+          {error ? (
+            <p className="flex items-start gap-1.5 text-[11px] text-destructive" role="alert">
+              <AlertCircle className="mt-px h-3.5 w-3.5 shrink-0" />
+              <span>{error}</span>
+            </p>
+          ) : (
+            <p className="text-[11px] text-muted-foreground">
+              PNG/JPG/WEBP up to 8 MB. Uploaded images are served via signed URLs.
+            </p>
+          )}
         </div>
       </div>
     </div>
   );
 }
+

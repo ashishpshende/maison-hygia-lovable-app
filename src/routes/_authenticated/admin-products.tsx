@@ -293,7 +293,12 @@ function ProductDialog({
           <Field label="Description" full>
             <textarea value={draft.description} onChange={(e) => set("description", e.target.value)} rows={4} className={inputCls} />
           </Field>
-          <Field label="Image URL" full><input value={draft.image_url} onChange={(e) => set("image_url", e.target.value)} className={inputCls} placeholder="https://… or /assets/…" /></Field>
+          <div className="md:col-span-2">
+            <ImageUploadField
+              value={draft.image_url}
+              onChange={(v) => set("image_url", v)}
+            />
+          </div>
           <Field label="Image alt text" full><input value={draft.alt} onChange={(e) => set("alt", e.target.value)} className={inputCls} /></Field>
           <Field label="Sort order">
             <input type="number" value={draft.sort_order} onChange={(e) => set("sort_order", Number(e.target.value))} className={inputCls} />

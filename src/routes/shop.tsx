@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FadeIn } from "@/components/FadeIn";
 import { supabase } from "@/integrations/supabase/client";
+import { isStorageRef, resolveImageUrls } from "@/lib/product-image";
 import catalogAsset from "@/assets/catalog.png.asset.json";
 
 const catalogFallback = catalogAsset.url;
@@ -47,6 +48,7 @@ type Product = {
 
 function ShopPage() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [resolvedUrls, setResolvedUrls] = useState<Record<string, string>>({});
 
   useEffect(() => {
     let active = true;
@@ -56,8 +58,18 @@ function ShopPage() {
       .eq("is_published", true)
       .order("sort_order", { ascending: true })
       .order("created_at", { ascending: true })
-      .then(({ data }) => {
-        if (active && data) setProducts(data as Product[]);
+      .then(async ({ data }) => {
+        if (!active || !data) return;
+        const rows = data as Product[];
+        setProducts(rows);
+        const storageRows = rows.filter((p) => isStorageRef(p.image_url));
+        if (storageRows.length) {
+          const urls = await resolveImageUrls(storageRows.map((p) => p.image_url));
+          if (!active) return;
+          const next: Record<string, string> = {};
+          storageRows.forEach((p, i) => { next[p.id] = urls[i]; });
+          setResolvedUrls(next);
+        }
       });
     return () => {
       active = false;
@@ -90,7 +102,12 @@ function ShopPage() {
         <div className="mx-auto max-w-7xl pb-32 md:pb-40">
           <div className="space-y-32 md:space-y-40">
             {products.map((product, idx) => (
-              <ProductRow key={product.id} product={product} index={idx} />
+              <ProductRow
+                key={product.id}
+                product={product}
+                index={idx}
+                displayUrl={resolvedUrls[product.id] ?? (isStorageRef(product.image_url) ? "" : product.image_url)}
+              />
             ))}
           </div>
         </div>
@@ -141,19 +158,23 @@ function ShopPage() {
   );
 }
 
-function ProductRow({ product, index }: { product: Product; index: number }) {
+function ProductRow({ product, index, displayUrl }: { product: Product; index: number; displayUrl: string }) {
   const imageFirst = index % 2 === 0;
 
   return (
     <article className="grid items-center gap-12 md:grid-cols-2 md:gap-20">
       <div className={imageFirst ? "order-1" : "order-1 md:order-2"}>
         <div className="overflow-hidden bg-cream">
-          <img
-            src={product.image_url}
-            alt={product.alt}
-            className="h-auto w-full object-cover"
-            loading="lazy"
-          />
+          {displayUrl ? (
+            <img
+              src={displayUrl}
+              alt={product.alt}
+              className="h-auto w-full object-cover"
+              loading="lazy"
+            />
+          ) : (
+            <div className="aspect-square w-full animate-pulse bg-muted/40" />
+          )}
         </div>
       </div>
 

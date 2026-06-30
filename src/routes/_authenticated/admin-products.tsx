@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { ImageIcon, Loader2, LogOut, Pencil, Plus, RefreshCw, ShieldAlert, Trash2, Upload, X } from "lucide-react";
+import { AlertCircle, ImageIcon, Loader2, LogOut, Pencil, Plus, RefreshCw, ShieldAlert, Trash2, Upload, X } from "lucide-react";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
 import { isStorageRef, resolveImageUrl, uploadProductImage } from "@/lib/product-image";

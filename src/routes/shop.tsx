@@ -48,6 +48,7 @@ type Product = {
 
 function ShopPage() {
   const [products, setProducts] = useState<Product[]>([]);
+  const [resolvedUrls, setResolvedUrls] = useState<Record<string, string>>({});
 
   useEffect(() => {
     let active = true;
@@ -57,8 +58,18 @@ function ShopPage() {
       .eq("is_published", true)
       .order("sort_order", { ascending: true })
       .order("created_at", { ascending: true })
-      .then(({ data }) => {
-        if (active && data) setProducts(data as Product[]);
+      .then(async ({ data }) => {
+        if (!active || !data) return;
+        const rows = data as Product[];
+        setProducts(rows);
+        const storageRows = rows.filter((p) => isStorageRef(p.image_url));
+        if (storageRows.length) {
+          const urls = await resolveImageUrls(storageRows.map((p) => p.image_url));
+          if (!active) return;
+          const next: Record<string, string> = {};
+          storageRows.forEach((p, i) => { next[p.id] = urls[i]; });
+          setResolvedUrls(next);
+        }
       });
     return () => {
       active = false;

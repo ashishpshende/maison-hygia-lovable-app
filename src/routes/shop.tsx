@@ -158,19 +158,23 @@ function ShopPage() {
   );
 }
 
-function ProductRow({ product, index }: { product: Product; index: number }) {
+function ProductRow({ product, index, displayUrl }: { product: Product; index: number; displayUrl: string }) {
   const imageFirst = index % 2 === 0;
 
   return (
     <article className="grid items-center gap-12 md:grid-cols-2 md:gap-20">
       <div className={imageFirst ? "order-1" : "order-1 md:order-2"}>
         <div className="overflow-hidden bg-cream">
-          <img
-            src={product.image_url}
-            alt={product.alt}
-            className="h-auto w-full object-cover"
-            loading="lazy"
-          />
+          {displayUrl ? (
+            <img
+              src={displayUrl}
+              alt={product.alt}
+              className="h-auto w-full object-cover"
+              loading="lazy"
+            />
+          ) : (
+            <div className="aspect-square w-full animate-pulse bg-muted/40" />
+          )}
         </div>
       </div>
 

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FadeIn } from "@/components/FadeIn";
 import { supabase } from "@/integrations/supabase/client";
+import { isStorageRef, resolveImageUrl, resolveImageUrls } from "@/lib/product-image";
 import catalogAsset from "@/assets/catalog.png.asset.json";
 
 const catalogFallback = catalogAsset.url;

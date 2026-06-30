@@ -337,3 +337,108 @@ function Field({ label, children, full }: { label: string; children: React.React
     </label>
   );
 }
+
+function ProductThumb({ value }: { value: string }) {
+  const [url, setUrl] = useState<string>(isStorageRef(value) ? "" : value || "");
+  useEffect(() => {
+    let active = true;
+    if (!value) { setUrl(""); return; }
+    if (!isStorageRef(value)) { setUrl(value); return; }
+    resolveImageUrl(value).then((u) => { if (active) setUrl(u); });
+    return () => { active = false; };
+  }, [value]);
+  if (!value) return <div className="h-12 w-12 bg-muted" />;
+  return url
+    ? <img src={url} alt="" className="h-12 w-12 object-cover" />
+    : <div className="h-12 w-12 animate-pulse bg-muted" />;
+}
+
+function ImageUploadField({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+  const fileRef = useRef<HTMLInputElement | null>(null);
+  const [uploading, setUploading] = useState(false);
+  const [preview, setPreview] = useState<string>("");
+
+  useEffect(() => {
+    let active = true;
+    if (!value) { setPreview(""); return; }
+    if (!isStorageRef(value)) { setPreview(value); return; }
+    resolveImageUrl(value).then((u) => { if (active) setPreview(u); });
+    return () => { active = false; };
+  }, [value]);
+
+  const onPick = async (file: File) => {
+    if (!file.type.startsWith("image/")) {
+      toast.error("Please choose an image file.");
+      return;
+    }
+    if (file.size > 8 * 1024 * 1024) {
+      toast.error("Image must be 8MB or smaller.");
+      return;
+    }
+    setUploading(true);
+    try {
+      const ref = await uploadProductImage(file);
+      onChange(ref);
+      toast.success("Image uploaded.");
+    } catch (e) {
+      const msg = e instanceof Error ? e.message : "Upload failed.";
+      toast.error(msg);
+    } finally {
+      setUploading(false);
+      if (fileRef.current) fileRef.current.value = "";
+    }
+  };
+
+  return (
+    <div className="flex flex-col gap-2">
+      <span className="text-[11px] uppercase tracking-[0.22em] text-muted-foreground">Product Image</span>
+      <div className="flex items-start gap-4">
+        <div className="flex h-28 w-28 shrink-0 items-center justify-center overflow-hidden border border-border bg-muted/40">
+          {preview ? (
+            <img src={preview} alt="" className="h-full w-full object-cover" />
+          ) : (
+            <ImageIcon className="h-6 w-6 text-muted-foreground/60" />
+          )}
+        </div>
+        <div className="flex flex-1 flex-col gap-2">
+          <input
+            ref={fileRef}
+            type="file"
+            accept="image/*"
+            className="hidden"
+            onChange={(e) => { const f = e.target.files?.[0]; if (f) onPick(f); }}
+          />
+          <div className="flex flex-wrap gap-2">
+            <button
+              type="button"
+              onClick={() => fileRef.current?.click()}
+              disabled={uploading}
+              className="inline-flex items-center gap-2 border border-border px-3 py-2 text-xs uppercase tracking-[0.22em] hover:bg-muted disabled:opacity-60"
+            >
+              {uploading ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Upload className="h-3.5 w-3.5" />}
+              {value ? "Replace Image" : "Upload Image"}
+            </button>
+            {value && (
+              <button
+                type="button"
+                onClick={() => onChange("")}
+                className="inline-flex items-center gap-2 border border-border px-3 py-2 text-xs uppercase tracking-[0.22em] hover:bg-muted"
+              >
+                Remove
+              </button>
+            )}
+          </div>
+          <input
+            value={value}
+            onChange={(e) => onChange(e.target.value)}
+            placeholder="…or paste an image URL"
+            className={inputCls}
+          />
+          <p className="text-[11px] text-muted-foreground">
+            PNG/JPG up to 8MB. Uploaded images are served via signed URLs.
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+}

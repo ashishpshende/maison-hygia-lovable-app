@@ -221,11 +221,7 @@ function AdminProductsPage() {
               rows.map((p) => (
                 <tr key={p.id} className="border-t border-border">
                   <td className="px-4 py-3">
-                    {p.image_url ? (
-                      <img src={p.image_url} alt="" className="h-12 w-12 object-cover" />
-                    ) : (
-                      <div className="h-12 w-12 bg-muted" />
-                    )}
+                    <ProductThumb value={p.image_url} />
                   </td>
                   <td className="px-4 py-3 font-medium text-foreground">{p.name}</td>
                   <td className="px-4 py-3 text-muted-foreground">{p.slug}</td>

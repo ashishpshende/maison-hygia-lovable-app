@@ -102,7 +102,12 @@ function ShopPage() {
         <div className="mx-auto max-w-7xl pb-32 md:pb-40">
           <div className="space-y-32 md:space-y-40">
             {products.map((product, idx) => (
-              <ProductRow key={product.id} product={product} index={idx} />
+              <ProductRow
+                key={product.id}
+                product={product}
+                index={idx}
+                displayUrl={resolvedUrls[product.id] ?? (isStorageRef(product.image_url) ? "" : product.image_url)}
+              />
             ))}
           </div>
         </div>

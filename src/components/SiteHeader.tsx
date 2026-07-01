@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, Shield, X } from "lucide-react";
+import { Menu, Package, Shield, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import logoAsset from "@/assets/logo.svg.asset.json";
@@ -67,13 +67,22 @@ export function SiteHeader() {
             </Link>
           ))}
           {isAdmin && (
-            <Link
-              to="/admin"
-              className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-foreground transition-colors hover:bg-gold/20"
-              activeProps={{ className: "bg-gold/25" }}
-            >
-              <Shield className="h-3 w-3" /> Admin
-            </Link>
+            <div className="flex items-center gap-2">
+              <Link
+                to="/admin"
+                className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-foreground transition-colors hover:bg-gold/20"
+                activeProps={{ className: "bg-gold/25" }}
+              >
+                <Shield className="h-3 w-3" /> Admin
+              </Link>
+              <Link
+                to="/admin-products"
+                className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-foreground transition-colors hover:bg-gold/20"
+                activeProps={{ className: "bg-gold/25" }}
+              >
+                <Package className="h-3 w-3" /> Products
+              </Link>
+            </div>
           )}
         </nav>
 
@@ -108,13 +117,22 @@ export function SiteHeader() {
             </Link>
           ))}
           {isAdmin && (
-            <Link
-              to="/admin"
-              onClick={() => setOpen(false)}
-              className="flex items-center gap-2 py-4 text-xs uppercase tracking-[0.22em] text-foreground"
-            >
-              <Shield className="h-3 w-3" /> Admin dashboard
-            </Link>
+            <>
+              <Link
+                to="/admin"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2 border-b border-border/40 py-4 text-xs uppercase tracking-[0.22em] text-foreground"
+              >
+                <Shield className="h-3 w-3" /> Admin dashboard
+              </Link>
+              <Link
+                to="/admin-products"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2 py-4 text-xs uppercase tracking-[0.22em] text-foreground"
+              >
+                <Package className="h-3 w-3" /> Admin products
+              </Link>
+            </>
           )}
         </nav>
       </div>

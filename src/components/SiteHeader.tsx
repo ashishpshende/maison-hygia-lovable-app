@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, Shield, X } from "lucide-react";
+import { Menu, Package, Shield, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import logoAsset from "@/assets/logo.svg.asset.json";

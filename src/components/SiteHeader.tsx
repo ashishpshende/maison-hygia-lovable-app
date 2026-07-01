@@ -66,6 +66,15 @@ export function SiteHeader() {
               <span className="absolute -bottom-2 left-0 h-px w-0 bg-gold transition-all duration-500 group-hover:w-full group-data-[status=active]:w-full" />
             </Link>
           ))}
+          {isAdmin && (
+            <Link
+              to="/admin"
+              className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-foreground transition-colors hover:bg-gold/20"
+              activeProps={{ className: "bg-gold/25" }}
+            >
+              <Shield className="h-3 w-3" /> Admin
+            </Link>
+          )}
         </nav>
 
         <button

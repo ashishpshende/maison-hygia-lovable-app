@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { Menu, Shield, X } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { supabase } from "@/integrations/supabase/client";
 import logoAsset from "@/assets/logo.svg.asset.json";
 
 const navLinks = [
@@ -13,6 +14,32 @@ const navLinks = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    let active = true;
+    const check = async (userId: string | undefined) => {
+      if (!userId) {
+        if (active) setIsAdmin(false);
+        return;
+      }
+      const { data } = await supabase
+        .from("user_roles")
+        .select("role")
+        .eq("user_id", userId)
+        .eq("role", "admin")
+        .maybeSingle();
+      if (active) setIsAdmin(!!data);
+    };
+    supabase.auth.getUser().then(({ data }) => check(data.user?.id));
+    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => {
+      check(session?.user?.id);
+    });
+    return () => {
+      active = false;
+      sub.subscription.unsubscribe();
+    };
+  }, []);
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-md">
@@ -39,6 +66,15 @@ export function SiteHeader() {
               <span className="absolute -bottom-2 left-0 h-px w-0 bg-gold transition-all duration-500 group-hover:w-full group-data-[status=active]:w-full" />
             </Link>
           ))}
+          {isAdmin && (
+            <Link
+              to="/admin"
+              className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-foreground transition-colors hover:bg-gold/20"
+              activeProps={{ className: "bg-gold/25" }}
+            >
+              <Shield className="h-3 w-3" /> Admin
+            </Link>
+          )}
         </nav>
 
         <button
@@ -71,6 +107,15 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
+          {isAdmin && (
+            <Link
+              to="/admin"
+              onClick={() => setOpen(false)}
+              className="flex items-center gap-2 py-4 text-xs uppercase tracking-[0.22em] text-foreground"
+            >
+              <Shield className="h-3 w-3" /> Admin dashboard
+            </Link>
+          )}
         </nav>
       </div>
     </header>

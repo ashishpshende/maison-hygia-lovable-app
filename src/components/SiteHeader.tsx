@@ -117,13 +117,22 @@ export function SiteHeader() {
             </Link>
           ))}
           {isAdmin && (
-            <Link
-              to="/admin"
-              onClick={() => setOpen(false)}
-              className="flex items-center gap-2 py-4 text-xs uppercase tracking-[0.22em] text-foreground"
-            >
-              <Shield className="h-3 w-3" /> Admin dashboard
-            </Link>
+            <>
+              <Link
+                to="/admin"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2 border-b border-border/40 py-4 text-xs uppercase tracking-[0.22em] text-foreground"
+              >
+                <Shield className="h-3 w-3" /> Admin dashboard
+              </Link>
+              <Link
+                to="/admin-products"
+                onClick={() => setOpen(false)}
+                className="flex items-center gap-2 py-4 text-xs uppercase tracking-[0.22em] text-foreground"
+              >
+                <Package className="h-3 w-3" /> Admin products
+              </Link>
+            </>
           )}
         </nav>
       </div>

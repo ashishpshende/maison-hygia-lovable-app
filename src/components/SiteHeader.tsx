@@ -67,13 +67,22 @@ export function SiteHeader() {
             </Link>
           ))}
           {isAdmin && (
-            <Link
-              to="/admin"
-              className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-foreground transition-colors hover:bg-gold/20"
-              activeProps={{ className: "bg-gold/25" }}
-            >
-              <Shield className="h-3 w-3" /> Admin
-            </Link>
+            <div className="flex items-center gap-2">
+              <Link
+                to="/admin"
+                className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-foreground transition-colors hover:bg-gold/20"
+                activeProps={{ className: "bg-gold/25" }}
+              >
+                <Shield className="h-3 w-3" /> Admin
+              </Link>
+              <Link
+                to="/admin-products"
+                className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-foreground transition-colors hover:bg-gold/20"
+                activeProps={{ className: "bg-gold/25" }}
+              >
+                <Package className="h-3 w-3" /> Products
+              </Link>
+            </div>
           )}
         </nav>
 

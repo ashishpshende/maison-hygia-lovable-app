@@ -235,3 +235,28 @@ function ProductRow({ product, index, displayUrl }: { product: Product; index: n
     </article>
   );
 }
+
+function AddToRitualButton({ product, displayUrl }: { product: Product; displayUrl: string }) {
+  const cart = useCart();
+  const priceCents = parsePriceCents(product.price);
+  const disabled = priceCents <= 0;
+  return (
+    <button
+      type="button"
+      disabled={disabled}
+      onClick={() =>
+        cart.add({
+          productId: product.id,
+          slug: product.slug,
+          name: product.name,
+          priceCents,
+          priceLabel: product.price,
+          imageUrl: displayUrl,
+        })
+      }
+      className="group inline-flex items-center gap-3 border border-cocoa bg-cocoa px-8 py-4 text-xs uppercase tracking-[0.28em] text-primary-foreground transition-all duration-500 hover:border-cocoa-soft hover:bg-cocoa-soft disabled:opacity-60"
+    >
+      Add to Ritual
+    </button>
+  );
+}

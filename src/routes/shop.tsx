@@ -228,12 +228,7 @@ function ProductRow({ product, index, displayUrl }: { product: Product; index: n
               Launching Soon
             </span>
           ) : (
-            <button
-              type="button"
-              className="group inline-flex items-center gap-3 border border-cocoa bg-cocoa px-8 py-4 text-xs uppercase tracking-[0.28em] text-primary-foreground transition-all duration-500 hover:border-cocoa-soft hover:bg-cocoa-soft"
-            >
-              Add to Ritual
-            </button>
+            <AddToRitualButton product={product} displayUrl={displayUrl} />
           )}
         </div>
       </div>

@@ -14,6 +14,27 @@ export type Database = {
   }
   public: {
     Tables: {
+      customer_profiles: {
+        Row: {
+          created_at: string
+          full_name: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          full_name?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          full_name?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       newsletter_subscribers: {
         Row: {
           created_at: string
@@ -32,6 +53,51 @@ export type Database = {
           email?: string
           id?: string
           source?: string | null
+        }
+        Relationships: []
+      }
+      orders: {
+        Row: {
+          created_at: string
+          currency: string
+          discount_cents: number
+          first_buyer_discount_applied: boolean
+          id: string
+          items: Json
+          signup_discount_applied: boolean
+          status: string
+          subtotal_cents: number
+          total_cents: number
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          currency?: string
+          discount_cents?: number
+          first_buyer_discount_applied?: boolean
+          id?: string
+          items?: Json
+          signup_discount_applied?: boolean
+          status?: string
+          subtotal_cents?: number
+          total_cents?: number
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          currency?: string
+          discount_cents?: number
+          first_buyer_discount_applied?: boolean
+          id?: string
+          items?: Json
+          signup_discount_applied?: boolean
+          status?: string
+          subtotal_cents?: number
+          total_cents?: number
+          updated_at?: string
+          user_id?: string
         }
         Relationships: []
       }
@@ -118,6 +184,7 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      has_paid_order: { Args: { _user_id: string }; Returns: boolean }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]

@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, Package, Shield, X } from "lucide-react";
+import { Menu, Package, Shield, ShoppingBag, User, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
+import { useCart } from "@/lib/cart-context";
 import logoAsset from "@/assets/logo.svg.asset.json";
 
 const navLinks = [
@@ -15,6 +16,7 @@ const navLinks = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const cart = useCart();
 
   useEffect(() => {
     let active = true;

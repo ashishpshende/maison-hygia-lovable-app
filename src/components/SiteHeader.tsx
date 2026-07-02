@@ -1,8 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, Package, Shield, X } from "lucide-react";
+import { Menu, Package, Shield, ShoppingBag, User, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
+import { useCart } from "@/lib/cart-context";
 import logoAsset from "@/assets/logo.svg.asset.json";
 
 const navLinks = [
@@ -15,6 +16,7 @@ const navLinks = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
+  const cart = useCart();
 
   useEffect(() => {
     let active = true;
@@ -86,16 +88,40 @@ export function SiteHeader() {
           )}
         </nav>
 
-        <button
-          type="button"
-          aria-label={open ? "Close menu" : "Open menu"}
-          aria-expanded={open}
-          onClick={() => setOpen((v) => !v)}
-          className="md:hidden text-foreground/80 transition-colors hover:text-foreground"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2">
+          <Link
+            to="/account"
+            aria-label="Account"
+            className="hidden md:inline-flex items-center justify-center rounded-full p-2 text-foreground/70 transition-colors hover:text-foreground"
+          >
+            <User className="h-4 w-4" />
+          </Link>
+          <button
+            type="button"
+            aria-label={`Cart (${cart.itemCount} items)`}
+            onClick={cart.openCart}
+            className="relative inline-flex items-center justify-center rounded-full p-2 text-foreground/70 transition-colors hover:text-foreground"
+          >
+            <ShoppingBag className="h-4 w-4" />
+            {cart.itemCount > 0 && (
+              <span className="absolute -right-0.5 -top-0.5 flex h-4 min-w-[1rem] items-center justify-center rounded-full bg-gold px-1 text-[9px] font-medium text-cocoa">
+                {cart.itemCount}
+              </span>
+            )}
+          </button>
+          <button
+            type="button"
+            aria-label={open ? "Close menu" : "Open menu"}
+            aria-expanded={open}
+            onClick={() => setOpen((v) => !v)}
+            className="md:hidden text-foreground/80 transition-colors hover:text-foreground"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
+
+
 
       <div
         className={cn(
@@ -134,6 +160,13 @@ export function SiteHeader() {
               </Link>
             </>
           )}
+          <Link
+            to="/account"
+            onClick={() => setOpen(false)}
+            className="flex items-center gap-2 border-t border-border/40 py-4 text-xs uppercase tracking-[0.22em] text-foreground"
+          >
+            <User className="h-3 w-3" /> Account
+          </Link>
         </nav>
       </div>
     </header>

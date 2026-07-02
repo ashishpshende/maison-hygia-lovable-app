@@ -15,6 +15,8 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { WelcomePopup } from "@/components/WelcomePopup";
 import { Toaster } from "@/components/ui/sonner";
+import { CartProvider } from "@/lib/cart-context";
+import { CartDrawer } from "@/components/CartDrawer";
 
 function NotFoundComponent() {
   return (
@@ -142,15 +144,18 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="flex min-h-screen flex-col bg-background">
-        <SiteHeader />
-        <main className="flex-1">
-          <Outlet />
-        </main>
-        <SiteFooter />
-        <WelcomePopup />
-        <Toaster position="top-center" />
-      </div>
+      <CartProvider>
+        <div className="flex min-h-screen flex-col bg-background">
+          <SiteHeader />
+          <main className="flex-1">
+            <Outlet />
+          </main>
+          <SiteFooter />
+          <WelcomePopup />
+          <CartDrawer />
+          <Toaster position="top-center" />
+        </div>
+      </CartProvider>
     </QueryClientProvider>
   );
 }

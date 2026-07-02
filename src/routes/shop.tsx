@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { FadeIn } from "@/components/FadeIn";
 import { supabase } from "@/integrations/supabase/client";
 import { isStorageRef, resolveImageUrls } from "@/lib/product-image";
+import { useCart, parsePriceCents } from "@/lib/cart-context";
 import catalogAsset from "@/assets/catalog.png.asset.json";
 
 const catalogFallback = catalogAsset.url;

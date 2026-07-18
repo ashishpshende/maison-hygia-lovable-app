@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Leaf, HeartHandshake, Sparkles, Sprout, Sun } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
-import heroAsset from "@/assets/hero-catalog.png.asset.json";
+import heroAsset from "@/assets/hero-products.png.asset.json";
 import bodyWashAsset from "@/assets/body-wash.png.asset.json";
 import sheetMaskAsset from "@/assets/sheet-mask.png.asset.json";
 import catalogAsset from "@/assets/catalog.png.asset.json";
@@ -9,6 +10,14 @@ const hero = heroAsset.url;
 const bodyWash = bodyWashAsset.url;
 const sheetMask = sheetMaskAsset.url;
 const catalog = catalogAsset.url;
+
+const pillars = [
+  { label: "Rooted in Nature", Icon: Leaf },
+  { label: "Cruelty Free", Icon: HeartHandshake },
+  { label: "Clean Ingredients", Icon: Sprout },
+  { label: "Modern Wellness", Icon: Sparkles },
+  { label: "Made for Modern Living", Icon: Sun },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({

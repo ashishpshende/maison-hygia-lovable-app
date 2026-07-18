@@ -20,7 +20,6 @@ export const Route = createFileRoute("/auth")({
 });
 
 function AuthPage() {
-  const navigate = useNavigate();
   const { next } = Route.useSearch();
   const redirectTarget = next || "/admin";
   const [mode, setMode] = useState<"signin" | "signup">("signin");

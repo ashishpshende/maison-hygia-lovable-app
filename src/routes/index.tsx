@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { Leaf, HeartHandshake, Sparkles, Sprout, Sun } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
-import heroAsset from "@/assets/hero-catalog.png.asset.json";
+import heroAsset from "@/assets/hero-products.png.asset.json";
 import bodyWashAsset from "@/assets/body-wash.png.asset.json";
 import sheetMaskAsset from "@/assets/sheet-mask.png.asset.json";
 import catalogAsset from "@/assets/catalog.png.asset.json";
@@ -9,6 +10,14 @@ const hero = heroAsset.url;
 const bodyWash = bodyWashAsset.url;
 const sheetMask = sheetMaskAsset.url;
 const catalog = catalogAsset.url;
+
+const pillars = [
+  { label: "Rooted in Nature", Icon: Leaf },
+  { label: "Cruelty Free", Icon: HeartHandshake },
+  { label: "Clean Ingredients", Icon: Sprout },
+  { label: "Modern Wellness", Icon: Sparkles },
+  { label: "Made for Modern Living", Icon: Sun },
+];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -38,54 +47,66 @@ function HomePage() {
     <div>
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-cream">
-        <div className="relative h-[88vh] min-h-[600px] w-full md:h-[92vh]">
+        <div className="relative min-h-[640px] w-full md:h-[92vh]">
           <img
             src={hero}
-            alt="Maison Hygia Golden Glow sheet mask resting on travertine stone beside dried botanicals"
+            alt="Maison Hygia founder's collection — body wash, shampoo, face serum, ritual clusters, makhana and calm-filled dates on warm stone"
             className="absolute inset-0 h-full w-full object-cover"
             loading="eager"
           />
 
           <div
             aria-hidden
-            className="absolute inset-0 bg-gradient-to-r from-cream/70 via-cream/25 to-transparent"
+            className="absolute inset-0 bg-gradient-to-r from-cream/90 via-cream/55 to-transparent md:from-cream/85 md:via-cream/30"
           />
           <div
             aria-hidden
             className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-cream to-transparent"
           />
 
-          <div className="relative z-10 mx-auto flex h-full max-w-7xl items-center px-6 md:px-10">
+          <div className="relative z-10 mx-auto flex h-full min-h-[640px] max-w-7xl items-center px-6 py-16 md:min-h-0 md:px-10">
             <FadeIn immediate className="max-w-xl">
-              <p className="text-base font-medium uppercase tracking-[0.42em] text-gold md:text-lg">
+              <p className="text-xs font-medium uppercase tracking-[0.42em] text-gold md:text-sm">
                 Maison Hygia
               </p>
 
-              <h1 className="mt-6 font-serif text-5xl leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
-                Care, made
+              <h1 className="mt-6 font-serif text-4xl leading-[1.05] tracking-tight text-foreground md:text-6xl lg:text-7xl">
+                Rituals that
                 <br />
-                into ritual.
+                <span className="italic text-gold">nourish</span> you.
               </h1>
 
-              <div className="mt-8 max-w-md space-y-1 text-sm leading-relaxed text-foreground/75 md:text-base">
-                <p>Modern Rituals Rooted in Nature.</p>
-                <p>Slow-crafted in small batches.</p>
+              <div className="mt-8 max-w-md space-y-2 text-sm leading-relaxed text-foreground/75 md:text-base">
+                <p>Beauty for your skin. Nourishment for your body.</p>
+                <p>Every day. In every thoughtful choice.</p>
               </div>
 
-              <div className="mt-10 flex flex-wrap items-center gap-x-8 gap-y-4">
+              <div className="mt-10">
                 <Link
                   to="/shop"
                   className="group inline-flex items-center gap-3 border border-cocoa bg-cocoa px-8 py-4 text-xs uppercase tracking-[0.28em] text-primary-foreground transition-all duration-500 hover:bg-cocoa-soft hover:border-cocoa-soft"
                 >
-                  Shop the Ritual
-                </Link>
-                <Link
-                  to="/story"
-                  className="border-b border-gold/60 pb-1 text-xs uppercase tracking-[0.28em] text-foreground transition-colors hover:border-foreground"
-                >
-                  Our Story
+                  Discover the Ritual
+                  <span aria-hidden className="transition-transform duration-500 group-hover:translate-x-1">→</span>
                 </Link>
               </div>
+
+              <ul className="mt-12 flex flex-wrap items-start gap-x-6 gap-y-6 sm:gap-x-8">
+                {pillars.map(({ label, Icon }, i) => (
+                  <li
+                    key={label}
+                    className="group flex w-20 flex-col items-center text-center opacity-0 animate-[fade-in_0.7s_ease-out_forwards] sm:w-24"
+                    style={{ animationDelay: `${400 + i * 150}ms` }}
+                  >
+                    <div className="flex h-12 w-12 items-center justify-center rounded-full border border-gold/50 bg-cream/70 text-gold shadow-sm backdrop-blur-sm transition-all duration-500 group-hover:-translate-y-1 group-hover:border-gold group-hover:bg-cream group-hover:shadow-md sm:h-14 sm:w-14">
+                      <Icon className="h-5 w-5 sm:h-6 sm:w-6" strokeWidth={1.4} />
+                    </div>
+                    <span className="mt-3 text-[10px] uppercase tracking-[0.18em] leading-tight text-foreground/75">
+                      {label}
+                    </span>
+                  </li>
+                ))}
+              </ul>
             </FadeIn>
           </div>
         </div>

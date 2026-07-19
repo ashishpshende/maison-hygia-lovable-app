@@ -112,7 +112,34 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Section 1: The Maison Hygia Ritual */}
+      <section id="ritual" className="relative bg-ivory px-6 md:px-10">
+        <div
+          aria-hidden
+          className="pointer-events-none absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-cream to-ivory"
+        />
+        <FadeIn as="section" className="relative z-10 mx-auto flex max-w-3xl flex-col items-center py-28 text-center md:py-40 lg:py-48">
+          <p className="text-[11px] font-medium uppercase tracking-[0.42em] text-gold">
+            The Maison Hygia Ritual
+          </p>
+
+          <h2 className="mt-8 font-serif text-3xl leading-[1.2] text-foreground md:text-5xl lg:text-[3.25rem]">
+            More Than Products.
+            <br />
+            A Daily Ritual.
+          </h2>
+
+          <p className="mt-10 max-w-2xl text-base leading-[1.9] text-foreground/70 md:text-lg">
+            At Maison Hygia, beauty doesn't begin with skincare alone. It begins
+            with the rituals you choose every day—from what you nourish your
+            body with to how you care for your skin. We believe wellness is most
+            powerful when every moment becomes intentional.
+          </p>
+        </FadeIn>
+      </section>
+
       {/* Quiet brand intro */}
+
       <FadeIn as="section" className="relative bg-cream px-6 md:px-10">
         <div className="relative mx-auto flex max-w-3xl flex-col items-center py-40 text-center md:py-56">
           <div aria-hidden className="h-px w-12 bg-gold/50" />

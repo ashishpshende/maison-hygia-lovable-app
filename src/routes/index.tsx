@@ -10,6 +10,8 @@ import lifestyleNourishAsset from "@/assets/lifestyle-nourish.png.asset.json";
 import lifestyleCareAsset from "@/assets/lifestyle-care.png.asset.json";
 import lifestyleGatherAsset from "@/assets/lifestyle-gather.png.asset.json";
 import lifestylePauseAsset from "@/assets/lifestyle-pause.png.asset.json";
+import worldBodyRitualsAsset from "@/assets/world-body-rituals.png.asset.json";
+import worldSnacksAsset from "@/assets/world-snacks.png.asset.json";
 
 const hero = heroAsset.url;
 const bodyWash = bodyWashAsset.url;

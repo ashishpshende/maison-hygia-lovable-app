@@ -10,6 +10,8 @@ import lifestyleNourishAsset from "@/assets/lifestyle-nourish.png.asset.json";
 import lifestyleCareAsset from "@/assets/lifestyle-care.png.asset.json";
 import lifestyleGatherAsset from "@/assets/lifestyle-gather.png.asset.json";
 import lifestylePauseAsset from "@/assets/lifestyle-pause.png.asset.json";
+import worldBodyRitualsAsset from "@/assets/world-body-rituals.png.asset.json";
+import worldSnacksAsset from "@/assets/world-snacks.png.asset.json";
 
 const hero = heroAsset.url;
 const bodyWash = bodyWashAsset.url;
@@ -20,6 +22,8 @@ const lifestyleNourish = lifestyleNourishAsset.url;
 const lifestyleCare = lifestyleCareAsset.url;
 const lifestyleGather = lifestyleGatherAsset.url;
 const lifestylePause = lifestylePauseAsset.url;
+const worldBodyRituals = worldBodyRitualsAsset.url;
+const worldSnacks = worldSnacksAsset.url;
 
 const pillars = [
   { label: "Rooted in Nature", Icon: Leaf },
@@ -258,6 +262,84 @@ function HomePage() {
               </div>
             </FadeIn>
           </div>
+        </div>
+      </section>
+
+      {/* Section 2: The Founder Collection — two worlds */}
+      <section className="relative bg-cream px-6 md:px-10">
+        <div className="mx-auto max-w-7xl py-28 md:py-40 lg:py-48">
+          <FadeIn className="mx-auto mb-20 max-w-2xl text-center md:mb-28">
+            <p className="text-[11px] font-medium uppercase tracking-[0.42em] text-gold">
+              The Founder Collection
+            </p>
+            <h2 className="mt-8 font-serif text-3xl leading-[1.2] text-foreground md:text-5xl lg:text-[3.25rem]">
+              Two worlds. One ritual.
+            </h2>
+          </FadeIn>
+
+          {/* Body Rituals */}
+          <FadeIn className="group grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12 lg:gap-20">
+            <div className="relative overflow-hidden rounded-sm">
+              <div className="relative aspect-[4/5] overflow-hidden">
+                <img
+                  src={worldBodyRituals}
+                  alt="Maison Hygia Body Rituals — body wash in a serene bathroom setting"
+                  className="h-full w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05]"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+            <div className="flex flex-col items-start md:py-12">
+              <p className="text-[11px] font-medium uppercase tracking-[0.42em] text-gold">
+                Body Rituals
+              </p>
+              <h3 className="mt-6 font-serif text-3xl leading-[1.15] text-foreground md:text-4xl lg:text-5xl">
+                Care, made into ritual.
+              </h3>
+              <p className="mt-8 max-w-md text-base leading-[1.9] text-foreground/70 md:text-lg">
+                Slow-crafted cleansers and essentials that turn everyday moments into something intentional. For skin that feels nurtured, not stripped.
+              </p>
+              <Link
+                to="/shop"
+                className="mt-10 inline-flex items-center gap-3 border-b border-gold pb-1 text-xs uppercase tracking-[0.28em] text-cocoa transition-all duration-500 hover:text-gold"
+              >
+                Discover
+                <span aria-hidden className="transition-transform duration-500 group-hover:translate-x-1">→</span>
+              </Link>
+            </div>
+          </FadeIn>
+
+          {/* Next — Founder Ritual Snacks */}
+          <FadeIn className="group mt-24 grid grid-cols-1 items-center gap-8 md:mt-32 md:grid-cols-2 md:gap-12 lg:mt-40 lg:gap-20">
+            <div className="order-2 flex flex-col items-start md:order-1 md:py-12">
+              <p className="text-[11px] font-medium uppercase tracking-[0.42em] text-gold">
+                Founder Ritual Snacks
+              </p>
+              <h3 className="mt-6 font-serif text-3xl leading-[1.15] text-foreground md:text-4xl lg:text-5xl">
+                Nourishment, reimagined.
+              </h3>
+              <p className="mt-8 max-w-md text-base leading-[1.9] text-foreground/70 md:text-lg">
+                Rose Saffron Almond Clusters and heritage-inspired bites made to accompany your rituals — beautiful enough to share, wholesome enough to savor.
+              </p>
+              <Link
+                to="/shop"
+                className="mt-10 inline-flex items-center gap-3 border-b border-gold pb-1 text-xs uppercase tracking-[0.28em] text-cocoa transition-all duration-500 hover:text-gold"
+              >
+                Discover
+                <span aria-hidden className="transition-transform duration-500 group-hover:translate-x-1">→</span>
+              </Link>
+            </div>
+            <div className="relative order-1 overflow-hidden rounded-sm md:order-2">
+              <div className="relative aspect-[4/5] overflow-hidden">
+                <img
+                  src={worldSnacks}
+                  alt="Maison Hygia Founder Ritual Snacks — Rose Saffron Almond Clusters"
+                  className="h-full w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05]"
+                  loading="lazy"
+                />
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 

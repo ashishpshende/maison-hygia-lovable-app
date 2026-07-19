@@ -61,10 +61,12 @@
   --color-sidebar-ring: var(--sidebar-ring);
 
   --color-cream: var(--cream);
+  --color-ivory: var(--ivory);
   --color-gold: var(--gold);
   --color-gold-soft: var(--gold-soft);
   --color-cocoa: var(--cocoa);
   --color-cocoa-soft: var(--cocoa-soft);
+
 
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "Inter", system-ui, sans-serif;
@@ -83,6 +85,8 @@
   --popover: oklch(0.97 0.018 80);
   --popover-foreground: oklch(0.28 0.04 55);
   --cream: oklch(0.97 0.018 80);
+  --ivory: oklch(0.985 0.012 80);
+
 
   /* Deep cocoa / espresso — primary */
   --primary: oklch(0.32 0.045 55);

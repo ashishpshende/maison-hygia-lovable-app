@@ -148,6 +148,119 @@ function HomePage() {
         </FadeIn>
       </section>
 
+      {/* Lifestyle panels — Ritual moments */}
+      <section className="relative bg-ivory px-6 md:px-10">
+        <div className="mx-auto max-w-7xl py-28 md:py-40 lg:py-48">
+          <FadeIn className="mx-auto mb-20 max-w-2xl text-center md:mb-28">
+            <p className="text-[11px] font-medium uppercase tracking-[0.42em] text-gold">
+              The moments that make it
+            </p>
+            <h2 className="mt-8 font-serif text-3xl leading-[1.2] text-foreground md:text-5xl lg:text-[3.25rem]">
+              Ritual is not a routine.
+              <br />
+              <span className="italic text-gold">It is a feeling.</span>
+            </h2>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-5 lg:gap-6">
+            {/* Glow */}
+            <FadeIn className="group relative col-span-1 overflow-hidden rounded-sm md:col-span-2 md:row-span-2">
+              <div className="relative aspect-[4/5] overflow-hidden md:aspect-auto md:h-full md:min-h-[720px]">
+                <img
+                  src={lifestyleGlow}
+                  alt="Woman reading in golden morning light with tea and Golden Glow Makhana"
+                  className="h-full w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-cocoa/60 via-cocoa/15 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-8 md:p-12">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.4em] text-gold-soft">Glow</p>
+                  <h3 className="mt-4 font-serif text-3xl text-primary-foreground md:text-4xl lg:text-5xl">
+                    Begin beautifully.
+                  </h3>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Nourish */}
+            <FadeIn className="group relative col-span-1 overflow-hidden rounded-sm">
+              <div className="relative aspect-[4/5] overflow-hidden md:aspect-[3/4] lg:aspect-[4/5]">
+                <img
+                  src={lifestyleNourish}
+                  alt="Breakfast table with Rose Saffron Almond Clusters, fresh flowers, and journal"
+                  className="h-full w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-cocoa/55 via-cocoa/10 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.4em] text-gold-soft">Nourish</p>
+                  <h3 className="mt-3 font-serif text-2xl text-primary-foreground md:text-3xl">
+                    Feed your body with intention.
+                  </h3>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Care */}
+            <FadeIn className="group relative col-span-1 overflow-hidden rounded-sm">
+              <div className="relative aspect-[4/5] overflow-hidden md:aspect-[3/4] lg:aspect-[4/5]">
+                <img
+                  src={lifestyleCare}
+                  alt="Serene bathroom with Face Serum, linen towel, and stone basin"
+                  className="h-full w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-cocoa/55 via-cocoa/10 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.4em] text-gold-soft">Care</p>
+                  <h3 className="mt-3 font-serif text-2xl text-primary-foreground md:text-3xl">
+                    Care for what carries you.
+                  </h3>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Gather */}
+            <FadeIn className="group relative col-span-1 overflow-hidden rounded-sm md:col-span-2">
+              <div className="relative aspect-[4/3] overflow-hidden md:aspect-[16/9]">
+                <img
+                  src={lifestyleGather}
+                  alt="Friends sharing Heritage Cashew Clusters around a warm candlelit table"
+                  className="h-full w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-cocoa/60 via-cocoa/15 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-8 md:p-12">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.4em] text-gold-soft">Gather</p>
+                  <h3 className="mt-4 font-serif text-3xl text-primary-foreground md:text-4xl lg:text-5xl">
+                    Rituals are better together.
+                  </h3>
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Pause */}
+            <FadeIn className="group relative col-span-1 overflow-hidden rounded-sm md:col-span-1">
+              <div className="relative aspect-[4/5] overflow-hidden md:aspect-[3/4] lg:aspect-[4/5]">
+                <img
+                  src={lifestylePause}
+                  alt="Evening pause with Calm Filled Dates, tea, candle, and open book"
+                  className="h-full w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-cocoa/55 via-cocoa/10 to-transparent" />
+                <div className="absolute inset-x-0 bottom-0 p-6 md:p-8">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.4em] text-gold-soft">Pause</p>
+                  <h3 className="mt-3 font-serif text-2xl text-primary-foreground md:text-3xl">
+                    Slow down beautifully.
+                  </h3>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
       {/* Quiet brand intro */}
 
       <FadeIn as="section" className="relative bg-cream px-6 md:px-10">

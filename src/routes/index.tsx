@@ -22,6 +22,8 @@ const lifestyleNourish = lifestyleNourishAsset.url;
 const lifestyleCare = lifestyleCareAsset.url;
 const lifestyleGather = lifestyleGatherAsset.url;
 const lifestylePause = lifestylePauseAsset.url;
+const worldBodyRituals = worldBodyRitualsAsset.url;
+const worldSnacks = worldSnacksAsset.url;
 
 const pillars = [
   { label: "Rooted in Nature", Icon: Leaf },

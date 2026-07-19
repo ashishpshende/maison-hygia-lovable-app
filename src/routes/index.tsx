@@ -5,11 +5,21 @@ import heroAsset from "@/assets/hero-products.png.asset.json";
 import bodyWashAsset from "@/assets/body-wash.png.asset.json";
 import sheetMaskAsset from "@/assets/sheet-mask.png.asset.json";
 import catalogAsset from "@/assets/catalog.png.asset.json";
+import lifestyleGlowAsset from "@/assets/lifestyle-glow.png.asset.json";
+import lifestyleNourishAsset from "@/assets/lifestyle-nourish.png.asset.json";
+import lifestyleCareAsset from "@/assets/lifestyle-care.png.asset.json";
+import lifestyleGatherAsset from "@/assets/lifestyle-gather.png.asset.json";
+import lifestylePauseAsset from "@/assets/lifestyle-pause.png.asset.json";
 
 const hero = heroAsset.url;
 const bodyWash = bodyWashAsset.url;
 const sheetMask = sheetMaskAsset.url;
 const catalog = catalogAsset.url;
+const lifestyleGlow = lifestyleGlowAsset.url;
+const lifestyleNourish = lifestyleNourishAsset.url;
+const lifestyleCare = lifestyleCareAsset.url;
+const lifestyleGather = lifestyleGatherAsset.url;
+const lifestylePause = lifestylePauseAsset.url;
 
 const pillars = [
   { label: "Rooted in Nature", Icon: Leaf },

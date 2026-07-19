@@ -47,24 +47,24 @@ function HomePage() {
     <div>
       {/* Hero */}
       <section className="relative isolate overflow-hidden bg-cream">
-        <div className="relative min-h-[640px] w-full md:h-[92vh]">
+        <div className="relative w-full">
           <img
             src={hero}
             alt="Maison Hygia founder's collection — body wash, shampoo, face serum, ritual clusters, makhana and calm-filled dates on warm stone"
-            className="absolute inset-0 h-full w-full object-cover"
+            className="block h-auto w-full object-contain animate-[fade-in_1.4s_ease-out_both] md:animate-[hero-float_14s_ease-in-out_infinite]"
             loading="eager"
           />
 
           <div
             aria-hidden
-            className="absolute inset-0 bg-gradient-to-r from-cream/90 via-cream/55 to-transparent md:from-cream/85 md:via-cream/30"
+            className="pointer-events-none absolute inset-0 bg-gradient-to-r from-cream/95 via-cream/60 to-transparent md:from-cream/85 md:via-cream/25"
           />
           <div
             aria-hidden
-            className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-cream to-transparent"
+            className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-cream to-transparent"
           />
 
-          <div className="relative z-10 mx-auto flex h-full min-h-[640px] max-w-7xl items-center px-6 py-16 md:min-h-0 md:px-10">
+          <div className="absolute inset-0 z-10 mx-auto flex max-w-7xl items-center px-6 py-10 md:px-10">
             <FadeIn immediate className="max-w-xl">
               <p className="text-xs font-medium uppercase tracking-[0.42em] text-gold md:text-sm">
                 Maison Hygia

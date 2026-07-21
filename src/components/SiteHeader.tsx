@@ -84,6 +84,13 @@ export function SiteHeader() {
               >
                 <Package className="h-3 w-3" /> Products
               </Link>
+              <Link
+                to="/admin-applications"
+                className="inline-flex items-center gap-1.5 rounded-full border border-gold/40 bg-gold/10 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-foreground transition-colors hover:bg-gold/20"
+                activeProps={{ className: "bg-gold/25" }}
+              >
+                <Shield className="h-3 w-3" /> Applications
+              </Link>
             </div>
           )}
         </nav>

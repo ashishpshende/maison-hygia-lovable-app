@@ -35,6 +35,108 @@ export type Database = {
         }
         Relationships: []
       }
+      job_applications: {
+        Row: {
+          certified: boolean
+          city: string
+          country: string
+          cover_letter: string | null
+          created_at: string
+          degree: string | null
+          eeo_disability: string | null
+          eeo_ethnicity: string | null
+          eeo_gender: string | null
+          eeo_veteran: string | null
+          email: string
+          employer: string | null
+          field_of_study: string | null
+          first_name: string
+          grad_year: string | null
+          id: string
+          job_slug: string
+          job_title: string
+          last_name: string
+          linkedin: string | null
+          phone: string
+          portfolio: string | null
+          previous_job_title: string | null
+          referral: string
+          responsibilities: string | null
+          resume_name: string
+          school: string | null
+          status: string
+          updated_at: string
+          work_auth: string
+          years_experience: string
+        }
+        Insert: {
+          certified?: boolean
+          city: string
+          country: string
+          cover_letter?: string | null
+          created_at?: string
+          degree?: string | null
+          eeo_disability?: string | null
+          eeo_ethnicity?: string | null
+          eeo_gender?: string | null
+          eeo_veteran?: string | null
+          email: string
+          employer?: string | null
+          field_of_study?: string | null
+          first_name: string
+          grad_year?: string | null
+          id?: string
+          job_slug: string
+          job_title: string
+          last_name: string
+          linkedin?: string | null
+          phone: string
+          portfolio?: string | null
+          previous_job_title?: string | null
+          referral: string
+          responsibilities?: string | null
+          resume_name: string
+          school?: string | null
+          status?: string
+          updated_at?: string
+          work_auth: string
+          years_experience: string
+        }
+        Update: {
+          certified?: boolean
+          city?: string
+          country?: string
+          cover_letter?: string | null
+          created_at?: string
+          degree?: string | null
+          eeo_disability?: string | null
+          eeo_ethnicity?: string | null
+          eeo_gender?: string | null
+          eeo_veteran?: string | null
+          email?: string
+          employer?: string | null
+          field_of_study?: string | null
+          first_name?: string
+          grad_year?: string | null
+          id?: string
+          job_slug?: string
+          job_title?: string
+          last_name?: string
+          linkedin?: string | null
+          phone?: string
+          portfolio?: string | null
+          previous_job_title?: string | null
+          referral?: string
+          responsibilities?: string | null
+          resume_name?: string
+          school?: string | null
+          status?: string
+          updated_at?: string
+          work_auth?: string
+          years_experience?: string
+        }
+        Relationships: []
+      }
       newsletter_subscribers: {
         Row: {
           created_at: string

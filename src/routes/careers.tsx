@@ -259,9 +259,10 @@ function CareersPage() {
 
           <div className="mt-14 divide-y divide-border/60 border-y border-border/60">
             {openings.map((o, i) => (
-              <FadeIn key={o.title} delay={i * 40}>
-                <a
-                  href="mailto:careers@maisonhygia.com?subject=Application"
+              <FadeIn key={o.slug} delay={i * 40}>
+                <Link
+                  to="/careers/apply/$jobId"
+                  params={{ jobId: o.slug }}
                   className="group grid grid-cols-1 items-center gap-4 py-6 md:grid-cols-12 md:gap-6"
                 >
                   <div className="md:col-span-5">
@@ -277,9 +278,10 @@ function CareersPage() {
                   <span className="text-sm uppercase tracking-[0.3em] text-cocoa/70 transition-colors group-hover:text-gold md:col-span-2 md:text-right">
                     Apply →
                   </span>
-                </a>
+                </Link>
               </FadeIn>
             ))}
+
           </div>
         </div>
       </section>

@@ -1,6 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Leaf, HeartHandshake, Sparkles, Sprout, Sun } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
+import { NewsletterInline } from "@/components/NewsletterInline";
+import stayCloseAsset from "@/assets/stay-close.jpg.asset.json";
 import heroAsset from "@/assets/hero-products.png.asset.json";
 import bodyWashAsset from "@/assets/body-wash.png.asset.json";
 import sheetMaskAsset from "@/assets/sheet-mask.png.asset.json";
@@ -566,6 +568,44 @@ function HomePage() {
                 <span className="text-gold">grounding</span> qualities.
               </p>
               <div aria-hidden className="mx-auto mt-12 h-px w-12 bg-gold/60" />
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* Stay Close to the Maison — cinematic newsletter */}
+      <section className="relative isolate w-full overflow-hidden bg-ivory">
+        <div className="relative min-h-[560px] w-full md:min-h-[680px] lg:min-h-[760px]">
+          <img
+            src={stayCloseAsset.url}
+            alt="A linen-covered breakfast table with Maison Hygia body wash on a stone tray, a bowl of rose saffron almond clusters, and fresh botanicals in soft morning light"
+            className="absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
+            width={1920}
+            height={1088}
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-gradient-to-r from-cream/95 via-cream/70 to-transparent md:from-cream/90 md:via-cream/50"
+          />
+          <div className="relative z-10 mx-auto flex min-h-[560px] max-w-7xl items-center px-6 py-24 md:min-h-[680px] md:px-10 md:py-32 lg:min-h-[760px]">
+            <FadeIn className="max-w-xl">
+              <div aria-hidden className="h-px w-12 bg-gold/70" />
+              <p className="mt-8 text-xs uppercase tracking-[0.42em] text-gold">
+                Maison Hygia
+              </p>
+              <h2 className="mt-6 font-serif text-4xl leading-[1.1] text-foreground md:text-5xl lg:text-6xl">
+                Stay Close to the{" "}
+                <span className="italic text-gold">Maison.</span>
+              </h2>
+              <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
+                Be the first to discover new rituals, limited collections,
+                thoughtful stories, and moments designed to inspire everyday
+                living.
+              </p>
+              <div className="mt-10">
+                <NewsletterInline source="stay_close" />
+              </div>
             </FadeIn>
           </div>
         </div>

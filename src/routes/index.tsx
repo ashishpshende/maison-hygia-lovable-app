@@ -306,7 +306,7 @@ function HomePage() {
                 Slow-crafted cleansers and essentials that turn everyday moments into something intentional. For skin that feels nurtured, not stripped.
               </p>
               <Link
-                to="/shop"
+                to="/botanical-beauty"
                 className="mt-10 inline-flex items-center gap-3 border-b border-gold pb-1 text-xs uppercase tracking-[0.28em] text-cocoa transition-all duration-500 hover:text-gold"
               >
                 Discover

@@ -98,13 +98,17 @@ function HomePage() {
               </div>
 
               <div className="mt-10">
-                <Link
-                  to="/shop"
+                <button
+                  type="button"
+                  onClick={() => {
+                    const el = document.getElementById("ritual");
+                    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                  }}
                   className="group inline-flex items-center gap-3 border border-cocoa bg-cocoa px-8 py-4 text-xs uppercase tracking-[0.28em] text-primary-foreground transition-all duration-500 hover:bg-cocoa-soft hover:border-cocoa-soft"
                 >
                   Discover the Ritual
                   <span aria-hidden className="transition-transform duration-500 group-hover:translate-x-1">→</span>
-                </Link>
+                </button>
               </div>
 
               <ul className="mt-12 flex flex-wrap items-start gap-x-6 gap-y-6 sm:gap-x-8">

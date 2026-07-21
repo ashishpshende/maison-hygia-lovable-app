@@ -13,6 +13,7 @@ import { Route as StoryRouteImport } from './routes/story'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as BotanicalBeautyRouteImport } from './routes/botanical-beauty'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
@@ -45,6 +46,11 @@ const McpRoute = McpRouteImport.update({
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BotanicalBeautyRoute = BotanicalBeautyRouteImport.update({
+  id: '/botanical-beauty',
+  path: '/botanical-beauty',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthRoute = AuthRouteImport.update({
@@ -121,6 +127,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
+  '/botanical-beauty': typeof BotanicalBeautyRoute
   '/contact': typeof ContactRoute
   '/mcp': typeof McpRoute
   '/shop': typeof ShopRoute
@@ -139,6 +146,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
+  '/botanical-beauty': typeof BotanicalBeautyRoute
   '/contact': typeof ContactRoute
   '/mcp': typeof McpRoute
   '/shop': typeof ShopRoute
@@ -159,6 +167,7 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
+  '/botanical-beauty': typeof BotanicalBeautyRoute
   '/contact': typeof ContactRoute
   '/mcp': typeof McpRoute
   '/shop': typeof ShopRoute
@@ -179,6 +188,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/auth'
+    | '/botanical-beauty'
     | '/contact'
     | '/mcp'
     | '/shop'
@@ -197,6 +207,7 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/auth'
+    | '/botanical-beauty'
     | '/contact'
     | '/mcp'
     | '/shop'
@@ -216,6 +227,7 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/account'
     | '/auth'
+    | '/botanical-beauty'
     | '/contact'
     | '/mcp'
     | '/shop'
@@ -236,6 +248,7 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AccountRoute: typeof AccountRoute
   AuthRoute: typeof AuthRoute
+  BotanicalBeautyRoute: typeof BotanicalBeautyRoute
   ContactRoute: typeof ContactRoute
   McpRoute: typeof McpRoute
   ShopRoute: typeof ShopRoute
@@ -276,6 +289,13 @@ declare module '@tanstack/react-router' {
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/botanical-beauty': {
+      id: '/botanical-beauty'
+      path: '/botanical-beauty'
+      fullPath: '/botanical-beauty'
+      preLoaderRoute: typeof BotanicalBeautyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/auth': {
@@ -392,6 +412,7 @@ const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AccountRoute: AccountRoute,
   AuthRoute: AuthRoute,
+  BotanicalBeautyRoute: BotanicalBeautyRoute,
   ContactRoute: ContactRoute,
   McpRoute: McpRoute,
   ShopRoute: ShopRoute,

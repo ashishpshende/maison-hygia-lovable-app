@@ -80,44 +80,6 @@ const teams = [
   },
 ];
 
-const openings = [
-  {
-    title: "Senior Cosmetic Formulator",
-    location: "Paris, France",
-    type: "Full-time",
-    team: "Formulation & Product",
-  },
-  {
-    title: "Packaging Designer",
-    location: "Milan, Italy",
-    type: "Full-time",
-    team: "Design & Brand",
-  },
-  {
-    title: "Sourcing Lead — Botanicals",
-    location: "Remote (EMEA)",
-    type: "Full-time",
-    team: "Sourcing & Supply",
-  },
-  {
-    title: "Editorial Copywriter",
-    location: "Remote",
-    type: "Contract",
-    team: "Design & Brand",
-  },
-  {
-    title: "Retail Host — Flagship",
-    location: "London, UK",
-    type: "Part-time",
-    team: "Retail & Hospitality",
-  },
-  {
-    title: "Operations Associate",
-    location: "Paris, France",
-    type: "Full-time",
-    team: "Sourcing & Supply",
-  },
-];
 
 const benefits = [
   {

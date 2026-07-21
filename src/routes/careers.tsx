@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
@@ -8,6 +9,8 @@ import craftSourced from "@/assets/craft-sourced.jpg";
 import craftCrafted from "@/assets/craft-crafted.jpg";
 import craftDesigned from "@/assets/craft-designed.jpg";
 import craftEveryday from "@/assets/craft-everyday.jpg";
+import { ChevronDown } from "lucide-react";
+
 
 
 export const Route = createFileRoute("/careers")({

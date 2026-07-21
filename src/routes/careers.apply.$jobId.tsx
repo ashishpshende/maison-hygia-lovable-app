@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/select";
 import { Check, ChevronLeft } from "lucide-react";
 import { findOpening } from "@/lib/careers-openings";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Route = createFileRoute("/careers/apply/$jobId")({
   loader: ({ params }) => {

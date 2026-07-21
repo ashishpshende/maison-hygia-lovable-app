@@ -12,6 +12,10 @@ import lifestyleGatherAsset from "@/assets/lifestyle-gather.png.asset.json";
 import lifestylePauseAsset from "@/assets/lifestyle-pause.png.asset.json";
 import worldBodyRitualsAsset from "@/assets/world-body-rituals.png.asset.json";
 import worldSnacksAsset from "@/assets/world-snacks.png.asset.json";
+import craftSourced from "@/assets/craft-sourced.jpg";
+import craftCrafted from "@/assets/craft-crafted.jpg";
+import craftDesigned from "@/assets/craft-designed.jpg";
+import craftEveryday from "@/assets/craft-everyday.jpg";
 
 const hero = heroAsset.url;
 const bodyWash = bodyWashAsset.url;

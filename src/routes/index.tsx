@@ -2,7 +2,6 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Leaf, HeartHandshake, Sparkles, Sprout, Sun } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
 import { NewsletterInline } from "@/components/NewsletterInline";
-import logoAsset from "@/assets/logo.svg.asset.json";
 import stayCloseAsset from "@/assets/stay-close.jpg.asset.json";
 import heroAsset from "@/assets/hero-products.png.asset.json";
 

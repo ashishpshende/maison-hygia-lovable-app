@@ -13,7 +13,7 @@ import { ChevronDown } from "lucide-react";
 
 
 
-export const Route = createFileRoute("/careers")({
+export const Route = createFileRoute("/careers/")({
   head: () => ({
     meta: [
       { title: "Careers — Maison Hygia" },

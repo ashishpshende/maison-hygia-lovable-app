@@ -13,11 +13,11 @@ import { Route as StoryRouteImport } from './routes/story'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as ContactRouteImport } from './routes/contact'
-import { Route as CareersRouteImport } from './routes/careers'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AccountRouteImport } from './routes/account'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CareersIndexRouteImport } from './routes/careers.index'
 import { Route as AuthenticatedAdminProductsRouteImport } from './routes/_authenticated/admin-products'
 import { Route as AuthenticatedAdminApplicationsRouteImport } from './routes/_authenticated/admin-applications'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
@@ -47,11 +47,6 @@ const ContactRoute = ContactRouteImport.update({
   path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CareersRoute = CareersRouteImport.update({
-  id: '/careers',
-  path: '/careers',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AuthRoute = AuthRouteImport.update({
   id: '/auth',
   path: '/auth',
@@ -69,6 +64,11 @@ const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersIndexRoute = CareersIndexRouteImport.update({
+  id: '/careers/',
+  path: '/careers/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AuthenticatedAdminProductsRoute =
@@ -101,9 +101,9 @@ const Char91DotmcpChar93ListToolsRoute =
     getParentRoute: () => rootRouteImport,
   } as any)
 const CareersApplyJobIdRoute = CareersApplyJobIdRouteImport.update({
-  id: '/apply/$jobId',
-  path: '/apply/$jobId',
-  getParentRoute: () => CareersRoute,
+  id: '/careers/apply/$jobId',
+  path: '/careers/apply/$jobId',
+  getParentRoute: () => rootRouteImport,
 } as any)
 const Char91DotmcpChar93InvokeToolToolRoute =
   Char91DotmcpChar93InvokeToolToolRouteImport.update({
@@ -121,7 +121,6 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
-  '/careers': typeof CareersRouteWithChildren
   '/contact': typeof ContactRoute
   '/mcp': typeof McpRoute
   '/shop': typeof ShopRoute
@@ -131,6 +130,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AuthenticatedAdminRoute
   '/admin-applications': typeof AuthenticatedAdminApplicationsRoute
   '/admin-products': typeof AuthenticatedAdminProductsRoute
+  '/careers/': typeof CareersIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/careers/apply/$jobId': typeof CareersApplyJobIdRoute
@@ -139,7 +139,6 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
-  '/careers': typeof CareersRouteWithChildren
   '/contact': typeof ContactRoute
   '/mcp': typeof McpRoute
   '/shop': typeof ShopRoute
@@ -149,6 +148,7 @@ export interface FileRoutesByTo {
   '/admin': typeof AuthenticatedAdminRoute
   '/admin-applications': typeof AuthenticatedAdminApplicationsRoute
   '/admin-products': typeof AuthenticatedAdminProductsRoute
+  '/careers': typeof CareersIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/careers/apply/$jobId': typeof CareersApplyJobIdRoute
@@ -159,7 +159,6 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/account': typeof AccountRoute
   '/auth': typeof AuthRoute
-  '/careers': typeof CareersRouteWithChildren
   '/contact': typeof ContactRoute
   '/mcp': typeof McpRoute
   '/shop': typeof ShopRoute
@@ -169,6 +168,7 @@ export interface FileRoutesById {
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/_authenticated/admin-applications': typeof AuthenticatedAdminApplicationsRoute
   '/_authenticated/admin-products': typeof AuthenticatedAdminProductsRoute
+  '/careers/': typeof CareersIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
   '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/careers/apply/$jobId': typeof CareersApplyJobIdRoute
@@ -179,7 +179,6 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/auth'
-    | '/careers'
     | '/contact'
     | '/mcp'
     | '/shop'
@@ -189,6 +188,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin-applications'
     | '/admin-products'
+    | '/careers/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
     | '/careers/apply/$jobId'
@@ -197,7 +197,6 @@ export interface FileRouteTypes {
     | '/'
     | '/account'
     | '/auth'
-    | '/careers'
     | '/contact'
     | '/mcp'
     | '/shop'
@@ -207,6 +206,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/admin-applications'
     | '/admin-products'
+    | '/careers'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
     | '/careers/apply/$jobId'
@@ -216,7 +216,6 @@ export interface FileRouteTypes {
     | '/_authenticated'
     | '/account'
     | '/auth'
-    | '/careers'
     | '/contact'
     | '/mcp'
     | '/shop'
@@ -226,6 +225,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin'
     | '/_authenticated/admin-applications'
     | '/_authenticated/admin-products'
+    | '/careers/'
     | '/.lovable/oauth/consent'
     | '/.mcp/invoke-tool/$tool'
     | '/careers/apply/$jobId'
@@ -236,15 +236,16 @@ export interface RootRouteChildren {
   AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
   AccountRoute: typeof AccountRoute
   AuthRoute: typeof AuthRoute
-  CareersRoute: typeof CareersRouteWithChildren
   ContactRoute: typeof ContactRoute
   McpRoute: typeof McpRoute
   ShopRoute: typeof ShopRoute
   StoryRoute: typeof StoryRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
   Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
+  CareersIndexRoute: typeof CareersIndexRoute
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
   Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
+  CareersApplyJobIdRoute: typeof CareersApplyJobIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -277,13 +278,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ContactRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/careers': {
-      id: '/careers'
-      path: '/careers'
-      fullPath: '/careers'
-      preLoaderRoute: typeof CareersRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/auth': {
       id: '/auth'
       path: '/auth'
@@ -310,6 +304,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers/': {
+      id: '/careers/'
+      path: '/careers'
+      fullPath: '/careers/'
+      preLoaderRoute: typeof CareersIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated/admin-products': {
@@ -349,10 +350,10 @@ declare module '@tanstack/react-router' {
     }
     '/careers/apply/$jobId': {
       id: '/careers/apply/$jobId'
-      path: '/apply/$jobId'
+      path: '/careers/apply/$jobId'
       fullPath: '/careers/apply/$jobId'
       preLoaderRoute: typeof CareersApplyJobIdRouteImport
-      parentRoute: typeof CareersRoute
+      parentRoute: typeof rootRouteImport
     }
     '/.mcp/invoke-tool/$tool': {
       id: '/.mcp/invoke-tool/$tool'
@@ -386,23 +387,11 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
 const AuthenticatedRouteRouteWithChildren =
   AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
 
-interface CareersRouteChildren {
-  CareersApplyJobIdRoute: typeof CareersApplyJobIdRoute
-}
-
-const CareersRouteChildren: CareersRouteChildren = {
-  CareersApplyJobIdRoute: CareersApplyJobIdRoute,
-}
-
-const CareersRouteWithChildren =
-  CareersRoute._addFileChildren(CareersRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
   AccountRoute: AccountRoute,
   AuthRoute: AuthRoute,
-  CareersRoute: CareersRouteWithChildren,
   ContactRoute: ContactRoute,
   McpRoute: McpRoute,
   ShopRoute: ShopRoute,
@@ -410,8 +399,10 @@ const rootRouteChildren: RootRouteChildren = {
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
   Char91DotwellKnownChar93OauthProtectedResourceRoute:
     Char91DotwellKnownChar93OauthProtectedResourceRoute,
+  CareersIndexRoute: CareersIndexRoute,
   DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
   Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
+  CareersApplyJobIdRoute: CareersApplyJobIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

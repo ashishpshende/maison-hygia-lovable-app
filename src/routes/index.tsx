@@ -277,13 +277,13 @@ function HomePage() {
             </h2>
           </FadeIn>
 
-          {/* Body Rituals */}
+          {/* Botanical Beauty */}
           <FadeIn className="group grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-12 lg:gap-20">
             <div className="relative overflow-hidden rounded-sm">
               <div className="relative aspect-[4/5] overflow-hidden">
                 <img
                   src={worldBodyRituals}
-                  alt="Maison Hygia Body Rituals — body wash in a serene bathroom setting"
+                  alt="Maison Hygia Botanical Beauty — body wash in a serene bathroom setting"
                   className="h-full w-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-[1.05]"
                   loading="lazy"
                 />
@@ -291,7 +291,7 @@ function HomePage() {
             </div>
             <div className="flex flex-col items-start md:py-12">
               <p className="text-[11px] font-medium uppercase tracking-[0.42em] text-gold">
-                Body Rituals
+                Botanical Beauty
               </p>
               <h3 className="mt-6 font-serif text-3xl leading-[1.15] text-foreground md:text-4xl lg:text-5xl">
                 Care, made into ritual.

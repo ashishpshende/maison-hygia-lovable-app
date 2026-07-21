@@ -1,0 +1,131 @@
+export type Opening = {
+  slug: string;
+  title: string;
+  location: string;
+  type: string;
+  team: string;
+  summary: string;
+  responsibilities: string[];
+  qualifications: string[];
+};
+
+export const openings: Opening[] = [
+  {
+    slug: "senior-cosmetic-formulator",
+    title: "Senior Cosmetic Formulator",
+    location: "Paris, France",
+    type: "Full-time",
+    team: "Formulation & Product",
+    summary:
+      "Lead the development of botanical skincare formulations from concept through pilot batch, working closely with sourcing and design.",
+    responsibilities: [
+      "Design and iterate on emulsions, cleansers, and serums rooted in botanical actives.",
+      "Own stability, safety, and compatibility testing in partnership with external labs.",
+      "Collaborate with sourcing on ingredient selection and traceability.",
+    ],
+    qualifications: [
+      "7+ years formulating natural or clean-beauty skincare.",
+      "Deep knowledge of emulsion science and preservation systems.",
+      "Fluent in English; French is a plus.",
+    ],
+  },
+  {
+    slug: "packaging-designer",
+    title: "Packaging Designer",
+    location: "Milan, Italy",
+    type: "Full-time",
+    team: "Design & Brand",
+    summary:
+      "Shape the tactile world of the Maison — primary packaging, secondary boxes, and unboxing rituals.",
+    responsibilities: [
+      "Design primary and secondary packaging systems across the collection.",
+      "Partner with suppliers on materials, finishes, and sustainability targets.",
+      "Prototype and refine until every detail feels considered.",
+    ],
+    qualifications: [
+      "5+ years in premium packaging or industrial design.",
+      "Strong portfolio spanning structure, print, and finish specification.",
+      "Working knowledge of sustainable materials.",
+    ],
+  },
+  {
+    slug: "sourcing-lead-botanicals",
+    title: "Sourcing Lead — Botanicals",
+    location: "Remote (EMEA)",
+    type: "Full-time",
+    team: "Sourcing & Supply",
+    summary:
+      "Build long-term relationships with growers and cooperatives to bring rare botanicals into the Maison responsibly.",
+    responsibilities: [
+      "Identify and qualify botanical suppliers across EMEA.",
+      "Negotiate terms that protect quality, traceability, and grower livelihoods.",
+      "Own the sourcing roadmap alongside formulation.",
+    ],
+    qualifications: [
+      "6+ years sourcing natural ingredients or specialty agriculture.",
+      "Experience with regenerative and fair-trade frameworks.",
+      "Willingness to travel to origin.",
+    ],
+  },
+  {
+    slug: "editorial-copywriter",
+    title: "Editorial Copywriter",
+    location: "Remote",
+    type: "Contract",
+    team: "Design & Brand",
+    summary:
+      "Give the Maison a voice — from product stories to journal essays and campaign copy.",
+    responsibilities: [
+      "Write product, campaign, and editorial copy across surfaces.",
+      "Develop a consistent tone rooted in slowness and craft.",
+      "Partner with design on layout and cadence.",
+    ],
+    qualifications: [
+      "5+ years writing for premium lifestyle or beauty brands.",
+      "Portfolio of longform and short-form work.",
+      "Impeccable English; a second language is welcome.",
+    ],
+  },
+  {
+    slug: "retail-host-flagship",
+    title: "Retail Host — Flagship",
+    location: "London, UK",
+    type: "Part-time",
+    team: "Retail & Hospitality",
+    summary:
+      "Welcome guests into the Maison's London flagship and guide them through the ritual in person.",
+    responsibilities: [
+      "Host guests with warmth and product fluency.",
+      "Maintain the store as a living expression of the brand.",
+      "Support events, appointments, and product education.",
+    ],
+    qualifications: [
+      "2+ years in luxury retail or hospitality.",
+      "Genuine interest in botanicals, wellness, or beauty.",
+      "Weekend availability.",
+    ],
+  },
+  {
+    slug: "operations-associate",
+    title: "Operations Associate",
+    location: "Paris, France",
+    type: "Full-time",
+    team: "Sourcing & Supply",
+    summary:
+      "Keep the Maison running — from inbound inventory to fulfillment quality and partner logistics.",
+    responsibilities: [
+      "Coordinate inbound and outbound logistics with 3PL partners.",
+      "Track inventory accuracy and forecast needs with sourcing.",
+      "Continuously improve fulfillment quality and unboxing.",
+    ],
+    qualifications: [
+      "3+ years in DTC or premium retail operations.",
+      "Comfortable with spreadsheets, ERPs, and 3PL portals.",
+      "Detail-obsessed and calm under pressure.",
+    ],
+  },
+];
+
+export function findOpening(slug: string): Opening | undefined {
+  return openings.find((o) => o.slug === slug);
+}

@@ -2,11 +2,13 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
 import { NewsletterInline } from "@/components/NewsletterInline";
+import { openings } from "@/lib/careers-openings";
 import heroImage from "@/assets/careers-hero.jpg";
 import craftSourced from "@/assets/craft-sourced.jpg";
 import craftCrafted from "@/assets/craft-crafted.jpg";
 import craftDesigned from "@/assets/craft-designed.jpg";
 import craftEveryday from "@/assets/craft-everyday.jpg";
+
 
 export const Route = createFileRoute("/careers")({
   head: () => ({
@@ -78,44 +80,6 @@ const teams = [
   },
 ];
 
-const openings = [
-  {
-    title: "Senior Cosmetic Formulator",
-    location: "Paris, France",
-    type: "Full-time",
-    team: "Formulation & Product",
-  },
-  {
-    title: "Packaging Designer",
-    location: "Milan, Italy",
-    type: "Full-time",
-    team: "Design & Brand",
-  },
-  {
-    title: "Sourcing Lead — Botanicals",
-    location: "Remote (EMEA)",
-    type: "Full-time",
-    team: "Sourcing & Supply",
-  },
-  {
-    title: "Editorial Copywriter",
-    location: "Remote",
-    type: "Contract",
-    team: "Design & Brand",
-  },
-  {
-    title: "Retail Host — Flagship",
-    location: "London, UK",
-    type: "Part-time",
-    team: "Retail & Hospitality",
-  },
-  {
-    title: "Operations Associate",
-    location: "Paris, France",
-    type: "Full-time",
-    team: "Sourcing & Supply",
-  },
-];
 
 const benefits = [
   {
@@ -295,9 +259,10 @@ function CareersPage() {
 
           <div className="mt-14 divide-y divide-border/60 border-y border-border/60">
             {openings.map((o, i) => (
-              <FadeIn key={o.title} delay={i * 40}>
-                <a
-                  href="mailto:careers@maisonhygia.com?subject=Application"
+              <FadeIn key={o.slug} delay={i * 40}>
+                <Link
+                  to="/careers/apply/$jobId"
+                  params={{ jobId: o.slug }}
                   className="group grid grid-cols-1 items-center gap-4 py-6 md:grid-cols-12 md:gap-6"
                 >
                   <div className="md:col-span-5">
@@ -313,9 +278,10 @@ function CareersPage() {
                   <span className="text-sm uppercase tracking-[0.3em] text-cocoa/70 transition-colors group-hover:text-gold md:col-span-2 md:text-right">
                     Apply →
                   </span>
-                </a>
+                </Link>
               </FadeIn>
             ))}
+
           </div>
         </div>
       </section>

@@ -15,7 +15,7 @@ const footerGroups = [
     links: [
       { label: "Our Story", to: "/story" },
       { label: "Journal", to: "/" },
-      { label: "Careers", to: "/" },
+      { label: "Careers", to: "/careers" },
     ],
   },
   {

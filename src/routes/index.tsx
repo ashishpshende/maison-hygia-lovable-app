@@ -347,6 +347,79 @@ function HomePage() {
         </div>
       </section>
 
+      {/* Section 3: Crafted With Intention */}
+      <section className="relative bg-ivory px-6 md:px-10">
+        <div className="mx-auto max-w-7xl py-28 md:py-40 lg:py-48">
+          <FadeIn className="mx-auto mb-20 max-w-2xl text-center md:mb-28">
+            <p className="text-[11px] font-medium uppercase tracking-[0.42em] text-gold">
+              The Making
+            </p>
+            <h2 className="mt-8 font-serif text-3xl leading-[1.2] text-foreground md:text-5xl lg:text-[3.25rem]">
+              Crafted With Intention
+            </h2>
+            <p className="mt-10 text-base leading-[1.9] text-foreground/70 md:text-lg">
+              Every Maison Hygia ritual begins long before it reaches your home—from
+              thoughtful sourcing and careful formulation to beautiful design and
+              everyday usability.
+            </p>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-6 lg:grid-cols-4 lg:gap-8">
+            {[
+              {
+                image: craftSourced,
+                alt: "Premium almonds, saffron threads, makhana and fresh herbs on warm linen",
+                title: "Thoughtfully Sourced",
+                copy: "We carefully select ingredients for their quality, purity and character, creating rituals inspired by nature and designed for modern living.",
+              },
+              {
+                image: craftCrafted,
+                alt: "Artisan hands formulating luxury cream in glass beakers on a stainless steel surface",
+                title: "Beautifully Crafted",
+                copy: "Every formulation is designed to balance efficacy, sensory experience and timeless simplicity.",
+              },
+              {
+                image: craftDesigned,
+                alt: "Cream-colored premium packaging with gold foil monogram, ribbon and textured paper",
+                title: "Designed to Delight",
+                copy: "From the first touch to the final ritual, every detail is created to feel thoughtful, elegant and lasting.",
+              },
+              {
+                image: craftEveryday,
+                alt: "Bathroom counter with skincare bottle, morning tea, snack bowl and linen on a wooden tray",
+                title: "Made for Everyday Rituals",
+                copy: "Wellness becomes meaningful when beautiful products become part of everyday life.",
+              },
+            ].map((panel, i) => (
+              <FadeIn
+                key={panel.title}
+                delay={i * 120}
+                className="group flex flex-col"
+              >
+                <div className="relative aspect-[4/5] overflow-hidden rounded-sm">
+                  <img
+                    src={panel.image}
+                    alt={panel.alt}
+                    width={1024}
+                    height={1280}
+                    className="h-full w-full object-cover transition-transform duration-[1.6s] ease-out group-hover:scale-[1.02]"
+                    loading="lazy"
+                  />
+                </div>
+                <h3 className="mt-8 font-serif text-2xl leading-[1.2] text-foreground md:text-[1.75rem]">
+                  {panel.title}
+                </h3>
+                <p className="mt-4 text-sm leading-[1.9] text-foreground/70 md:text-base">
+                  {panel.copy}
+                </p>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+
       {/* Quiet brand intro */}
 
       <FadeIn as="section" className="relative bg-cream px-6 md:px-10">

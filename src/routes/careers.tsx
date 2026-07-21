@@ -54,25 +54,25 @@ const values = [
 const teams = [
   {
     name: "Formulation & Product",
-    image: craftCrafted.url,
+    image: craftCrafted,
     blurb:
       "Cosmetic chemists, food scientists, and formulators shaping every ritual from the inside out.",
   },
   {
     name: "Design & Brand",
-    image: craftDesigned.url,
+    image: craftDesigned,
     blurb:
       "Art direction, industrial design, and copy that carries the Maison's voice into every surface.",
   },
   {
     name: "Sourcing & Supply",
-    image: craftSourced.url,
+    image: craftSourced,
     blurb:
       "Partners with growers, cooperatives, and artisans to bring rare ingredients home responsibly.",
   },
   {
     name: "Retail & Hospitality",
-    image: craftEveryday.url,
+    image: craftEveryday,
     blurb:
       "The people who welcome guests into the Maison, in stores and in every conversation.",
   },

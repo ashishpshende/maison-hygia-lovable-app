@@ -253,12 +253,45 @@ function ApplyPage() {
       return;
     }
     setSubmitting(true);
-    // Simulated submission — the Maison reviews all applications by hand.
-    await new Promise((r) => setTimeout(r, 900));
+    const { error } = await supabase.from("job_applications").insert({
+      job_slug: job.slug,
+      job_title: job.title,
+      first_name: form.firstName,
+      last_name: form.lastName,
+      email: form.email,
+      phone: form.phone,
+      city: form.city,
+      country: form.country,
+      work_auth: form.workAuth,
+      employer: form.employer || null,
+      previous_job_title: form.jobTitle || null,
+      years_experience: form.yearsExperience,
+      responsibilities: form.responsibilities || null,
+      school: form.school || null,
+      degree: form.degree || null,
+      field_of_study: form.fieldOfStudy || null,
+      grad_year: form.gradYear || null,
+      resume_name: form.resumeName,
+      linkedin: form.linkedin || null,
+      portfolio: form.portfolio || null,
+      cover_letter: form.coverLetter || null,
+      referral: form.referral,
+      eeo_gender: form.eeoGender || null,
+      eeo_ethnicity: form.eeoEthnicity || null,
+      eeo_veteran: form.eeoVeteran || null,
+      eeo_disability: form.eeoDisability || null,
+      certified: form.certify,
+    });
     setSubmitting(false);
+    if (error) {
+      toast.error("We couldn't submit your application. Please try again.");
+      return;
+    }
+    toast.success("Application submitted.");
     setSubmitted(true);
     window.scrollTo({ top: 0, behavior: "smooth" });
   }
+
 
   function handleResume(file: File | null) {
     if (!file) {

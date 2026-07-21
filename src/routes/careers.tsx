@@ -295,3 +295,99 @@ function CareersPage() {
     </div>
   );
 }
+
+function OpeningRow({ opening: o }: { opening: (typeof openings)[number] }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="py-6">
+      <div className="grid grid-cols-1 items-center gap-4 md:grid-cols-12 md:gap-6">
+        <button
+          type="button"
+          onClick={() => setOpen((v) => !v)}
+          className="group text-left md:col-span-5"
+          aria-expanded={open}
+        >
+          <h3 className="font-serif text-2xl text-foreground transition-colors group-hover:text-gold">
+            {o.title}
+          </h3>
+          <p className="mt-1 text-sm uppercase tracking-[0.2em] text-cocoa/60">
+            {o.team}
+          </p>
+        </button>
+        <p className="text-cocoa md:col-span-3">{o.location}</p>
+        <p className="text-cocoa md:col-span-2">{o.type}</p>
+        <div className="flex items-center gap-4 md:col-span-2 md:justify-end">
+          <button
+            type="button"
+            onClick={() => setOpen((v) => !v)}
+            className="inline-flex items-center gap-1 text-xs uppercase tracking-[0.3em] text-cocoa/70 hover:text-gold"
+          >
+            {open ? "Hide" : "Details"}
+            <ChevronDown
+              className={`h-3.5 w-3.5 transition-transform ${open ? "rotate-180" : ""}`}
+            />
+          </button>
+          <Link
+            to="/careers/apply/$jobId"
+            params={{ jobId: o.slug }}
+            className="text-xs uppercase tracking-[0.3em] text-gold hover:text-gold/80"
+          >
+            Apply →
+          </Link>
+        </div>
+      </div>
+      {open && (
+        <div className="mt-6 grid grid-cols-1 gap-8 border-t border-border/50 pt-6 md:grid-cols-12">
+          <div className="md:col-span-8">
+            <p className="leading-relaxed text-cocoa">{o.summary}</p>
+            <h4 className="mt-8 text-xs uppercase tracking-[0.3em] text-cocoa/70">
+              What you'll do
+            </h4>
+            <ul className="mt-4 space-y-2 text-cocoa">
+              {o.responsibilities.map((r) => (
+                <li key={r} className="flex gap-3">
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold" />
+                  <span className="leading-relaxed">{r}</span>
+                </li>
+              ))}
+            </ul>
+            <h4 className="mt-8 text-xs uppercase tracking-[0.3em] text-cocoa/70">
+              What we're looking for
+            </h4>
+            <ul className="mt-4 space-y-2 text-cocoa">
+              {o.qualifications.map((r) => (
+                <li key={r} className="flex gap-3">
+                  <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-gold" />
+                  <span className="leading-relaxed">{r}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="md:col-span-4">
+            <div className="rounded-md border border-border/60 bg-[#F8F5F0] p-6">
+              <p className="text-xs uppercase tracking-[0.3em] text-cocoa/70">
+                Ready to apply?
+              </p>
+              <p className="mt-3 text-sm text-cocoa">
+                Takes about five minutes. You can review everything before you
+                submit.
+              </p>
+              <Button
+                asChild
+                className="mt-5 w-full bg-cocoa text-cream hover:bg-cocoa/90"
+              >
+                <Link
+                  to="/careers/apply/$jobId"
+                  params={{ jobId: o.slug }}
+                >
+                  Start application
+                </Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+

@@ -2,13 +2,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
 import { NewsletterInline } from "@/components/NewsletterInline";
-import heroAsset from "@/assets/careers-hero.jpg.asset.json";
-import craftSourced from "@/assets/craft-sourced.jpg.asset.json";
-import craftCrafted from "@/assets/craft-crafted.jpg.asset.json";
-import craftDesigned from "@/assets/craft-designed.jpg.asset.json";
-import craftEveryday from "@/assets/craft-everyday.jpg.asset.json";
-
-const heroImage = heroAsset.url;
+import heroImage from "@/assets/careers-hero.jpg";
+import craftSourced from "@/assets/craft-sourced.jpg";
+import craftCrafted from "@/assets/craft-crafted.jpg";
+import craftDesigned from "@/assets/craft-designed.jpg";
+import craftEveryday from "@/assets/craft-everyday.jpg";
 
 export const Route = createFileRoute("/careers")({
   head: () => ({

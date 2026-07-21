@@ -11,6 +11,101 @@ export type Opening = {
 
 export const openings: Opening[] = [
   {
+    slug: "fellowship-ai-innovation",
+    title: "Fellowship — AI & Innovation",
+    location: "Global / Remote",
+    type: "Fellowship",
+    team: "Maison Hygia Global Talent Fellowship 2026",
+    summary:
+      "Build intelligent solutions that personalize wellness and enhance experiences through the power of AI.",
+    responsibilities: [
+      "Explore AI/ML applications across the Maison's rituals and services.",
+      "Prototype user personalization and predictive analytics use cases.",
+      "Advance automation, efficiency, and emerging technologies within the house.",
+    ],
+    qualifications: [
+      "Curiosity and fluency in modern AI/ML tooling.",
+      "A portfolio of applied projects or research.",
+      "Passion for wellness, craft, and meaningful impact.",
+    ],
+  },
+  {
+    slug: "fellowship-digital-marketing",
+    title: "Fellowship — Digital Marketing",
+    location: "Global / Remote",
+    type: "Fellowship",
+    team: "Maison Hygia Global Talent Fellowship 2026",
+    summary:
+      "Create engaging brand experiences and drive growth through digital storytelling and data.",
+    responsibilities: [
+      "Shape brand strategy, content, and storytelling across channels.",
+      "Run performance marketing and social/community programs.",
+      "Turn growth analytics into learning and action.",
+    ],
+    qualifications: [
+      "Experience across brand and performance marketing.",
+      "Sharp editorial instincts and comfort with data.",
+      "Love for premium, considered brands.",
+    ],
+  },
+  {
+    slug: "fellowship-product-innovation",
+    title: "Fellowship — Product Innovation",
+    location: "Global / Remote",
+    type: "Fellowship",
+    team: "Maison Hygia Global Talent Fellowship 2026",
+    summary:
+      "Design and develop wellness products that are beautiful, effective, and sustainable.",
+    responsibilities: [
+      "Lead consumer research and product design explorations.",
+      "Translate formulation insights into refined product concepts.",
+      "Own sustainability considerations and go-to-market strategy.",
+    ],
+    qualifications: [
+      "Background in product design, industrial design, or product management.",
+      "Sensitivity to materials, form, and everyday use.",
+      "Interest in botanical and wellness categories.",
+    ],
+  },
+  {
+    slug: "fellowship-technology-marketplace",
+    title: "Fellowship — Technology & Marketplace",
+    location: "Global / Remote",
+    type: "Fellowship",
+    team: "Maison Hygia Global Talent Fellowship 2026",
+    summary:
+      "Build scalable platforms that connect people, partners, and products seamlessly.",
+    responsibilities: [
+      "Contribute to platform development and API/integrations work.",
+      "Shape marketplace strategy alongside product and business teams.",
+      "Advance data, infrastructure, and end-to-end user experience.",
+    ],
+    qualifications: [
+      "Strong engineering foundations across web and services.",
+      "Product mindset and care for user experience.",
+      "Comfort operating in ambiguous, early-stage environments.",
+    ],
+  },
+  {
+    slug: "fellowship-sustainability-impact",
+    title: "Fellowship — Sustainability & Impact",
+    location: "Global / Remote",
+    type: "Fellowship",
+    team: "Maison Hygia Global Talent Fellowship 2026",
+    summary:
+      "Drive positive impact by embedding sustainability and purpose into everything we do.",
+    responsibilities: [
+      "Advance sustainable sourcing and circular design across the house.",
+      "Build impact measurement and ESG & responsibility programs.",
+      "Lead community initiatives that connect the Maison to the world.",
+    ],
+    qualifications: [
+      "Experience in sustainability, impact, or responsible sourcing.",
+      "Systems thinking and rigorous, evidence-based approach.",
+      "Deep alignment with the Maison's values.",
+    ],
+  },
+  {
     slug: "senior-cosmetic-formulator",
     title: "Senior Cosmetic Formulator",
     location: "Paris, France",

@@ -2,8 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Leaf, HeartHandshake, Sparkles, Sprout, Sun } from "lucide-react";
 import { FadeIn } from "@/components/FadeIn";
 import { NewsletterInline } from "@/components/NewsletterInline";
+import logoAsset from "@/assets/logo.svg.asset.json";
 import stayCloseAsset from "@/assets/stay-close.jpg.asset.json";
 import heroAsset from "@/assets/hero-products.png.asset.json";
+
 import lifestyleGlowAsset from "@/assets/lifestyle-glow.png.asset.json";
 import lifestyleNourishAsset from "@/assets/lifestyle-nourish.png.asset.json";
 import lifestyleCareAsset from "@/assets/lifestyle-care.png.asset.json";
@@ -457,21 +459,21 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Closing band */}
-      <section className="relative isolate overflow-hidden bg-cocoa text-primary-foreground">
-        <div className="mx-auto flex max-w-3xl flex-col items-center px-6 py-40 text-center md:px-10 md:py-56">
-          <div aria-hidden className="h-px w-12 bg-gold/70" />
-          <p className="mt-10 text-xs uppercase tracking-[0.42em] text-gold">
-            Maison Hygia
+      {/* Brand signature */}
+      <section className="relative bg-cream px-6 md:px-10">
+        <div className="mx-auto flex max-w-3xl flex-col items-center py-24 text-center md:py-32">
+          <img
+            src={logoAsset.url}
+            alt="Maison Hygia monogram"
+            className="h-20 w-auto md:h-24"
+          />
+          <p className="mt-8 font-serif text-xl text-foreground md:text-2xl">
+            Modern Rituals. Rooted in Nature.
           </p>
-          <h2 className="mt-8 font-serif text-4xl leading-[1.15] md:text-5xl lg:text-6xl">
-            Modern Rituals
-            <br />
-            <span className="italic text-gold">Rooted in Nature.</span>
-          </h2>
-          <div aria-hidden className="mt-12 h-px w-12 bg-gold/70" />
+          <div aria-hidden className="mt-10 h-px w-24 bg-gold/50" />
         </div>
       </section>
+
     </div>
   );
 }

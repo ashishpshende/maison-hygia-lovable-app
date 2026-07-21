@@ -2,11 +2,13 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
 import { NewsletterInline } from "@/components/NewsletterInline";
+import { openings } from "@/lib/careers-openings";
 import heroImage from "@/assets/careers-hero.jpg";
 import craftSourced from "@/assets/craft-sourced.jpg";
 import craftCrafted from "@/assets/craft-crafted.jpg";
 import craftDesigned from "@/assets/craft-designed.jpg";
 import craftEveryday from "@/assets/craft-everyday.jpg";
+
 
 export const Route = createFileRoute("/careers")({
   head: () => ({

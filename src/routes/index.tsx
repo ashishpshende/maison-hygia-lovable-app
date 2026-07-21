@@ -458,21 +458,6 @@ function HomePage() {
         </div>
       </section>
 
-      {/* Brand signature */}
-      <section className="relative bg-cream px-6 md:px-10">
-        <div className="mx-auto flex max-w-3xl flex-col items-center py-24 text-center md:py-32">
-          <img
-            src={logoAsset.url}
-            alt="Maison Hygia monogram"
-            className="h-20 w-auto md:h-24"
-          />
-          <p className="mt-8 font-serif text-xl text-foreground md:text-2xl">
-            Modern Rituals. Rooted in Nature.
-          </p>
-          <div aria-hidden className="mt-10 h-px w-24 bg-gold/50" />
-        </div>
-      </section>
-
     </div>
   );
 }

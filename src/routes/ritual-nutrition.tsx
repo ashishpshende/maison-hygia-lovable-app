@@ -13,14 +13,20 @@ import goldenMakhanaAsset from "@/assets/golden-glow-makhana.png.asset.json";
 import royalTrailMixAsset from "@/assets/royal-heritage-trail-mix.png.asset.json";
 import calmDatesAsset from "@/assets/calm-filled-dates.png.asset.json";
 import stayCloseAsset from "@/assets/stay-close.jpg.asset.json";
+import nextGranolasAsset from "@/assets/next-granolas.jpg.asset.json";
+import nextTrailmixAsset from "@/assets/next-trailmix.jpg.asset.json";
+import nextMakhanaAsset from "@/assets/next-makhana.jpg.asset.json";
+import nextTeaAsset from "@/assets/next-tea.jpg.asset.json";
+import nextSeasonalAsset from "@/assets/next-seasonal.jpg.asset.json";
+import nextLimitedAsset from "@/assets/next-limited.jpg.asset.json";
 
-const COMING_SOON: { name: string; note: string }[] = [
-  { name: "Calm Filled Dates", note: "Soft dates with warm spice and golden honey" },
-  { name: "Heritage Trail Mix", note: "A mindful blend of nuts, seeds and dried fruit" },
-  { name: "Saffron Granola", note: "Slow-toasted clusters with cardamom and rose" },
-  { name: "Rose Petal Brittle", note: "Delicate crunch with floral notes" },
-  { name: "Spiced Energy Bites", note: "Dates, cacao and Ayurvedic spices" },
-  { name: "Golden Turmeric Nuts", note: "Anti-inflammatory spiced almonds and cashews" },
+const COMING_SOON: { name: string; img: string }[] = [
+  { name: "Botanical Granolas", img: nextGranolasAsset.url },
+  { name: "Superfood Trail Mixes", img: nextTrailmixAsset.url },
+  { name: "Functional Makhana Collection", img: nextMakhanaAsset.url },
+  { name: "Botanical Tea Rituals", img: nextTeaAsset.url },
+  { name: "Seasonal Collections", img: nextSeasonalAsset.url },
+  { name: "Limited Edition Rituals", img: nextLimitedAsset.url },
 ];
 
 function scrollToId(id: string) {

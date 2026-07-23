@@ -11,6 +11,23 @@ import faceSerumAsset from "@/assets/MH_Face_Serem-2.png.asset.json";
 import shampooAsset from "@/assets/MH_Shampoo.png.asset.json";
 import conditionerAsset from "@/assets/MH_Hair_Conditioner.png.asset.json";
 import collectionHero from "@/assets/mh-collection-hero.png.asset.json";
+import stayCloseAsset from "@/assets/stay-close.jpg.asset.json";
+import { NewsletterInline } from "@/components/NewsletterInline";
+import { Sparkles } from "lucide-react";
+
+const COMING_SOON = [
+  { name: "Bath Salt", note: "Muscle relaxation + detox" },
+  { name: "Bath Soak", note: "Skin-conditioning soak" },
+  { name: "Body Scrub", note: "Oil-based Ayurvedic exfoliation" },
+  { name: "Face Scrub", note: "Gentle daily exfoliation" },
+  { name: "Face Mask", note: "Deep cleansing & glow revival" },
+  { name: "Face Moisturizer", note: "Nourishing daily hydration" },
+  { name: "Face Toner", note: "Hydrating botanical toner" },
+  { name: "Hair Serum", note: "Lightweight anti-frizz care" },
+  { name: "Hand Lotion", note: "Softening golden glow blend" },
+  { name: "Body Oil", note: "Nourishing Ayurvedic blend" },
+  { name: "Sheet Mask", note: "Intense hydration & radiance" },
+];
 
 function scrollToId(id: string) {
   const el = document.getElementById(id);

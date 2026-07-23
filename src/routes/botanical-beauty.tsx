@@ -1,9 +1,15 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
 import bodyWashAsset from "@/assets/mh-body-wash.png.asset.json";
 import faceSerumAsset from "@/assets/mh-face-serum.png.asset.json";
 import bodyLotion from "@/assets/mh-body-lotion.jpg";
+import collectionHero from "@/assets/mh-collection-hero.png.asset.json";
+
+function scrollToId(id: string) {
+  const el = document.getElementById(id);
+  if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+}
 
 export const Route = createFileRoute("/botanical-beauty")({
   head: () => ({

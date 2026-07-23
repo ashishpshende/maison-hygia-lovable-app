@@ -144,21 +144,17 @@ function RitualNutritionPage() {
       {/* HERO — full-bleed image with typography nestled in negative space */}
       <section className="relative isolate w-full overflow-hidden bg-[#F4EEE4]">
         <img
-          src={heroAsset.url}
+          src={heroWide}
           alt="Maison Hygia Founder Collection — premium nuts, seeds, dates and makhana arranged on warm travertine with linen and botanicals"
           className="absolute inset-0 h-full w-full object-cover object-right"
           loading="eager"
-          width={2400}
-          height={1600}
+          width={1920}
+          height={1200}
         />
-        {/* Soft cream veil on the left that dissolves into the travertine — creates the negative space for type */}
+        {/* Mobile-only soft veil so type stays readable when the products crowd the frame on narrow screens */}
         <div
           aria-hidden
-          className="absolute inset-0 bg-gradient-to-r from-[#F4EEE4] via-[#F4EEE4]/85 to-transparent md:from-[#F4EEE4]/95 md:via-[#F4EEE4]/55 md:to-transparent lg:via-[#F4EEE4]/35"
-        />
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-[#F4EEE4]/50 via-transparent to-[#F4EEE4]/40 md:hidden"
+          className="absolute inset-0 bg-gradient-to-b from-[#F4EEE4]/85 via-[#F4EEE4]/55 to-[#F4EEE4]/80 md:hidden"
         />
 
         <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 py-20 md:min-h-[86vh] md:grid-cols-2 md:gap-16 md:px-10 md:py-28">

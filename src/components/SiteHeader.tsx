@@ -76,18 +76,73 @@ export function SiteHeader() {
         </Link>
 
         <nav className="hidden items-center gap-10 md:flex">
-          {navLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              activeOptions={{ exact: link.to === "/" }}
-              className="group relative text-xs uppercase tracking-[0.22em] text-foreground/75 transition-colors duration-300 hover:text-foreground"
-              activeProps={{ className: "text-foreground" }}
-            >
-              {link.label}
-              <span className="absolute -bottom-2 left-0 h-px w-0 bg-gold transition-all duration-500 group-hover:w-full group-data-[status=active]:w-full" />
-            </Link>
-          ))}
+          {navLinks.map((link) =>
+            "children" in link ? (
+              <div
+                key={link.to}
+                ref={shopRef}
+                className="relative"
+                onMouseEnter={() => setShopOpen(true)}
+                onMouseLeave={() => setShopOpen(false)}
+              >
+                <button
+                  type="button"
+                  onClick={() => setShopOpen((v) => !v)}
+                  className={cn(
+                    "group relative flex items-center gap-1 text-xs uppercase tracking-[0.22em] text-foreground/75 transition-colors duration-300 hover:text-foreground",
+                    isShopActive && "text-foreground",
+                  )}
+                >
+                  {link.label}
+                  <ChevronDown
+                    className={cn(
+                      "h-3 w-3 transition-transform duration-300",
+                      shopOpen && "rotate-180",
+                    )}
+                  />
+                  <span
+                    className={cn(
+                      "absolute -bottom-2 left-0 h-px bg-gold transition-all duration-500",
+                      isShopActive ? "w-full" : "w-0 group-hover:w-full",
+                    )}
+                  />
+                </button>
+                <div
+                  className={cn(
+                    "absolute left-1/2 top-full min-w-[16rem] -translate-x-1/2 pt-4 transition-all duration-300",
+                    shopOpen
+                      ? "pointer-events-auto translate-y-0 opacity-100"
+                      : "pointer-events-none -translate-y-2 opacity-0",
+                  )}
+                >
+                  <div className="overflow-hidden rounded-lg border border-border/60 bg-background/95 p-2 shadow-lg backdrop-blur-md">
+                    {link.children.map((child) => (
+                      <Link
+                        key={child.to}
+                        to={child.to}
+                        className="block px-4 py-3 text-xs uppercase tracking-[0.18em] text-foreground/80 transition-colors hover:bg-gold/10 hover:text-foreground"
+                        activeProps={{ className: "bg-gold/10 text-foreground" }}
+                        activeOptions={{ exact: true }}
+                      >
+                        {child.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={link.to}
+                to={link.to}
+                activeOptions={{ exact: link.to === "/" }}
+                className="group relative text-xs uppercase tracking-[0.22em] text-foreground/75 transition-colors duration-300 hover:text-foreground"
+                activeProps={{ className: "text-foreground" }}
+              >
+                {link.label}
+                <span className="absolute -bottom-2 left-0 h-px w-0 bg-gold transition-all duration-500 group-hover:w-full group-data-[status=active]:w-full" />
+              </Link>
+            ),
+          )}
           {isAdmin && (
             <div className="flex items-center gap-2">
               <Link

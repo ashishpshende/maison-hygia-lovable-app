@@ -294,6 +294,87 @@ function BotanicalBeautyPage() {
           </div>
         </div>
       </section>
+
+      {/* SECTION 3 — The Next Rituals */}
+      <section className="border-t border-border/50 bg-cream">
+        <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
+          <FadeIn className="text-center">
+            <p className="text-[11px] uppercase tracking-[0.4em] text-gold">
+              Looking Ahead
+            </p>
+            <h2 className="mt-5 font-serif text-4xl leading-tight text-foreground md:text-5xl">
+              The Next Rituals
+            </h2>
+            <p className="mx-auto mt-6 max-w-2xl text-cocoa/75 leading-relaxed">
+              Botanical Beauty is an evolving collection. We're thoughtfully
+              developing new rituals to complement your everyday routine.
+            </p>
+          </FadeIn>
+
+          <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {COMING_SOON.map((item, i) => (
+              <FadeIn key={item.name} delay={i * 60}>
+                <div className="group flex h-full flex-col items-center rounded-sm border border-cocoa/10 bg-[#FBF7F0] px-6 py-10 text-center transition-all duration-500 hover:border-gold/40 hover:shadow-[0_20px_50px_-30px_rgba(180,140,60,0.4)]">
+                  <div className="flex h-16 w-16 items-center justify-center rounded-full border border-gold/30 bg-cream text-gold transition-transform duration-500 group-hover:scale-105">
+                    <Sparkles className="h-5 w-5" strokeWidth={1.4} />
+                  </div>
+                  <h3 className="mt-6 font-serif text-2xl text-foreground">
+                    {item.name}
+                  </h3>
+                  <p className="mt-2 text-sm text-cocoa/65">{item.note}</p>
+                  <span className="mt-6 inline-block rounded-full border border-gold/40 bg-transparent px-4 py-1 text-[10px] uppercase tracking-[0.3em] text-gold">
+                    Coming Soon
+                  </span>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+
+          <FadeIn className="mt-16 text-center">
+            <p className="text-sm italic text-cocoa/60">
+              More thoughtfully crafted rituals will be introduced over time.
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* Stay Close to the Maison — cinematic newsletter */}
+      <section className="relative isolate w-full overflow-hidden bg-ivory">
+        <div className="relative min-h-[560px] w-full md:min-h-[680px] lg:min-h-[760px]">
+          <img
+            src={stayCloseAsset.url}
+            alt="A linen-covered breakfast table with Maison Hygia body wash on a stone tray, a bowl of rose saffron almond clusters, and fresh botanicals in soft morning light"
+            className="absolute inset-0 h-full w-full object-cover"
+            loading="lazy"
+            width={1920}
+            height={1088}
+          />
+          <div
+            aria-hidden
+            className="absolute inset-0 bg-gradient-to-r from-cream/95 via-cream/70 to-transparent md:from-cream/90 md:via-cream/50"
+          />
+          <div className="relative z-10 mx-auto flex min-h-[560px] max-w-7xl items-center px-6 py-24 md:min-h-[680px] md:px-10 md:py-32 lg:min-h-[760px]">
+            <FadeIn className="max-w-xl">
+              <div aria-hidden className="h-px w-12 bg-gold/70" />
+              <p className="mt-8 text-xs uppercase tracking-[0.42em] text-gold">
+                Maison Hygia
+              </p>
+              <h2 className="mt-6 font-serif text-4xl leading-[1.1] text-foreground md:text-5xl lg:text-6xl">
+                Stay Close to the{" "}
+                <span className="italic text-gold">Maison.</span>
+              </h2>
+              <p className="mt-6 max-w-md text-base leading-relaxed text-muted-foreground md:text-lg">
+                Be the first to discover new rituals, limited collections,
+                thoughtful stories, and moments designed to inspire everyday
+                living.
+              </p>
+              <div className="mt-10">
+                <NewsletterInline source="botanical_beauty_stay_close" />
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

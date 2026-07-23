@@ -1,14 +1,19 @@
-import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
-import { Menu, Package, Shield, ShoppingBag, User, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Link, useRouterState } from "@tanstack/react-router";
+import { ChevronDown, Menu, Package, Shield, ShoppingBag, User, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { supabase } from "@/integrations/supabase/client";
 import { useCart } from "@/lib/cart-context";
 import logoAsset from "@/assets/logo.svg.asset.json";
 
+const shopItems = [
+  { to: "/botanical-beauty", label: "Botanical Beauty Collection" },
+  { to: "/ritual-nutrition", label: "Ritual Snacks Collection" },
+];
+
 const navLinks = [
   { to: "/", label: "Home" },
-  { to: "/shop", label: "Shop" },
+  { to: "/shop", label: "Shop", children: shopItems },
   { to: "/story", label: "Story" },
   { to: "/contact", label: "Contact" },
 ] as const;

@@ -12,21 +12,32 @@ import shampooAsset from "@/assets/MH_Shampoo.png.asset.json";
 import conditionerAsset from "@/assets/MH_Hair_Conditioner.png.asset.json";
 import collectionHero from "@/assets/mh-collection-hero.png.asset.json";
 import stayCloseAsset from "@/assets/stay-close.jpg.asset.json";
+import bathSaltAsset from "@/assets/MH_Bath_Salt-2.png.asset.json";
+import bodyOilAsset from "@/assets/MH_Body_Oil-2.png.asset.json";
+import bodyScrubAsset from "@/assets/MH_Body_Scrub-2.png.asset.json";
+import faceMaskAsset from "@/assets/MH_Face_Mask-2.png.asset.json";
+import faceScrubAsset from "@/assets/MH_Face_Scrub-2.png.asset.json";
+import faceTonerAsset from "@/assets/MH_Face_Toner-2.png.asset.json";
+import handLotionAsset from "@/assets/MH_Hand_Lotion-2.png.asset.json";
+import sheetMaskAsset from "@/assets/MH_Sheet_Mask-2.png.asset.json";
+import faceMoisturizerAsset from "@/assets/MH_Face_Moisturizer.png.asset.json";
+import nightCreamAsset from "@/assets/MH_Night_Cream.png.asset.json";
 import { NewsletterInline } from "@/components/NewsletterInline";
 import { Sparkles } from "lucide-react";
 
-const COMING_SOON = [
-  { name: "Bath Salt", note: "Muscle relaxation + detox" },
+const COMING_SOON: { name: string; note: string; img?: string }[] = [
+  { name: "Bath Salt", note: "Muscle relaxation + detox", img: bathSaltAsset.url },
+  { name: "Body Scrub", note: "Oil-based Ayurvedic exfoliation", img: bodyScrubAsset.url },
+  { name: "Body Oil", note: "Nourishing Ayurvedic blend", img: bodyOilAsset.url },
+  { name: "Hand Lotion", note: "Softening golden glow blend", img: handLotionAsset.url },
+  { name: "Face Scrub", note: "Gentle daily exfoliation", img: faceScrubAsset.url },
+  { name: "Face Mask", note: "Deep cleansing & glow revival", img: faceMaskAsset.url },
+  { name: "Face Toner", note: "Hydrating botanical toner", img: faceTonerAsset.url },
+  { name: "Face Moisturizer", note: "Nourishing daily hydration", img: faceMoisturizerAsset.url },
+  { name: "Night Cream", note: "Nourishing overnight repair", img: nightCreamAsset.url },
+  { name: "Sheet Mask", note: "Intense hydration & radiance", img: sheetMaskAsset.url },
   { name: "Bath Soak", note: "Skin-conditioning soak" },
-  { name: "Body Scrub", note: "Oil-based Ayurvedic exfoliation" },
-  { name: "Face Scrub", note: "Gentle daily exfoliation" },
-  { name: "Face Mask", note: "Deep cleansing & glow revival" },
-  { name: "Face Moisturizer", note: "Nourishing daily hydration" },
-  { name: "Face Toner", note: "Hydrating botanical toner" },
   { name: "Hair Serum", note: "Lightweight anti-frizz care" },
-  { name: "Hand Lotion", note: "Softening golden glow blend" },
-  { name: "Body Oil", note: "Nourishing Ayurvedic blend" },
-  { name: "Sheet Mask", note: "Intense hydration & radiance" },
 ];
 
 function scrollToId(id: string) {

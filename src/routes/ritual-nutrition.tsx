@@ -41,9 +41,9 @@ export const Route = createFileRoute("/ritual-nutrition")({
         content:
           "Thoughtfully crafted ritual snacks designed to nourish your everyday rituals.",
       },
-      { property: "og:image", content: heroAsset },
+      { property: "og:image", content: heroAsset.url },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:image", content: heroAsset },
+      { name: "twitter:image", content: heroAsset.url },
     ],
     links: [{ rel: "canonical", href: "/ritual-nutrition" }],
   }),

@@ -237,7 +237,7 @@ function RitualNutritionPage() {
                         : "text-cocoa/70 hover:text-cocoa")
                     }
                   >
-                    {r}
+                    {r} Ritual
                   </button>
                 );
               })}

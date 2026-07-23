@@ -213,18 +213,58 @@ export function SiteHeader() {
         )}
       >
         <nav className="flex flex-col px-6 py-6">
-          {navLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              onClick={() => setOpen(false)}
-              activeOptions={{ exact: link.to === "/" }}
-              className="border-b border-border/40 py-4 text-xs uppercase tracking-[0.22em] text-foreground/75 transition-colors hover:text-foreground last:border-b-0"
-              activeProps={{ className: "text-foreground" }}
-            >
-              {link.label}
-            </Link>
-          ))}
+          {navLinks.map((link) =>
+            "children" in link ? (
+              <div key={link.to} className="border-b border-border/40 last:border-b-0">
+                <button
+                  type="button"
+                  onClick={() => setMobileShopOpen((v) => !v)}
+                  className={cn(
+                    "flex w-full items-center justify-between py-4 text-xs uppercase tracking-[0.22em] text-foreground/75 transition-colors hover:text-foreground",
+                    isShopActive && "text-foreground",
+                  )}
+                >
+                  {link.label}
+                  <ChevronDown
+                    className={cn(
+                      "h-3 w-3 transition-transform duration-300",
+                      mobileShopOpen && "rotate-180",
+                    )}
+                  />
+                </button>
+                <div
+                  className={cn(
+                    "overflow-hidden transition-[max-height,opacity] duration-300 ease-out",
+                    mobileShopOpen ? "max-h-40 opacity-100" : "max-h-0 opacity-0",
+                  )}
+                >
+                  {link.children.map((child) => (
+                    <Link
+                      key={child.to}
+                      to={child.to}
+                      onClick={() => setOpen(false)}
+                      className="block py-3 pl-4 text-[11px] uppercase tracking-[0.18em] text-foreground/70 transition-colors hover:text-foreground"
+                      activeProps={{ className: "text-foreground" }}
+                      activeOptions={{ exact: true }}
+                    >
+                      {child.label}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={link.to}
+                to={link.to}
+                onClick={() => setOpen(false)}
+                activeOptions={{ exact: link.to === "/" }}
+                className="border-b border-border/40 py-4 text-xs uppercase tracking-[0.22em] text-foreground/75 transition-colors hover:text-foreground last:border-b-0"
+                activeProps={{ className: "text-foreground" }}
+              >
+                {link.label}
+              </Link>
+            ),
+          )}
           {isAdmin && (
             <>
               <Link

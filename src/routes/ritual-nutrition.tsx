@@ -52,7 +52,7 @@ export const Route = createFileRoute("/ritual-nutrition")({
   component: RitualNutritionPage,
 });
 
-type Ritual = "Clusters" | "Makhana" | "Bites";
+type Ritual = "Glow" | "Daily" | "Celebration";
 
 type Product = {
   slug: string;
@@ -64,58 +64,58 @@ type Product = {
 };
 
 const RITUALS: Record<Ritual, Product[]> = {
-  Clusters: [
-    {
-      slug: "rose-saffron-almond-clusters",
-      name: "Rose Saffron Almond Clusters",
-      size: "150 g",
-      blurb: "Crisp almonds, rose petals and saffron threads in a gentle honey glaze.",
-      priceLabel: "$18",
-      img: roseSaffronAsset,
-    },
-    {
-      slug: "heritage-cashew-clusters",
-      name: "Heritage Cashew Clusters",
-      size: "150 g",
-      blurb: "Whole cashews with warm cardamom and a touch of golden jaggery.",
-      priceLabel: "$18",
-      img: heritageCashewAsset,
-    },
-  ],
-  Makhana: [
+  Glow: [
     {
       slug: "golden-glow-makhana",
       name: "Golden Glow Makhana",
-      size: "100 g",
-      blurb: "Roasted fox nuts with turmeric and a whisper of black pepper for a light, mindful crunch.",
+      size: "70 g",
+      blurb: "Roasted fox nuts with turmeric, saffron and a whisper of black pepper.",
       priceLabel: "$14",
-      img: goldenMakhanaAsset,
+      img: goldenMakhanaAsset.url,
     },
   ],
-  Bites: [
+  Daily: [
+    {
+      slug: "rose-saffron-almond-clusters",
+      name: "Rose Saffron Almond Clusters",
+      size: "80 g",
+      blurb: "Crisp almonds bound with saffron, rose and cardamom.",
+      priceLabel: "$18",
+      img: roseSaffronAsset.url,
+    },
+    {
+      slug: "heritage-spice-cashew-clusters",
+      name: "Heritage Spice Cashew Clusters",
+      size: "90 g",
+      blurb: "Whole cashews with ginger, turmeric, black pepper and sesame.",
+      priceLabel: "$18",
+      img: heritageCashewAsset.url,
+    },
+  ],
+  Celebration: [
+    {
+      slug: "royal-heritage-trail-mix",
+      name: "Royal Heritage Trail Mix",
+      size: "100 g",
+      blurb: "Pistachios, almonds and walnuts with dried cocoa, rose, cardamom and saffron.",
+      priceLabel: "$22",
+      img: royalTrailMixAsset.url,
+    },
     {
       slug: "calm-filled-dates",
       name: "Calm Filled Dates",
-      size: "120 g",
-      blurb: "Soft Medjool dates filled with tahini, honey and toasted sesame.",
-      priceLabel: "$16",
-      img: "",
-    },
-    {
-      slug: "spiced-energy-bites",
-      name: "Spiced Energy Bites",
-      size: "120 g",
-      blurb: "Dates, cacao, almonds and a blend of Ayurvedic spices.",
-      priceLabel: "$16",
-      img: "",
+      size: "8 pieces",
+      blurb: "Medjool dates filled with ashwagandha, saffron and almonds — a moment of calm.",
+      priceLabel: "$26",
+      img: calmDatesAsset.url,
     },
   ],
 };
 
-const RITUAL_ORDER: Ritual[] = ["Clusters", "Makhana", "Bites"];
+const RITUAL_ORDER: Ritual[] = ["Glow", "Daily", "Celebration"];
 
 function RitualNutritionPage() {
-  const [active, setActive] = useState<Ritual>("Clusters");
+  const [active, setActive] = useState<Ritual>("Glow");
   const cart = useCart();
   const products = RITUALS[active];
 

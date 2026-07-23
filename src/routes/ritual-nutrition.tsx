@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { useCart, parsePriceCents } from "@/lib/cart-context";
 import { NewsletterInline } from "@/components/NewsletterInline";
 import { Sparkles } from "lucide-react";
-import heroWide from "@/assets/founder-collection-hero-wide.jpg";
+import heroWide from "@/assets/founder-collection-hero-v2.png.asset.json";
 import heroAsset from "@/assets/founder-collection-hero.png.asset.json";
 import roseSaffronAsset from "@/assets/rose-saffron-clusters.png.asset.json";
 import heritageCashewAsset from "@/assets/heritage-cashew-clusters.png.asset.json";
@@ -144,7 +144,7 @@ function RitualNutritionPage() {
       {/* HERO — full-bleed image with typography nestled in negative space */}
       <section className="relative isolate w-full overflow-hidden bg-[#F4EEE4]">
         <img
-          src={heroWide}
+          src={heroWide.url}
           alt="Maison Hygia Founder Collection — premium nuts, seeds, dates and makhana arranged on warm travertine with linen and botanicals"
           className="absolute inset-0 h-full w-full object-cover object-right"
           loading="eager"

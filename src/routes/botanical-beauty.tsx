@@ -12,21 +12,32 @@ import shampooAsset from "@/assets/MH_Shampoo.png.asset.json";
 import conditionerAsset from "@/assets/MH_Hair_Conditioner.png.asset.json";
 import collectionHero from "@/assets/mh-collection-hero.png.asset.json";
 import stayCloseAsset from "@/assets/stay-close.jpg.asset.json";
+import bathSaltAsset from "@/assets/MH_Bath_Salt-2.png.asset.json";
+import bodyOilAsset from "@/assets/MH_Body_Oil-2.png.asset.json";
+import bodyScrubAsset from "@/assets/MH_Body_Scrub-2.png.asset.json";
+import faceMaskAsset from "@/assets/MH_Face_Mask-2.png.asset.json";
+import faceScrubAsset from "@/assets/MH_Face_Scrub-2.png.asset.json";
+import faceTonerAsset from "@/assets/MH_Face_Toner-2.png.asset.json";
+import handLotionAsset from "@/assets/MH_Hand_Lotion-2.png.asset.json";
+import sheetMaskAsset from "@/assets/MH_Sheet_Mask-2.png.asset.json";
+import faceMoisturizerAsset from "@/assets/MH_Face_Moisturizer.png.asset.json";
+import nightCreamAsset from "@/assets/MH_Night_Cream.png.asset.json";
 import { NewsletterInline } from "@/components/NewsletterInline";
 import { Sparkles } from "lucide-react";
 
-const COMING_SOON = [
-  { name: "Bath Salt", note: "Muscle relaxation + detox" },
+const COMING_SOON: { name: string; note: string; img?: string }[] = [
+  { name: "Bath Salt", note: "Muscle relaxation + detox", img: bathSaltAsset.url },
+  { name: "Body Scrub", note: "Oil-based Ayurvedic exfoliation", img: bodyScrubAsset.url },
+  { name: "Body Oil", note: "Nourishing Ayurvedic blend", img: bodyOilAsset.url },
+  { name: "Hand Lotion", note: "Softening golden glow blend", img: handLotionAsset.url },
+  { name: "Face Scrub", note: "Gentle daily exfoliation", img: faceScrubAsset.url },
+  { name: "Face Mask", note: "Deep cleansing & glow revival", img: faceMaskAsset.url },
+  { name: "Face Toner", note: "Hydrating botanical toner", img: faceTonerAsset.url },
+  { name: "Face Moisturizer", note: "Nourishing daily hydration", img: faceMoisturizerAsset.url },
+  { name: "Night Cream", note: "Nourishing overnight repair", img: nightCreamAsset.url },
+  { name: "Sheet Mask", note: "Intense hydration & radiance", img: sheetMaskAsset.url },
   { name: "Bath Soak", note: "Skin-conditioning soak" },
-  { name: "Body Scrub", note: "Oil-based Ayurvedic exfoliation" },
-  { name: "Face Scrub", note: "Gentle daily exfoliation" },
-  { name: "Face Mask", note: "Deep cleansing & glow revival" },
-  { name: "Face Moisturizer", note: "Nourishing daily hydration" },
-  { name: "Face Toner", note: "Hydrating botanical toner" },
   { name: "Hair Serum", note: "Lightweight anti-frizz care" },
-  { name: "Hand Lotion", note: "Softening golden glow blend" },
-  { name: "Body Oil", note: "Nourishing Ayurvedic blend" },
-  { name: "Sheet Mask", note: "Intense hydration & radiance" },
 ];
 
 function scrollToId(id: string) {
@@ -315,9 +326,20 @@ function BotanicalBeautyPage() {
             {COMING_SOON.map((item, i) => (
               <FadeIn key={item.name} delay={i * 60}>
                 <div className="group flex h-full flex-col items-center rounded-sm border border-cocoa/10 bg-[#FBF7F0] px-6 py-10 text-center transition-all duration-500 hover:border-gold/40 hover:shadow-[0_20px_50px_-30px_rgba(180,140,60,0.4)]">
-                  <div className="flex h-16 w-16 items-center justify-center rounded-full border border-gold/30 bg-cream text-gold transition-transform duration-500 group-hover:scale-105">
-                    <Sparkles className="h-5 w-5" strokeWidth={1.4} />
-                  </div>
+                  {item.img ? (
+                    <div className="aspect-square w-40 overflow-hidden rounded-sm bg-gradient-to-br from-[#F6EFE3] via-[#F1E7D5] to-[#E8DAC2]">
+                      <img
+                        src={item.img}
+                        alt={`Maison Hygia ${item.name}`}
+                        loading="lazy"
+                        className="h-full w-full object-cover mix-blend-multiply transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                      />
+                    </div>
+                  ) : (
+                    <div className="flex h-40 w-40 items-center justify-center rounded-full border border-gold/30 bg-cream text-gold transition-transform duration-500 group-hover:scale-105">
+                      <Sparkles className="h-6 w-6" strokeWidth={1.4} />
+                    </div>
+                  )}
                   <h3 className="mt-6 font-serif text-2xl text-foreground">
                     {item.name}
                   </h3>

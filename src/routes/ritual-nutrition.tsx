@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { FadeIn } from "@/components/FadeIn";
 import { Button } from "@/components/ui/button";
@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { useCart, parsePriceCents } from "@/lib/cart-context";
 import { NewsletterInline } from "@/components/NewsletterInline";
 import { Sparkles } from "lucide-react";
-import heroAsset from "@/assets/ritual-nutrition-hero.png";
+import heroAsset from "@/assets/founder-collection-hero.png.asset.json";
 import roseSaffronAsset from "@/assets/rose-saffron-clusters.png";
 import heritageCashewAsset from "@/assets/heritage-cashew-clusters.png";
 import goldenMakhanaAsset from "@/assets/golden-glow-makhana.png";

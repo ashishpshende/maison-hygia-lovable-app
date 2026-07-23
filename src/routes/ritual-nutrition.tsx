@@ -140,23 +140,9 @@ function RitualNutritionPage() {
 
   return (
     <div className="bg-cream">
-      {/* HERO — full-bleed image with typography nestled in negative space */}
-      <section className="relative isolate w-full overflow-hidden bg-[#F4EEE4]">
-        <img
-          src={heroWide.url}
-          alt="Maison Hygia Founder Collection — premium nuts, seeds, dates and makhana arranged on warm travertine with linen and botanicals"
-          className="absolute inset-0 h-full w-full object-cover object-right"
-          loading="eager"
-          width={1920}
-          height={1200}
-        />
-        {/* Mobile-only soft veil so type stays readable when the products crowd the frame on narrow screens */}
-        <div
-          aria-hidden
-          className="absolute inset-0 bg-gradient-to-b from-[#F4EEE4]/85 via-[#F4EEE4]/55 to-[#F4EEE4]/80 md:hidden"
-        />
-
-        <div className="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 py-20 md:min-h-[86vh] md:grid-cols-2 md:gap-16 md:px-10 md:py-28">
+      {/* HERO — split-screen editorial */}
+      <section className="relative overflow-hidden bg-[#F4EEE4]">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 py-16 md:min-h-[78vh] md:grid-cols-2 md:gap-16 md:px-10 md:py-24">
           <FadeIn className="max-w-xl">
             <nav aria-label="Breadcrumb" className="text-[11px] uppercase tracking-[0.28em] text-cocoa/60">
               <ol className="flex items-center gap-3">
@@ -205,8 +191,18 @@ function RitualNutritionPage() {
             </div>
           </FadeIn>
 
-          {/* Right column intentionally empty — the image itself carries this side */}
-          <div aria-hidden className="hidden md:block" />
+          <FadeIn delay={120}>
+            <div className="relative overflow-hidden rounded-sm bg-[#EFE6D8] shadow-[0_30px_80px_-40px_rgba(60,40,20,0.35)]">
+              <img
+                src={heroAsset.url}
+                alt="Maison Hygia Founder Collection — premium nuts, seeds, dates and makhana arranged on warm travertine with linen and botanicals"
+                className="h-full w-full object-cover"
+                loading="eager"
+                width={1280}
+                height={1600}
+              />
+            </div>
+          </FadeIn>
         </div>
       </section>
 

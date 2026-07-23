@@ -124,7 +124,7 @@ function RitualNutritionPage() {
       name: p.name,
       priceCents: parsePriceCents(p.priceLabel),
       priceLabel: p.priceLabel,
-      imageUrl: p.img || undefined,
+      imageUrl: p.img || "",
     });
     cart.openCart();
     toast.success(`${p.name} added to your ritual`);

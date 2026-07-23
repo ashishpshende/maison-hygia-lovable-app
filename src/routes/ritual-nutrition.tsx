@@ -7,9 +7,11 @@ import { useCart, parsePriceCents } from "@/lib/cart-context";
 import { NewsletterInline } from "@/components/NewsletterInline";
 import { Sparkles } from "lucide-react";
 import heroAsset from "@/assets/founder-collection-hero.png.asset.json";
-import roseSaffronAsset from "@/assets/rose-saffron-clusters.png";
-import heritageCashewAsset from "@/assets/heritage-cashew-clusters.png";
-import goldenMakhanaAsset from "@/assets/golden-glow-makhana.png";
+import roseSaffronAsset from "@/assets/rose-saffron-clusters.png.asset.json";
+import heritageCashewAsset from "@/assets/heritage-cashew-clusters.png.asset.json";
+import goldenMakhanaAsset from "@/assets/golden-glow-makhana.png.asset.json";
+import royalTrailMixAsset from "@/assets/royal-heritage-trail-mix.png.asset.json";
+import calmDatesAsset from "@/assets/calm-filled-dates.png.asset.json";
 import stayCloseAsset from "@/assets/stay-close.jpg.asset.json";
 
 const COMING_SOON: { name: string; note: string }[] = [

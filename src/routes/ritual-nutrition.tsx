@@ -136,18 +136,30 @@ function RitualNutritionPage() {
       <section className="relative overflow-hidden bg-[#F4EEE4]">
         <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 py-16 md:min-h-[78vh] md:grid-cols-2 md:gap-16 md:px-10 md:py-24">
           <FadeIn className="max-w-xl">
-            <p className="text-[11px] font-medium uppercase tracking-[0.42em] text-gold">
-              Ritual Nutrition
+            <nav aria-label="Breadcrumb" className="text-[11px] uppercase tracking-[0.28em] text-cocoa/60">
+              <ol className="flex items-center gap-3">
+                <li>
+                  <Link to="/" className="transition-colors hover:text-cocoa">
+                    Home
+                  </Link>
+                </li>
+                <li aria-hidden className="text-cocoa/40">/</li>
+                <li className="text-cocoa">Founder Collection</li>
+              </ol>
+            </nav>
+
+            <p className="mt-8 text-[11px] font-medium uppercase tracking-[0.42em] text-gold">
+              Founder Collection
             </p>
             <h1 className="mt-8 font-serif text-4xl leading-[1.08] text-foreground md:text-5xl lg:text-6xl">
-              Nourishment,
+              Everyday Snacking,
               <br />
-              <span className="italic text-gold">Reimagined.</span>
+              <span className="italic text-gold">Elevated into Ritual.</span>
             </h1>
             <p className="mt-8 max-w-lg text-base leading-[1.9] text-foreground/70 md:text-lg">
-              Snacks crafted to accompany your rituals — beautiful enough to
-              share, wholesome enough to savor. Made with clean ingredients and
-              heritage-inspired recipes.
+              A thoughtfully curated collection of premium nuts, seeds, dates, and
+              makhana—crafted with exceptional ingredients to transform everyday
+              snacking into a beautiful daily ritual.
             </p>
             <div className="mt-10 flex flex-wrap items-center gap-6">
               <Button
@@ -155,7 +167,7 @@ function RitualNutritionPage() {
                 onClick={() => scrollToId("rituals")}
                 className="bg-cocoa text-cream hover:bg-cocoa/90"
               >
-                Shop the Collection
+                Shop Collection
               </Button>
               <button
                 type="button"
@@ -174,8 +186,8 @@ function RitualNutritionPage() {
           <FadeIn delay={120}>
             <div className="relative overflow-hidden rounded-sm bg-[#EFE6D8] shadow-[0_30px_80px_-40px_rgba(60,40,20,0.35)]">
               <img
-                src={heroAsset}
-                alt="Maison Hygia Ritual Nutrition collection — artisan snack pouches with almonds, cashews, rose and saffron"
+                src={heroAsset.url}
+                alt="Maison Hygia Founder Collection — premium nuts, seeds, dates and makhana arranged on warm travertine with linen and botanicals"
                 className="h-full w-full object-cover"
                 loading="eager"
                 width={1280}

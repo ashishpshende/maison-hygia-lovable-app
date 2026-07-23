@@ -6,7 +6,6 @@ import { toast } from "sonner";
 import { useCart, parsePriceCents } from "@/lib/cart-context";
 import { NewsletterInline } from "@/components/NewsletterInline";
 import { Sparkles } from "lucide-react";
-import heroWide from "@/assets/founder-collection-hero-v2.png.asset.json";
 import heroAsset from "@/assets/founder-collection-hero.png.asset.json";
 import roseSaffronAsset from "@/assets/rose-saffron-clusters.png.asset.json";
 import heritageCashewAsset from "@/assets/heritage-cashew-clusters.png.asset.json";

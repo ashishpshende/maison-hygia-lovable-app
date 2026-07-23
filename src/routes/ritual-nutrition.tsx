@@ -13,14 +13,20 @@ import goldenMakhanaAsset from "@/assets/golden-glow-makhana.png.asset.json";
 import royalTrailMixAsset from "@/assets/royal-heritage-trail-mix.png.asset.json";
 import calmDatesAsset from "@/assets/calm-filled-dates.png.asset.json";
 import stayCloseAsset from "@/assets/stay-close.jpg.asset.json";
+import nextGranolasAsset from "@/assets/next-granolas.jpg.asset.json";
+import nextTrailmixAsset from "@/assets/next-trailmix.jpg.asset.json";
+import nextMakhanaAsset from "@/assets/next-makhana.jpg.asset.json";
+import nextTeaAsset from "@/assets/next-tea.jpg.asset.json";
+import nextSeasonalAsset from "@/assets/next-seasonal.jpg.asset.json";
+import nextLimitedAsset from "@/assets/next-limited.jpg.asset.json";
 
-const COMING_SOON: { name: string; note: string }[] = [
-  { name: "Calm Filled Dates", note: "Soft dates with warm spice and golden honey" },
-  { name: "Heritage Trail Mix", note: "A mindful blend of nuts, seeds and dried fruit" },
-  { name: "Saffron Granola", note: "Slow-toasted clusters with cardamom and rose" },
-  { name: "Rose Petal Brittle", note: "Delicate crunch with floral notes" },
-  { name: "Spiced Energy Bites", note: "Dates, cacao and Ayurvedic spices" },
-  { name: "Golden Turmeric Nuts", note: "Anti-inflammatory spiced almonds and cashews" },
+const COMING_SOON: { name: string; img: string }[] = [
+  { name: "Botanical Granolas", img: nextGranolasAsset.url },
+  { name: "Superfood Trail Mixes", img: nextTrailmixAsset.url },
+  { name: "Functional Makhana Collection", img: nextMakhanaAsset.url },
+  { name: "Botanical Tea Rituals", img: nextTeaAsset.url },
+  { name: "Seasonal Collections", img: nextSeasonalAsset.url },
+  { name: "Limited Edition Rituals", img: nextLimitedAsset.url },
 ];
 
 function scrollToId(id: string) {
@@ -311,29 +317,36 @@ function RitualNutritionPage() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <FadeIn className="text-center">
             <p className="text-[11px] uppercase tracking-[0.4em] text-gold">
-              Looking Ahead
+              Coming Soon
             </p>
             <h2 className="mt-5 font-serif text-4xl leading-tight text-foreground md:text-5xl">
               The Next Rituals
             </h2>
             <p className="mx-auto mt-6 max-w-2xl leading-relaxed text-cocoa/75">
-              Ritual Nutrition is an evolving collection. We're thoughtfully
-              developing new snacks to complement the rhythms of your day.
+              We're thoughtfully expanding Ritual Nutrition with new creations
+              inspired by everyday moments, seasonal ingredients, and timeless
+              traditions.
             </p>
           </FadeIn>
 
-          <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-16 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {COMING_SOON.map((item, i) => (
               <FadeIn key={item.name} delay={i * 60}>
                 <div className="group flex h-full flex-col items-center rounded-sm border border-cocoa/10 bg-[#FBF7F0] px-6 py-10 text-center transition-all duration-500 hover:border-gold/40 hover:shadow-[0_20px_50px_-30px_rgba(180,140,60,0.4)]">
-                  <div className="flex h-40 w-40 items-center justify-center rounded-full border border-gold/30 bg-cream text-gold transition-transform duration-500 group-hover:scale-105">
-                    <Sparkles className="h-6 w-6" strokeWidth={1.4} />
+                  <div className="flex aspect-square w-full items-center justify-center overflow-hidden rounded-sm bg-gradient-to-br from-[#FDF9F1] via-[#F7EFDD] to-[#EFE3C9]">
+                    <img
+                      src={item.img}
+                      alt={`${item.name} — coming soon to Maison Hygia`}
+                      loading="lazy"
+                      width={1024}
+                      height={1024}
+                      className="h-full w-full object-cover mix-blend-multiply transition-transform duration-700 ease-out group-hover:scale-[1.04]"
+                    />
                   </div>
-                  <h3 className="mt-6 font-serif text-2xl text-foreground">
+                  <h3 className="mt-8 font-serif text-2xl text-foreground">
                     {item.name}
                   </h3>
-                  <p className="mt-2 text-sm text-cocoa/65">{item.note}</p>
-                  <span className="mt-6 inline-block rounded-full border border-gold/40 bg-transparent px-4 py-1 text-[10px] uppercase tracking-[0.3em] text-gold">
+                  <span className="mt-4 inline-block rounded-full border border-gold/40 bg-transparent px-4 py-1 text-[10px] uppercase tracking-[0.3em] text-gold">
                     Coming Soon
                   </span>
                 </div>
@@ -342,8 +355,9 @@ function RitualNutritionPage() {
           </div>
 
           <FadeIn className="mt-16 text-center">
-            <p className="text-sm italic text-cocoa/60">
-              More thoughtfully crafted snacks will be introduced over time.
+            <p className="mx-auto max-w-2xl text-sm italic leading-relaxed text-cocoa/60">
+              Every ritual begins with exceptional ingredients and evolves
+              through thoughtful craftsmanship.
             </p>
           </FadeIn>
         </div>

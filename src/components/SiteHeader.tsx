@@ -21,6 +21,7 @@ const navLinks = [
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
   const [shopOpen, setShopOpen] = useState(false);
+  const [mobileShopOpen, setMobileShopOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const cart = useCart();
   const shopRef = useRef<HTMLDivElement>(null);

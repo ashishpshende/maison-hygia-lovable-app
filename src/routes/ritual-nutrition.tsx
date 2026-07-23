@@ -7,9 +7,11 @@ import { useCart, parsePriceCents } from "@/lib/cart-context";
 import { NewsletterInline } from "@/components/NewsletterInline";
 import { Sparkles } from "lucide-react";
 import heroAsset from "@/assets/founder-collection-hero.png.asset.json";
-import roseSaffronAsset from "@/assets/rose-saffron-clusters.png";
-import heritageCashewAsset from "@/assets/heritage-cashew-clusters.png";
-import goldenMakhanaAsset from "@/assets/golden-glow-makhana.png";
+import roseSaffronAsset from "@/assets/rose-saffron-clusters.png.asset.json";
+import heritageCashewAsset from "@/assets/heritage-cashew-clusters.png.asset.json";
+import goldenMakhanaAsset from "@/assets/golden-glow-makhana.png.asset.json";
+import royalTrailMixAsset from "@/assets/royal-heritage-trail-mix.png.asset.json";
+import calmDatesAsset from "@/assets/calm-filled-dates.png.asset.json";
 import stayCloseAsset from "@/assets/stay-close.jpg.asset.json";
 
 const COMING_SOON: { name: string; note: string }[] = [
@@ -50,7 +52,7 @@ export const Route = createFileRoute("/ritual-nutrition")({
   component: RitualNutritionPage,
 });
 
-type Ritual = "Clusters" | "Makhana" | "Bites";
+type Ritual = "Glow" | "Daily" | "Celebration";
 
 type Product = {
   slug: string;
@@ -62,58 +64,58 @@ type Product = {
 };
 
 const RITUALS: Record<Ritual, Product[]> = {
-  Clusters: [
-    {
-      slug: "rose-saffron-almond-clusters",
-      name: "Rose Saffron Almond Clusters",
-      size: "150 g",
-      blurb: "Crisp almonds, rose petals and saffron threads in a gentle honey glaze.",
-      priceLabel: "$18",
-      img: roseSaffronAsset,
-    },
-    {
-      slug: "heritage-cashew-clusters",
-      name: "Heritage Cashew Clusters",
-      size: "150 g",
-      blurb: "Whole cashews with warm cardamom and a touch of golden jaggery.",
-      priceLabel: "$18",
-      img: heritageCashewAsset,
-    },
-  ],
-  Makhana: [
+  Glow: [
     {
       slug: "golden-glow-makhana",
       name: "Golden Glow Makhana",
-      size: "100 g",
-      blurb: "Roasted fox nuts with turmeric and a whisper of black pepper for a light, mindful crunch.",
+      size: "70 g",
+      blurb: "Roasted fox nuts with turmeric, saffron and a whisper of black pepper.",
       priceLabel: "$14",
-      img: goldenMakhanaAsset,
+      img: goldenMakhanaAsset.url,
     },
   ],
-  Bites: [
+  Daily: [
+    {
+      slug: "rose-saffron-almond-clusters",
+      name: "Rose Saffron Almond Clusters",
+      size: "80 g",
+      blurb: "Crisp almonds bound with saffron, rose and cardamom.",
+      priceLabel: "$18",
+      img: roseSaffronAsset.url,
+    },
+    {
+      slug: "heritage-spice-cashew-clusters",
+      name: "Heritage Spice Cashew Clusters",
+      size: "90 g",
+      blurb: "Whole cashews with ginger, turmeric, black pepper and sesame.",
+      priceLabel: "$18",
+      img: heritageCashewAsset.url,
+    },
+  ],
+  Celebration: [
+    {
+      slug: "royal-heritage-trail-mix",
+      name: "Royal Heritage Trail Mix",
+      size: "100 g",
+      blurb: "Pistachios, almonds and walnuts with dried cocoa, rose, cardamom and saffron.",
+      priceLabel: "$22",
+      img: royalTrailMixAsset.url,
+    },
     {
       slug: "calm-filled-dates",
       name: "Calm Filled Dates",
-      size: "120 g",
-      blurb: "Soft Medjool dates filled with tahini, honey and toasted sesame.",
-      priceLabel: "$16",
-      img: "",
-    },
-    {
-      slug: "spiced-energy-bites",
-      name: "Spiced Energy Bites",
-      size: "120 g",
-      blurb: "Dates, cacao, almonds and a blend of Ayurvedic spices.",
-      priceLabel: "$16",
-      img: "",
+      size: "8 pieces",
+      blurb: "Medjool dates filled with ashwagandha, saffron and almonds — a moment of calm.",
+      priceLabel: "$26",
+      img: calmDatesAsset.url,
     },
   ],
 };
 
-const RITUAL_ORDER: Ritual[] = ["Clusters", "Makhana", "Bites"];
+const RITUAL_ORDER: Ritual[] = ["Glow", "Daily", "Celebration"];
 
 function RitualNutritionPage() {
-  const [active, setActive] = useState<Ritual>("Clusters");
+  const [active, setActive] = useState<Ritual>("Glow");
   const cart = useCart();
   const products = RITUALS[active];
 
@@ -203,13 +205,13 @@ function RitualNutritionPage() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <FadeIn className="text-center">
             <p className="text-[11px] uppercase tracking-[0.4em] text-gold">
-              Explore the Collection
+              Ritual Nutrition
             </p>
             <h2 className="mt-5 font-serif text-4xl leading-tight text-foreground md:text-5xl">
               Shop by Ritual
             </h2>
             <p className="mt-4 text-cocoa/75">
-              Choose a ritual to explore the collection.
+              Find the ritual that fits your moment.
             </p>
           </FadeIn>
 
@@ -235,7 +237,7 @@ function RitualNutritionPage() {
                         : "text-cocoa/70 hover:text-cocoa")
                     }
                   >
-                    {r}
+                    {r} Ritual
                   </button>
                 );
               })}
@@ -245,18 +247,23 @@ function RitualNutritionPage() {
           {/* Products */}
           <div
             key={active}
-            className="mt-16 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-14"
+            className={
+              "mt-16 grid gap-10 md:gap-14 " +
+              (products.length === 1
+                ? "mx-auto max-w-xl grid-cols-1"
+                : "grid-cols-1 md:grid-cols-2")
+            }
           >
             {products.map((p, i) => (
               <FadeIn key={p.slug} delay={i * 90}>
                 <article className="group flex flex-col">
-                  <div className="aspect-[4/5] overflow-hidden rounded-sm bg-gradient-to-br from-[#F6EFE3] via-[#F1E7D5] to-[#E8DAC2]">
+                  <div className="aspect-[4/5] overflow-hidden rounded-sm bg-gradient-to-br from-[#FBF6EC] via-[#F5ECD9] to-[#EADFC7]">
                     {p.img ? (
                       <img
                         src={p.img}
                         alt={`Maison Hygia ${p.name}`}
                         loading="lazy"
-                        className="h-full w-full object-cover mix-blend-multiply transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
+                        className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
                       />
                     ) : (
                       <div className="flex h-full w-full items-center justify-center text-gold">

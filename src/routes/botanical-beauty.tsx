@@ -38,76 +38,116 @@ export const Route = createFileRoute("/botanical-beauty")({
 function BotanicalBeautyPage() {
   return (
     <div className="bg-cream">
-      {/* HERO */}
-      <section className="relative overflow-hidden bg-[#F1EAE0]">
-        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 py-16 md:min-h-[76vh] md:grid-cols-12 md:gap-12 md:px-10 md:py-20">
+      {/* HERO — split-screen editorial */}
+      <section className="relative overflow-hidden bg-[#F4EEE4]">
+        <div className="mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 px-6 py-16 md:min-h-[78vh] md:grid-cols-2 md:gap-16 md:px-10 md:py-24">
           {/* Left copy */}
-          <FadeIn className="md:col-span-5">
+          <FadeIn className="max-w-xl">
             <p className="text-[11px] font-medium uppercase tracking-[0.42em] text-gold">
-              The Collection
+              Botanical Beauty
             </p>
-            <h1 className="mt-6 font-serif text-5xl leading-[1.05] text-foreground md:text-6xl lg:text-7xl">
-              Botanical
+            <h1 className="mt-8 font-serif text-4xl leading-[1.08] text-foreground md:text-5xl lg:text-6xl">
+              Everyday Care,
               <br />
-              <span className="italic text-gold">Beauty.</span>
+              <span className="italic text-gold">Elevated into Ritual.</span>
             </h1>
-            <p className="mt-8 max-w-md font-serif text-xl leading-snug text-cocoa md:text-2xl">
-              Everyday rituals for skin, hair and body.
+            <p className="mt-8 max-w-lg text-base leading-[1.9] text-foreground/70 md:text-lg">
+              Thoughtfully crafted care for face, hair, and body—designed to
+              bring gentleness, beauty, and intention to the rituals you return
+              to every day.
             </p>
-            <p className="mt-6 max-w-md text-base leading-[1.9] text-foreground/70">
-              Thoughtfully crafted formulations inspired by nature and designed
-              for modern living.
-            </p>
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-10 flex flex-wrap items-center gap-6">
               <Button
-                asChild
                 size="lg"
+                onClick={() => scrollToId("collection")}
                 className="bg-cocoa text-cream hover:bg-cocoa/90"
               >
-                <a href="#collection">Shop Collection</a>
+                Shop the Collection
               </Button>
-              <Button
-                asChild
-                size="lg"
-                variant="outline"
-                className="border-cocoa/30 text-cocoa hover:bg-cocoa/5"
+              <button
+                type="button"
+                onClick={() => scrollToId("rituals")}
+                className="group inline-flex items-center gap-2 text-sm uppercase tracking-[0.28em] text-cocoa transition-colors hover:text-gold"
               >
-                <Link to="/story">Our Philosophy</Link>
-              </Button>
+                Explore by Ritual
+                <span
+                  aria-hidden
+                  className="inline-block h-px w-8 bg-cocoa transition-all group-hover:w-12 group-hover:bg-gold"
+                />
+              </button>
             </div>
           </FadeIn>
 
-          {/* Right: editorial trio */}
-          <FadeIn delay={120} className="md:col-span-7">
-            <div className="relative grid grid-cols-12 gap-4 md:gap-6">
-              <div className="col-span-6 col-start-1 row-start-1 aspect-[3/4] overflow-hidden rounded-sm bg-[#E8DFD1] md:col-span-5">
-                <img
-                  src={bodyWashAsset.url}
-                  alt="Maison Hygia Body Wash on travertine with linen"
-                  className="h-full w-full object-cover"
-                  loading="eager"
-                />
-              </div>
-              <div className="col-span-6 col-start-7 row-start-1 mt-10 aspect-[3/4] overflow-hidden rounded-sm bg-[#E8DFD1] md:col-span-5 md:col-start-6 md:mt-16">
-                <img
-                  src={faceSerumAsset.url}
-                  alt="Maison Hygia Face Serum with botanicals"
-                  className="h-full w-full object-cover"
-                  loading="eager"
-                />
-              </div>
-              <div className="col-span-8 col-start-3 row-start-2 -mt-6 aspect-[4/3] overflow-hidden rounded-sm bg-[#E8DFD1] md:col-span-5 md:col-start-8 md:-mt-24">
-                <img
-                  src={bodyLotion}
-                  alt="Maison Hygia Body Lotion on travertine"
-                  className="h-full w-full object-cover"
-                  loading="lazy"
-                />
-              </div>
+          {/* Right: editorial collection image */}
+          <FadeIn delay={120}>
+            <div className="relative overflow-hidden rounded-sm bg-[#EFE6D8] shadow-[0_30px_80px_-40px_rgba(60,40,20,0.35)]">
+              <img
+                src={collectionHero.url}
+                alt="Maison Hygia botanical beauty collection on travertine with linen and botanicals"
+                className="h-full w-full object-cover"
+                loading="eager"
+              />
             </div>
           </FadeIn>
         </div>
       </section>
+
+      {/* RITUALS — three category nav */}
+      <section
+        id="rituals"
+        className="border-t border-border/50 bg-[#FBF7F0]"
+      >
+        <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-24">
+          <FadeIn className="mb-12 text-center">
+            <p className="text-[11px] uppercase tracking-[0.4em] text-gold">
+              Explore by Ritual
+            </p>
+            <h2 className="mt-4 font-serif text-3xl leading-tight text-foreground md:text-4xl">
+              Find your daily practice.
+            </h2>
+          </FadeIn>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-3">
+            {[
+              {
+                name: "Body Care",
+                blurb: "Cleanse, soften, nourish.",
+              },
+              {
+                name: "Face Care",
+                blurb: "Barrier repair and quiet radiance.",
+              },
+              {
+                name: "Hair Care",
+                blurb: "Scalp health, strand to strand.",
+              },
+            ].map((r, i) => (
+              <FadeIn key={r.name} delay={i * 80}>
+                <button
+                  type="button"
+                  onClick={() => scrollToId("collection")}
+                  className="group flex h-full w-full flex-col items-start rounded-sm border border-cocoa/15 bg-cream p-8 text-left transition-all hover:border-gold hover:shadow-[0_20px_50px_-30px_rgba(60,40,20,0.4)]"
+                >
+                  <p className="text-[10px] uppercase tracking-[0.36em] text-gold">
+                    Ritual
+                  </p>
+                  <h3 className="mt-4 font-serif text-2xl text-foreground">
+                    {r.name}
+                  </h3>
+                  <p className="mt-2 text-cocoa/80">{r.blurb}</p>
+                  <span className="mt-6 inline-flex items-center gap-2 text-xs uppercase tracking-[0.28em] text-cocoa transition-colors group-hover:text-gold">
+                    Shop
+                    <span
+                      aria-hidden
+                      className="inline-block h-px w-6 bg-cocoa transition-all group-hover:w-10 group-hover:bg-gold"
+                    />
+                  </span>
+                </button>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
 
       {/* COLLECTION */}
       <section

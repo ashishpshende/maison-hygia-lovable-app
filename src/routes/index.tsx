@@ -328,7 +328,7 @@ function HomePage() {
                 Rose Saffron Almond Clusters and heritage-inspired bites made to accompany your rituals — beautiful enough to share, wholesome enough to savor.
               </p>
               <Link
-                to="/shop"
+                to="/ritual-nutrition"
                 className="mt-10 inline-flex items-center gap-3 border-b border-gold pb-1 text-xs uppercase tracking-[0.28em] text-cocoa transition-all duration-500 hover:text-gold"
               >
                 Discover

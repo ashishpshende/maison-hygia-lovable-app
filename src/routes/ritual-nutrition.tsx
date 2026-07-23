@@ -205,13 +205,13 @@ function RitualNutritionPage() {
         <div className="mx-auto max-w-6xl px-6 py-20 md:px-10 md:py-28">
           <FadeIn className="text-center">
             <p className="text-[11px] uppercase tracking-[0.4em] text-gold">
-              Explore the Collection
+              Ritual Nutrition
             </p>
             <h2 className="mt-5 font-serif text-4xl leading-tight text-foreground md:text-5xl">
               Shop by Ritual
             </h2>
             <p className="mt-4 text-cocoa/75">
-              Choose a ritual to explore the collection.
+              Find the ritual that fits your moment.
             </p>
           </FadeIn>
 

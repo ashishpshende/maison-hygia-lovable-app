@@ -59,7 +59,7 @@ function BotanicalBeautyPage() {
             <div className="mt-10 flex flex-wrap items-center gap-6">
               <Button
                 size="lg"
-                onClick={() => scrollToId("collection")}
+                onClick={() => scrollToId("rituals")}
                 className="bg-cocoa text-cream hover:bg-cocoa/90"
               >
                 Shop the Collection

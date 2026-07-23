@@ -247,18 +247,23 @@ function RitualNutritionPage() {
           {/* Products */}
           <div
             key={active}
-            className="mt-16 grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-14"
+            className={
+              "mt-16 grid gap-10 md:gap-14 " +
+              (products.length === 1
+                ? "mx-auto max-w-xl grid-cols-1"
+                : "grid-cols-1 md:grid-cols-2")
+            }
           >
             {products.map((p, i) => (
               <FadeIn key={p.slug} delay={i * 90}>
                 <article className="group flex flex-col">
-                  <div className="aspect-[4/5] overflow-hidden rounded-sm bg-gradient-to-br from-[#F6EFE3] via-[#F1E7D5] to-[#E8DAC2]">
+                  <div className="aspect-[4/5] overflow-hidden rounded-sm bg-gradient-to-br from-[#FBF6EC] via-[#F5ECD9] to-[#EADFC7]">
                     {p.img ? (
                       <img
                         src={p.img}
                         alt={`Maison Hygia ${p.name}`}
                         loading="lazy"
-                        className="h-full w-full object-cover mix-blend-multiply transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
+                        className="h-full w-full object-cover transition-transform duration-[900ms] ease-out group-hover:scale-[1.03]"
                       />
                     ) : (
                       <div className="flex h-full w-full items-center justify-center text-gold">

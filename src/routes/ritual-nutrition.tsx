@@ -152,12 +152,12 @@ function RitualNutritionPage() {
                   </Link>
                 </li>
                 <li aria-hidden className="text-cocoa/40">/</li>
-                <li className="text-cocoa">Founder Collection</li>
+                <li className="text-cocoa">Ritual Nutrition</li>
               </ol>
             </nav>
 
             <p className="mt-8 text-[11px] font-medium uppercase tracking-[0.42em] text-gold">
-              Founder Collection
+              Ritual Nutrition
             </p>
             <h1 className="mt-8 font-serif text-4xl leading-[1.08] text-foreground md:text-5xl lg:text-6xl">
               Everyday Snacking,

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as StoryRouteImport } from './routes/story'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as RitualNutritionRouteImport } from './routes/ritual-nutrition'
 import { Route as McpRouteImport } from './routes/mcp'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as BotanicalBeautyRouteImport } from './routes/botanical-beauty'
@@ -36,6 +37,11 @@ const StoryRoute = StoryRouteImport.update({
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RitualNutritionRoute = RitualNutritionRouteImport.update({
+  id: '/ritual-nutrition',
+  path: '/ritual-nutrition',
   getParentRoute: () => rootRouteImport,
 } as any)
 const McpRoute = McpRouteImport.update({
@@ -130,6 +136,7 @@ export interface FileRoutesByFullPath {
   '/botanical-beauty': typeof BotanicalBeautyRoute
   '/contact': typeof ContactRoute
   '/mcp': typeof McpRoute
+  '/ritual-nutrition': typeof RitualNutritionRoute
   '/shop': typeof ShopRoute
   '/story': typeof StoryRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -149,6 +156,7 @@ export interface FileRoutesByTo {
   '/botanical-beauty': typeof BotanicalBeautyRoute
   '/contact': typeof ContactRoute
   '/mcp': typeof McpRoute
+  '/ritual-nutrition': typeof RitualNutritionRoute
   '/shop': typeof ShopRoute
   '/story': typeof StoryRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -170,6 +178,7 @@ export interface FileRoutesById {
   '/botanical-beauty': typeof BotanicalBeautyRoute
   '/contact': typeof ContactRoute
   '/mcp': typeof McpRoute
+  '/ritual-nutrition': typeof RitualNutritionRoute
   '/shop': typeof ShopRoute
   '/story': typeof StoryRoute
   '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
@@ -191,6 +200,7 @@ export interface FileRouteTypes {
     | '/botanical-beauty'
     | '/contact'
     | '/mcp'
+    | '/ritual-nutrition'
     | '/shop'
     | '/story'
     | '/.mcp/list-tools'
@@ -210,6 +220,7 @@ export interface FileRouteTypes {
     | '/botanical-beauty'
     | '/contact'
     | '/mcp'
+    | '/ritual-nutrition'
     | '/shop'
     | '/story'
     | '/.mcp/list-tools'
@@ -230,6 +241,7 @@ export interface FileRouteTypes {
     | '/botanical-beauty'
     | '/contact'
     | '/mcp'
+    | '/ritual-nutrition'
     | '/shop'
     | '/story'
     | '/.mcp/list-tools'
@@ -251,6 +263,7 @@ export interface RootRouteChildren {
   BotanicalBeautyRoute: typeof BotanicalBeautyRoute
   ContactRoute: typeof ContactRoute
   McpRoute: typeof McpRoute
+  RitualNutritionRoute: typeof RitualNutritionRoute
   ShopRoute: typeof ShopRoute
   StoryRoute: typeof StoryRoute
   Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
@@ -275,6 +288,13 @@ declare module '@tanstack/react-router' {
       path: '/shop'
       fullPath: '/shop'
       preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ritual-nutrition': {
+      id: '/ritual-nutrition'
+      path: '/ritual-nutrition'
+      fullPath: '/ritual-nutrition'
+      preLoaderRoute: typeof RitualNutritionRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/mcp': {
@@ -415,6 +435,7 @@ const rootRouteChildren: RootRouteChildren = {
   BotanicalBeautyRoute: BotanicalBeautyRoute,
   ContactRoute: ContactRoute,
   McpRoute: McpRoute,
+  RitualNutritionRoute: RitualNutritionRoute,
   ShopRoute: ShopRoute,
   StoryRoute: StoryRoute,
   Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,

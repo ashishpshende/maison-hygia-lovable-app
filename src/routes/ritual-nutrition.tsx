@@ -144,7 +144,7 @@ function RitualNutritionPage() {
       {/* HERO — full-bleed image with typography nestled in negative space */}
       <section className="relative isolate w-full overflow-hidden bg-[#F4EEE4]">
         <img
-          src={heroWide}
+          src={heroWide.url}
           alt="Maison Hygia Founder Collection — premium nuts, seeds, dates and makhana arranged on warm travertine with linen and botanicals"
           className="absolute inset-0 h-full w-full object-cover object-right"
           loading="eager"

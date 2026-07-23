@@ -20,8 +20,11 @@ const navLinks = [
 
 export function SiteHeader() {
   const [open, setOpen] = useState(false);
+  const [shopOpen, setShopOpen] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const cart = useCart();
+  const shopRef = useRef<HTMLDivElement>(null);
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   useEffect(() => {
     let active = true;
@@ -47,6 +50,18 @@ export function SiteHeader() {
       sub.subscription.unsubscribe();
     };
   }, []);
+
+  useEffect(() => {
+    const handleClick = (e: MouseEvent) => {
+      if (!shopRef.current?.contains(e.target as Node)) {
+        setShopOpen(false);
+      }
+    };
+    if (shopOpen) document.addEventListener("mousedown", handleClick);
+    return () => document.removeEventListener("mousedown", handleClick);
+  }, [shopOpen]);
+
+  const isShopActive = pathname === "/shop" || shopItems.some((i) => pathname === i.to);
 
   return (
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/85 backdrop-blur-md">

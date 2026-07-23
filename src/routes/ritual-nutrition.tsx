@@ -195,7 +195,7 @@ function RitualNutritionPage() {
             <div className="relative overflow-hidden rounded-sm bg-[#EFE6D8] shadow-[0_30px_80px_-40px_rgba(60,40,20,0.35)]">
               <img
                 src={heroAsset.url}
-                alt="Maison Hygia Founder Collection — premium nuts, seeds, dates and makhana arranged on warm travertine with linen and botanicals"
+                alt="Maison Hygia Ritual Nutrition — premium nuts, seeds, dates and makhana arranged on warm travertine with linen and botanicals"
                 className="h-full w-full object-cover"
                 loading="eager"
                 width={1280}

@@ -103,7 +103,11 @@ function AuthForms() {
             full_name: name.trim(),
           });
         }
-        toast.success("Welcome — your discounts are unlocked.");
+        if (data.session) {
+          toast.success("Welcome — your account is active and discounts are unlocked.");
+        } else if (data.user) {
+          toast.info("Account created! Check your email inbox (and spam folder) for a verification link.");
+        }
       } else {
         const { error } = await supabase.auth.signInWithPassword({
           email: emailR.data,

@@ -9,59 +9,29 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as StoryRouteImport } from './routes/story'
-import { Route as ShopRouteImport } from './routes/shop'
-import { Route as RitualNutritionRouteImport } from './routes/ritual-nutrition'
-import { Route as McpRouteImport } from './routes/mcp'
-import { Route as ContactRouteImport } from './routes/contact'
-import { Route as BotanicalBeautyRouteImport } from './routes/botanical-beauty'
-import { Route as AuthRouteImport } from './routes/auth'
-import { Route as AccountRouteImport } from './routes/account'
-import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as CareersIndexRouteImport } from './routes/careers.index'
-import { Route as AuthenticatedAdminProductsRouteImport } from './routes/_authenticated/admin-products'
-import { Route as AuthenticatedAdminApplicationsRouteImport } from './routes/_authenticated/admin-applications'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AccountRouteImport } from './routes/account'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as BotanicalBeautyRouteImport } from './routes/botanical-beauty'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as RitualNutritionRouteImport } from './routes/ritual-nutrition'
+import { Route as ShopRouteImport } from './routes/shop'
+import { Route as StoryRouteImport } from './routes/story'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
-import { Route as Char91DotwellKnownChar93OauthProtectedResourceRouteImport } from './routes/[.well-known]/oauth-protected-resource'
-import { Route as Char91DotmcpChar93ListToolsRouteImport } from './routes/[.mcp]/list-tools'
-import { Route as CareersApplyJobIdRouteImport } from './routes/careers.apply.$jobId'
-import { Route as Char91DotmcpChar93InvokeToolToolRouteImport } from './routes/[.mcp]/invoke-tool/$tool'
+import { Route as AuthenticatedAdminApplicationsRouteImport } from './routes/_authenticated/admin-applications'
+import { Route as AuthenticatedAdminProductsRouteImport } from './routes/_authenticated/admin-products'
+import { Route as CareersIndexRouteImport } from './routes/careers.index'
 import { Route as DotlovableOauthConsentRouteImport } from './routes/[.]lovable.oauth.consent'
+import { Route as CareersApplyJobIdRouteImport } from './routes/careers.apply.$jobId'
 
-const StoryRoute = StoryRouteImport.update({
-  id: '/story',
-  path: '/story',
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const ShopRoute = ShopRouteImport.update({
-  id: '/shop',
-  path: '/shop',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const RitualNutritionRoute = RitualNutritionRouteImport.update({
-  id: '/ritual-nutrition',
-  path: '/ritual-nutrition',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const McpRoute = McpRouteImport.update({
-  id: '/mcp',
-  path: '/mcp',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ContactRoute = ContactRouteImport.update({
-  id: '/contact',
-  path: '/contact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BotanicalBeautyRoute = BotanicalBeautyRouteImport.update({
-  id: '/botanical-beauty',
-  path: '/botanical-beauty',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
 const AccountRoute = AccountRouteImport.update({
@@ -69,63 +39,66 @@ const AccountRoute = AccountRouteImport.update({
   path: '/account',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
-  id: '/_authenticated',
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
+const BotanicalBeautyRoute = BotanicalBeautyRouteImport.update({
+  id: '/botanical-beauty',
+  path: '/botanical-beauty',
   getParentRoute: () => rootRouteImport,
 } as any)
-const CareersIndexRoute = CareersIndexRouteImport.update({
-  id: '/careers/',
-  path: '/careers/',
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AuthenticatedAdminProductsRoute =
-  AuthenticatedAdminProductsRouteImport.update({
-    id: '/admin-products',
-    path: '/admin-products',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
+const RitualNutritionRoute = RitualNutritionRouteImport.update({
+  id: '/ritual-nutrition',
+  path: '/ritual-nutrition',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ShopRoute = ShopRouteImport.update({
+  id: '/shop',
+  path: '/shop',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const StoryRoute = StoryRouteImport.update({
+  id: '/story',
+  path: '/story',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedAdminApplicationsRoute =
   AuthenticatedAdminApplicationsRouteImport.update({
     id: '/admin-applications',
     path: '/admin-applications',
     getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
-const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
-  id: '/admin',
-  path: '/admin',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const Char91DotwellKnownChar93OauthProtectedResourceRoute =
-  Char91DotwellKnownChar93OauthProtectedResourceRouteImport.update({
-    id: '/.well-known/oauth-protected-resource',
-    path: '/.well-known/oauth-protected-resource',
-    getParentRoute: () => rootRouteImport,
+const AuthenticatedAdminProductsRoute =
+  AuthenticatedAdminProductsRouteImport.update({
+    id: '/admin-products',
+    path: '/admin-products',
+    getParentRoute: () => AuthenticatedRouteRoute,
   } as any)
-const Char91DotmcpChar93ListToolsRoute =
-  Char91DotmcpChar93ListToolsRouteImport.update({
-    id: '/.mcp/list-tools',
-    path: '/.mcp/list-tools',
-    getParentRoute: () => rootRouteImport,
-  } as any)
-const CareersApplyJobIdRoute = CareersApplyJobIdRouteImport.update({
-  id: '/careers/apply/$jobId',
-  path: '/careers/apply/$jobId',
+const CareersIndexRoute = CareersIndexRouteImport.update({
+  id: '/careers/',
+  path: '/careers/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const Char91DotmcpChar93InvokeToolToolRoute =
-  Char91DotmcpChar93InvokeToolToolRouteImport.update({
-    id: '/.mcp/invoke-tool/$tool',
-    path: '/.mcp/invoke-tool/$tool',
-    getParentRoute: () => rootRouteImport,
-  } as any)
 const DotlovableOauthConsentRoute = DotlovableOauthConsentRouteImport.update({
   id: '/.lovable/oauth/consent',
   path: '/.lovable/oauth/consent',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersApplyJobIdRoute = CareersApplyJobIdRouteImport.update({
+  id: '/careers/apply/$jobId',
+  path: '/careers/apply/$jobId',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -135,18 +108,14 @@ export interface FileRoutesByFullPath {
   '/auth': typeof AuthRoute
   '/botanical-beauty': typeof BotanicalBeautyRoute
   '/contact': typeof ContactRoute
-  '/mcp': typeof McpRoute
   '/ritual-nutrition': typeof RitualNutritionRoute
   '/shop': typeof ShopRoute
   '/story': typeof StoryRoute
-  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/admin-applications': typeof AuthenticatedAdminApplicationsRoute
   '/admin-products': typeof AuthenticatedAdminProductsRoute
   '/careers/': typeof CareersIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
-  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/careers/apply/$jobId': typeof CareersApplyJobIdRoute
 }
 export interface FileRoutesByTo {
@@ -155,18 +124,14 @@ export interface FileRoutesByTo {
   '/auth': typeof AuthRoute
   '/botanical-beauty': typeof BotanicalBeautyRoute
   '/contact': typeof ContactRoute
-  '/mcp': typeof McpRoute
   '/ritual-nutrition': typeof RitualNutritionRoute
   '/shop': typeof ShopRoute
   '/story': typeof StoryRoute
-  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/admin-applications': typeof AuthenticatedAdminApplicationsRoute
   '/admin-products': typeof AuthenticatedAdminProductsRoute
   '/careers': typeof CareersIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
-  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/careers/apply/$jobId': typeof CareersApplyJobIdRoute
 }
 export interface FileRoutesById {
@@ -177,18 +142,14 @@ export interface FileRoutesById {
   '/auth': typeof AuthRoute
   '/botanical-beauty': typeof BotanicalBeautyRoute
   '/contact': typeof ContactRoute
-  '/mcp': typeof McpRoute
   '/ritual-nutrition': typeof RitualNutritionRoute
   '/shop': typeof ShopRoute
   '/story': typeof StoryRoute
-  '/.mcp/list-tools': typeof Char91DotmcpChar93ListToolsRoute
-  '/.well-known/oauth-protected-resource': typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/_authenticated/admin-applications': typeof AuthenticatedAdminApplicationsRoute
   '/_authenticated/admin-products': typeof AuthenticatedAdminProductsRoute
   '/careers/': typeof CareersIndexRoute
   '/.lovable/oauth/consent': typeof DotlovableOauthConsentRoute
-  '/.mcp/invoke-tool/$tool': typeof Char91DotmcpChar93InvokeToolToolRoute
   '/careers/apply/$jobId': typeof CareersApplyJobIdRoute
 }
 export interface FileRouteTypes {
@@ -199,18 +160,14 @@ export interface FileRouteTypes {
     | '/auth'
     | '/botanical-beauty'
     | '/contact'
-    | '/mcp'
     | '/ritual-nutrition'
     | '/shop'
     | '/story'
-    | '/.mcp/list-tools'
-    | '/.well-known/oauth-protected-resource'
     | '/admin'
     | '/admin-applications'
     | '/admin-products'
     | '/careers/'
     | '/.lovable/oauth/consent'
-    | '/.mcp/invoke-tool/$tool'
     | '/careers/apply/$jobId'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -219,18 +176,14 @@ export interface FileRouteTypes {
     | '/auth'
     | '/botanical-beauty'
     | '/contact'
-    | '/mcp'
     | '/ritual-nutrition'
     | '/shop'
     | '/story'
-    | '/.mcp/list-tools'
-    | '/.well-known/oauth-protected-resource'
     | '/admin'
     | '/admin-applications'
     | '/admin-products'
     | '/careers'
     | '/.lovable/oauth/consent'
-    | '/.mcp/invoke-tool/$tool'
     | '/careers/apply/$jobId'
   id:
     | '__root__'
@@ -240,18 +193,14 @@ export interface FileRouteTypes {
     | '/auth'
     | '/botanical-beauty'
     | '/contact'
-    | '/mcp'
     | '/ritual-nutrition'
     | '/shop'
     | '/story'
-    | '/.mcp/list-tools'
-    | '/.well-known/oauth-protected-resource'
     | '/_authenticated/admin'
     | '/_authenticated/admin-applications'
     | '/_authenticated/admin-products'
     | '/careers/'
     | '/.lovable/oauth/consent'
-    | '/.mcp/invoke-tool/$tool'
     | '/careers/apply/$jobId'
   fileRoutesById: FileRoutesById
 }
@@ -262,74 +211,21 @@ export interface RootRouteChildren {
   AuthRoute: typeof AuthRoute
   BotanicalBeautyRoute: typeof BotanicalBeautyRoute
   ContactRoute: typeof ContactRoute
-  McpRoute: typeof McpRoute
   RitualNutritionRoute: typeof RitualNutritionRoute
   ShopRoute: typeof ShopRoute
   StoryRoute: typeof StoryRoute
-  Char91DotmcpChar93ListToolsRoute: typeof Char91DotmcpChar93ListToolsRoute
-  Char91DotwellKnownChar93OauthProtectedResourceRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRoute
   CareersIndexRoute: typeof CareersIndexRoute
   DotlovableOauthConsentRoute: typeof DotlovableOauthConsentRoute
-  Char91DotmcpChar93InvokeToolToolRoute: typeof Char91DotmcpChar93InvokeToolToolRoute
   CareersApplyJobIdRoute: typeof CareersApplyJobIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/story': {
-      id: '/story'
-      path: '/story'
-      fullPath: '/story'
-      preLoaderRoute: typeof StoryRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/shop': {
-      id: '/shop'
-      path: '/shop'
-      fullPath: '/shop'
-      preLoaderRoute: typeof ShopRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/ritual-nutrition': {
-      id: '/ritual-nutrition'
-      path: '/ritual-nutrition'
-      fullPath: '/ritual-nutrition'
-      preLoaderRoute: typeof RitualNutritionRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/mcp': {
-      id: '/mcp'
-      path: '/mcp'
-      fullPath: '/mcp'
-      preLoaderRoute: typeof McpRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/contact': {
-      id: '/contact'
-      path: '/contact'
-      fullPath: '/contact'
-      preLoaderRoute: typeof ContactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/botanical-beauty': {
-      id: '/botanical-beauty'
-      path: '/botanical-beauty'
-      fullPath: '/botanical-beauty'
-      preLoaderRoute: typeof BotanicalBeautyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/account': {
-      id: '/account'
-      path: '/account'
-      fullPath: '/account'
-      preLoaderRoute: typeof AccountRouteImport
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/_authenticated': {
@@ -339,25 +235,60 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
+    '/account': {
+      id: '/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AccountRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/careers/': {
-      id: '/careers/'
-      path: '/careers'
-      fullPath: '/careers/'
-      preLoaderRoute: typeof CareersIndexRouteImport
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_authenticated/admin-products': {
-      id: '/_authenticated/admin-products'
-      path: '/admin-products'
-      fullPath: '/admin-products'
-      preLoaderRoute: typeof AuthenticatedAdminProductsRouteImport
+    '/botanical-beauty': {
+      id: '/botanical-beauty'
+      path: '/botanical-beauty'
+      fullPath: '/botanical-beauty'
+      preLoaderRoute: typeof BotanicalBeautyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/ritual-nutrition': {
+      id: '/ritual-nutrition'
+      path: '/ritual-nutrition'
+      fullPath: '/ritual-nutrition'
+      preLoaderRoute: typeof RitualNutritionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/shop': {
+      id: '/shop'
+      path: '/shop'
+      fullPath: '/shop'
+      preLoaderRoute: typeof ShopRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/story': {
+      id: '/story'
+      path: '/story'
+      fullPath: '/story'
+      preLoaderRoute: typeof StoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/admin-applications': {
@@ -367,39 +298,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAdminApplicationsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/_authenticated/admin': {
-      id: '/_authenticated/admin'
-      path: '/admin'
-      fullPath: '/admin'
-      preLoaderRoute: typeof AuthenticatedAdminRouteImport
+    '/_authenticated/admin-products': {
+      id: '/_authenticated/admin-products'
+      path: '/admin-products'
+      fullPath: '/admin-products'
+      preLoaderRoute: typeof AuthenticatedAdminProductsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
-    '/.well-known/oauth-protected-resource': {
-      id: '/.well-known/oauth-protected-resource'
-      path: '/.well-known/oauth-protected-resource'
-      fullPath: '/.well-known/oauth-protected-resource'
-      preLoaderRoute: typeof Char91DotwellKnownChar93OauthProtectedResourceRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/.mcp/list-tools': {
-      id: '/.mcp/list-tools'
-      path: '/.mcp/list-tools'
-      fullPath: '/.mcp/list-tools'
-      preLoaderRoute: typeof Char91DotmcpChar93ListToolsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/careers/apply/$jobId': {
-      id: '/careers/apply/$jobId'
-      path: '/careers/apply/$jobId'
-      fullPath: '/careers/apply/$jobId'
-      preLoaderRoute: typeof CareersApplyJobIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/.mcp/invoke-tool/$tool': {
-      id: '/.mcp/invoke-tool/$tool'
-      path: '/.mcp/invoke-tool/$tool'
-      fullPath: '/.mcp/invoke-tool/$tool'
-      preLoaderRoute: typeof Char91DotmcpChar93InvokeToolToolRouteImport
+    '/careers/': {
+      id: '/careers/'
+      path: '/careers'
+      fullPath: '/careers/'
+      preLoaderRoute: typeof CareersIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/.lovable/oauth/consent': {
@@ -407,6 +317,13 @@ declare module '@tanstack/react-router' {
       path: '/.lovable/oauth/consent'
       fullPath: '/.lovable/oauth/consent'
       preLoaderRoute: typeof DotlovableOauthConsentRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers/apply/$jobId': {
+      id: '/careers/apply/$jobId'
+      path: '/careers/apply/$jobId'
+      fullPath: '/careers/apply/$jobId'
+      preLoaderRoute: typeof CareersApplyJobIdRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
@@ -434,28 +351,13 @@ const rootRouteChildren: RootRouteChildren = {
   AuthRoute: AuthRoute,
   BotanicalBeautyRoute: BotanicalBeautyRoute,
   ContactRoute: ContactRoute,
-  McpRoute: McpRoute,
   RitualNutritionRoute: RitualNutritionRoute,
   ShopRoute: ShopRoute,
   StoryRoute: StoryRoute,
-  Char91DotmcpChar93ListToolsRoute: Char91DotmcpChar93ListToolsRoute,
-  Char91DotwellKnownChar93OauthProtectedResourceRoute:
-    Char91DotwellKnownChar93OauthProtectedResourceRoute,
   CareersIndexRoute: CareersIndexRoute,
   DotlovableOauthConsentRoute: DotlovableOauthConsentRoute,
-  Char91DotmcpChar93InvokeToolToolRoute: Char91DotmcpChar93InvokeToolToolRoute,
   CareersApplyJobIdRoute: CareersApplyJobIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

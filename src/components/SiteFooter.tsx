@@ -30,9 +30,11 @@ const footerGroups = [
 ];
 
 const socialLinks = [
-  { label: "Instagram", href: "https://instagram.com" },
-  { label: "Pinterest", href: "https://pinterest.com" },
-  { label: "LinkedIn", href: "https://linkedin.com" },
+  { label: "Instagram", href: "https://www.instagram.com/maisonhygia?igsi=MWQ4dmllc2d1aXJiMw%3D%3D&utm_source=qr" },
+  // { label: "Pinterest", href: "https://pinterest.com" },
+  { label: "LinkedIn", href: "https://www.linkedin.com/in/maison-hygia-6b8553428/" },
+  { label: "Facebook", href: "https://www.facebook.com/profile.php?id=61593261955555" },
+  // { label: "Youtube", href: "https://www.youtube.com/channel/UC8hM9oK7XbQ0m1H5iXj0Akg" }
 ];
 
 export function SiteFooter() {
